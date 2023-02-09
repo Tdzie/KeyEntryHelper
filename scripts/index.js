@@ -150,7 +150,7 @@ let orderTotal = 0.00;
 
     }
 
-	// item lookup from enter button
+	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
 	function enterButtonPressPLULookup(){
 		let itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
 
