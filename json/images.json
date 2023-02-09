@@ -1,0 +1,34 @@
+{
+    "images":[
+        {
+            "name": "images/FloralUpgradeCodes.jpg"
+        },
+        {
+            "name": "images/GroceryMarkdowns.jpg"
+        },
+        {
+            "name": "images/keyEnterFloralUpgrades.jpg"
+        },
+        {
+            "name": "images/keyEnterNormalUPC.jpg"
+        },
+        {
+            "name": "images/keyInMeatOver100.jpg"
+        },
+        {
+            "name": "images/keyInScaleLabel.jpg"
+        },
+        {
+            "name": "images/MeatPLUsForOver100.jpg"
+        },
+        {
+            "name": "images/PLUsForDeptFloral.jpg"
+        },
+        {
+            "name": "images/priceChange.jpg"
+        },
+        {
+            "name": "images/ProduceBerryPLUs.jpg"
+        }
+    ]
+}

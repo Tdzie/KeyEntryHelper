@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <!-- Google tag (gtag.js) 
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJVBK29H2Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WJVBK29H2Y');
+</script>
+
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Keyed In Report</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+<script src="scripts/reportCard.js" defer></script>
+<link rel="stylesheet" href="styles/reportCard.css">
+</head>
+<body>
+<header>
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="flex-sm-fill text-sm-center nav-link"  href="index.html">Home</a>
+  <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Report Card</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+  <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
+</nav>
+</header>
+
+<div class="container mainLayout">
+<aside id="leftPanel">
+
+
+
+   <!-- <div id="fileUploadDiv2">
+        <input type="file" id="fileUpload" onchange="kjvkh();" />
+
+        <label for="upload" id="conBob">Keyed By Department (x)</label>
+
+
+        
+    </div>
+    <hr />-->
+    
+    <br>
+    <div>
+        
+        <div> 
+            <h5>Useful Information type</h5>
+            <div>
+                <input type="radio" id="default" name="usefulInformation"/>
+                <label for="default" id="defaultRadioButton">Generic</label>
+            </div>
+            <div>
+                <input type="radio" id="Auto" name="usefulInformation" checked="checked"/>
+                <label for="Auto" id="dautoRadioButton">Automate selection</label>
+            </div> 
+            <div>
+                <input type="radio" id="custom" name="usefulInformation"/>
+                <label for="custom" id="customRadioButton">Customize</label>
+            </div> 
+        </div>
+    </div>
+    <input type="button" id="upload1" value="Start" onclick="runAll()" />
+    <div id="dvExcel1"></div>
+</aside>
+<main id="mainSection">
+<div class="text-left">
+    <div class="input-group mb-3">
+  <label class="input-group-text" for="fileUpload">Keyed By Department (x)</label>
+  <input type="file" class="form-control" id="fileUpload">
+</div>
+    <h1 id="dvExcel">Please upload Keyed By Department Excel file.</h1> 
+
+    
+    <div id="test"></div>
+</div>
+</main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+

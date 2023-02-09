@@ -1,0 +1,463 @@
+
+.containerDiv{
+    display: grid;
+    grid-template-areas: "aside main section";
+    grid-template-columns: 1fr 5fr 2fr;
+    gap: 1rem;
+    padding-top: 1.5rem;
+}
+
+li {
+	padding-top: 1.2rem;
+}
+
+main {
+	border: white double 5px;
+    border-radius: 10px;
+    height: 650px;
+}
+
+section > div{
+	padding-top: 1.5rem;
+}
+
+img {
+	width: 370px;
+	height: 140px;
+}
+
+aside{
+    margin-left: 1.2rem;
+}
+
+.hideDisplay{
+    visibility: hidden;
+}
+.showDisplay{
+    visibility: initial;
+}
+/*Code for the keyed in pop-outs*/
+#departmentInputPopout{
+    grid-area: 2/2/7/5;
+    background-color: bisque;
+}
+
+
+/*Code for department keys*/
+#insideRegisterGrid1 > div{
+        border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+    height: 100%;
+}
+#departmentKeys1{
+grid-area: 1/1/2/2;
+}
+#departmentKeys2{
+    grid-area: 1/2/2/3;
+}
+#departmentKeys3{
+    grid-area: 1/3/2/4;
+}
+#departmentKeys4{
+    grid-area: 1/4/2/5;
+}
+#departmentKeys5{
+    grid-area: 1/5/2/6;
+}
+#departmentKeys6{
+    grid-area: 2/1/3/2;
+}
+#departmentKeys7{
+    grid-area: 2/2/3/3;
+}
+#departmentKeys8{
+    grid-area: 2/3/3/4;
+}
+#departmentKeys9{
+    grid-area: 2/4/3/5;
+}
+#departmentKeys10{
+    grid-area: 2/5/3/6;
+}
+#departmentKeys11{
+    grid-area: 3/1/4/2;
+}
+#departmentKeys12{
+    grid-area: 3/2/4/3;
+}
+#departmentKeys13{
+    grid-area: 3/3/4/4;
+}
+#departmentKeys14{
+    grid-area: 3/4/4/5;
+}
+#departmentKeys15{
+    grid-area: 3/5/4/6;
+}
+#departmentKeys16{
+    grid-area:4/1/5/2;
+}
+#departmentKeys17{
+    grid-area:4/2/5/3;
+}
+#departmentKeys18{
+    grid-area:4/3/5/4;
+}
+#departmentKeys19{
+    grid-area:4/4/5/5;
+}
+#departmentKeys20{
+    grid-area:4/5/5/6;
+}
+#departmentKeys21{
+    grid-area:5/1/6/2;
+}
+#departmentKeys22{
+    grid-area:5/2/6/3;
+}
+#departmentKeys23{
+    grid-area:5/3/6/4;
+}
+#departmentKeys24{
+    grid-area:5/4/6/5;
+}
+#departmentKeys25{
+    grid-area:5/5/6/6;
+}
+/* Code for the normal register screen 
+row start / col start / row end / col end*/
+#insideRegisterGrid1{
+    grid-area: 1/1/11/2;
+    border: 1px gray solid;
+    background-color: rgb(245, 245, 245);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(10, 1fr) ;
+}
+#insideRegisterGrid2{
+    grid-area: 1/2/2/3;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid3{
+    grid-area: 1/3/2/4;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid4{
+    grid-area: 2/2/3/3;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid5{
+    grid-area: 2/3/3/4;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid6{
+    grid-area: 3/2/4/3;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid7{
+    grid-area: 3/3/4/4;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid8{
+    grid-area: 4/2/5/3;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid9{
+    grid-area: 4/3/5/4;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+#insideRegisterGrid10{
+    grid-area: 5/2/6/3;
+    border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    background-color: black;
+}
+/*Back and more div*/
+#insideRegisterGrid11{
+    grid-area: 5/3/6/4;
+   /* border: 1px gray solid; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: black;
+}
+#backDiv{
+    border: 1px gray solid;
+    display: grid;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+
+}
+#moreDiv{
+    border: 1px gray solid;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+/* Enter Item Code outer div*/
+#insideRegisterGrid12{
+    grid-area: 6/2/8/4;
+    border: 1px gray solid;
+    background-color: black;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+#topOfEnterItemCode{
+    padding-left: 2%;
+}
+#bottomEnterItemCode{
+    font-size: 2rem;
+    display: grid;
+    align-items: end;
+
+}
+/*Numpad outer Div*/
+#insideRegisterGrid13{
+    grid-area: 8/2/last-line/end;
+    border: 1px gray solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background-color: black;
+}
+
+/*  Bottom div for balance due and the total outershell*/
+#insideRegisterGrid14{
+    grid-area: fourteen;
+    border: 1px gray solid;
+    background-color: rgb(249, 237, 223);
+    grid-area: 11/1/12/2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+/*  balance due  */
+#balanceDueDiv{
+    display: grid;
+    align-content: center;
+    color: green;
+    font-size: 2rem;
+    padding-left: 5%;
+}
+/*  Total price for the register*/
+#TotalEntryForTheRegister{
+    display: grid;
+    align-content: center;
+    justify-content: flex-end;
+    color: green;
+    font-size: 2rem;
+    padding-right:5%;
+}
+/* AvantEdge points in upper left of the normal screen outer div*/
+#insideRegisterGrid15{
+    grid-area: 1/1/3/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+}
+#advantEdgeValue{
+    color: green;
+    display: grid;
+    align-items: end;
+    padding-left: 12%;
+}
+#advantEdgeTitle{
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-left: 5%;
+}
+/* Main div for displaying items and prices */
+#insideRegisterGrid16{
+    grid-area: 3/1/11/2;
+    display: grid;
+    grid-template-columns: 6fr 1fr 1fr;
+    color: black;
+    font-size: 1.5rem;
+    padding-left: 5%;
+    padding-bottom: 1%;
+    overflow-y: scroll;
+}
+#itemDescription{
+display: grid;
+align-items: end;
+}
+#FoodStampLogo{
+display: grid;
+align-items: end;
+}
+#priceOfProduct{
+display: grid;
+align-items: end;
+}
+#registerDiv{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+    grid-template-rows: repeat(11, 1fr);
+}
+#insideRegisterDiv{
+    background-color: aqua;
+    border: black solid 2px;
+}
+/*Enter Button Div*/
+#numpadDiv15{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    grid-area: 4/3/last-line/end;
+     border: 1px gray solid;
+     justify-content: center;
+}
+#numpadDiv1{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 1/1/2/2;
+    justify-content: center;
+}
+#numpadDiv2{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 1/2/2/3;
+    justify-content: center;
+}
+#numpadDiv3{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 1/3/2/4;
+    justify-content: center;
+}
+#numpadDiv4{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 1/4/2/5;
+    justify-content: center;
+}
+#numpadDiv5{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 2/1/3/2;
+    justify-content: center;
+}
+#numpadDiv6{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 2/2/3/3;
+    justify-content: center;
+}
+#numpadDiv7{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 2/3/3/4;
+    justify-content: center;
+}
+#numpadDiv8{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 2/4/3/5;
+    justify-content: center;
+}
+#numpadDiv9{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 3/1/4/2;
+    justify-content: center;
+}
+#numpadDiv10{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 3/2/4/3;
+    justify-content: center;
+}
+#numpadDiv11{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 3/3/4/4;
+    justify-content: center;
+}
+#numpadDiv12{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 3/4/4/5;
+    justify-content: center;
+}
+#numpadDiv13{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 4/1/5/2;
+    justify-content: center;
+}
+#numpadDiv14{
+ border: 1px gray solid;
+        display: grid;
+    align-items: center;
+    padding-left: 3%;
+    grid-area: 4/2/5/3;
+    justify-content: center;
+}
+/* End of Normal Register*/
+
