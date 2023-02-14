@@ -9,6 +9,9 @@ let normalRegisterActive = false;
 // register total
 let orderTotal = 0.00;
 
+// Bool to direct the location of the number pad
+let manualEntryBoxActive = false;
+//Startup used to load the normal register setup
 	window.onload = () => {
 
 		normalRegister();
@@ -21,7 +24,7 @@ let orderTotal = 0.00;
 
 
     function normalRegister(){
-
+		manualEntryBoxActive = false;
 		normalRegisterActive = true;
 		mainWindow.innerHTML = "";
 		orderTotal = 0.00;
@@ -152,7 +155,22 @@ let orderTotal = 0.00;
 
 	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
 	function enterButtonPressPLULookup(){
-		let itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
+		let itemNumber;
+		if(manualEntryBoxActive){
+			itemNumber = document.querySelector("#priceInputInManualEntry");
+			let departmentName = document.querySelector("#departmentNameDivInManualEntry").innerHTML;
+			document.querySelector("#itemDescription").innerHTML += departmentName + "<br>";
+			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
+			document.querySelector("#priceOfProduct").innerHTML += itemNumber.innerHTML + "<br>";
+			orderTotal += parseFloat(itemNumber.innerHTML);
+			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
+
+
+
+		}else{
+			itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
+		}
+		
 
 		if(itemNumber == 41735){
 			document.querySelector("#itemDescription").innerHTML += "PICS items<br>";
@@ -161,11 +179,36 @@ let orderTotal = 0.00;
 			orderTotal += 4.25;
 			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
 		}
+		manualEntryBoxActive = false;
 	}
 
 	//Number Pad Functions
 	function numberPadButtonPress(){
-		document.getElementById("bottomEnterItemCode").innerHTML += this.innerHTML;
+		if(manualEntryBoxActive){
+		document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML,this.innerHTML);
+		}else(
+		document.getElementById("bottomEnterItemCode").innerHTML += this.innerHTML
+		)
+
+	}
+
+	//Handle the manual entry input
+	function addToManualEntryPrice(currentPrice,NewDigit){
+		if(currentPrice.lastIndexOf("0") == 3){
+			return `0.0${NewDigit}`;
+		}else if(currentPrice.lastIndexOf("0") == 2){
+			return `0.${currentPrice[3]}${NewDigit}`;
+		}else if(currentPrice.lastIndexOf("0") == 0){
+			return `${currentPrice[2]}.${currentPrice[3]}${NewDigit}`;
+		}else if(currentPrice.length == 4){
+			return `${currentPrice[0]}${currentPrice[2]}.${currentPrice[3]}${NewDigit}`;
+		}else if(currentPrice.length == 5){
+			return `${currentPrice[0]}${currentPrice[1]}${currentPrice[3]}.${currentPrice[4]}${NewDigit}`;
+		}else{
+			alert("TODO - Value is greater than the allowed amount of 999.99");
+			return currentPrice;
+		}
+
 	}
 	// Change text when the more or back button is clicked
 	function MoreScreenOnNormalRegister(){
@@ -205,57 +248,143 @@ let orderTotal = 0.00;
 		for(let i = 1; i < 26; i++){
 			let createDiv = document.createElement("div");
 			createDiv.id = `departmentKeys${i}`;
+			createDiv.value = i;
+			createDiv.addEventListener("click",keyEntryForDepartmentsPopOut);
 			grabRegisterMainScreenDiv.appendChild(createDiv);
 		}
 
-		document.getElementById("departmentKeys1").innerHTML ="Grocery";
-		document.getElementById("departmentKeys2").innerHTML ="Produce";
-		document.getElementById("departmentKeys3").innerHTML ="Floral";
-		document.getElementById("departmentKeys4").innerHTML ="Beer/Wine";
-		document.getElementById("departmentKeys5").innerHTML ="Tele In";
-		document.getElementById("departmentKeys6").innerHTML ="Grocery <br> Taxable";
-		document.getElementById("departmentKeys7").innerHTML ="Meat";
-		document.getElementById("departmentKeys8").innerHTML ="Kosher Meat";
-		document.getElementById("departmentKeys9").innerHTML ="Bottle Deposit";
-		document.getElementById("departmentKeys10").innerHTML ="H/D In";
-		document.getElementById("departmentKeys11").innerHTML ="General Mdse";
-		document.getElementById("departmentKeys12").innerHTML ="Seafood";
-		document.getElementById("departmentKeys13").innerHTML ="Sushi";
-		document.getElementById("departmentKeys14").innerHTML ="Charity";
-		document.getElementById("departmentKeys15").innerHTML ="Tele Out";
-		document.getElementById("departmentKeys16").innerHTML ="HBC";
-		document.getElementById("departmentKeys17").innerHTML ="Bakery";
-		document.getElementById("departmentKeys18").innerHTML ="Kosher Deli";
-		document.getElementById("departmentKeys19").innerHTML ="Sarbucks";
-		document.getElementById("departmentKeys20").innerHTML ="H/D Out";
-		document.getElementById("departmentKeys21").innerHTML ="Deli";
-		document.getElementById("departmentKeys22").innerHTML ="Prepaired Food";
-		document.getElementById("departmentKeys23").innerHTML ="Tobacco";
-		document.getElementById("departmentKeys24").innerHTML ="RX";
-		document.getElementById("departmentKeys25").innerHTML ="";
-		document.getElementById("insideRegisterGrid2").innerHTML = "";
-		document.getElementById("insideRegisterGrid3").innerHTML = "";
-		document.getElementById("insideRegisterGrid4").innerHTML = "";
-		document.getElementById("insideRegisterGrid5").innerHTML = "";
-		document.getElementById("insideRegisterGrid6").innerHTML = "";
-		document.getElementById("insideRegisterGrid7").innerHTML = "";
-		document.getElementById("insideRegisterGrid8").innerHTML = "";
-		document.getElementById("insideRegisterGrid9").innerHTML = "";
-		document.getElementById("insideRegisterGrid10").innerHTML = "";
+		let grocery = document.getElementById("departmentKeys1");
+		let produce = document.getElementById("departmentKeys2");
+		let floral = document.getElementById("departmentKeys3");
+		let beer = document.getElementById("departmentKeys4");
+		let telein = document.getElementById("departmentKeys5");
+		let groceryTax = document.getElementById("departmentKeys6");
+		let meat = document.getElementById("departmentKeys7");
+		let kosherMeat = document.getElementById("departmentKeys8");
+		let bottleDeposit = document.getElementById("departmentKeys9");
+		let hdIn = document.getElementById("departmentKeys10");
+		let generalmdse = document.getElementById("departmentKeys11");
+		let seafood = document.getElementById("departmentKeys12");
+		let sushi = document.getElementById("departmentKeys13");
+		let charity = document.getElementById("departmentKeys14");
+		let teleOut = document.getElementById("departmentKeys15");
+		let hbc = document.getElementById("departmentKeys16");
+		let bakery = document.getElementById("departmentKeys17");
+		let kosherDeli = document.getElementById("departmentKeys18");
+		let starbucks = document.getElementById("departmentKeys19");
+		let hdout = document.getElementById("departmentKeys20");
+		let deli = document.getElementById("departmentKeys21");
+		let prepfood = document.getElementById("departmentKeys22");
+		let tobacco = document.getElementById("departmentKeys23");
+		let rx = document.getElementById("departmentKeys24");
+		let empty = document.getElementById("departmentKeys25");
 
-		document.getElementById("departmentKeys1").addEventListener("click",keyEntryForDepartmentsPopOut);
 
+		grocery.innerHTML ="Grocery";
+		produce.innerHTML ="Produce";
+		floral.innerHTML ="Floral";
+		beer.innerHTML ="Beer/Wine";
+		telein.innerHTML ="Tele In";
+		groceryTax.innerHTML ="Grocery <br> Taxable";
+		meat.innerHTML ="Meat";
+		kosherMeat.innerHTML ="Kosher Meat";
+		bottleDeposit.innerHTML ="Bottle Deposit";
+		hdIn.innerHTML ="H/D In";
+		generalmdse.innerHTML ="General Mdse";
+		seafood.innerHTML ="Seafood";
+		sushi.innerHTML ="Sushi";
+		charity.innerHTML ="Charity";
+		teleOut.innerHTML ="Tele Out";
+		hbc.innerHTML ="HBC";
+		bakery.innerHTML ="Bakery";
+		kosherDeli.innerHTML ="Kosher Deli";
+		starbucks.innerHTML ="Starbucks";
+		hdout.innerHTML ="H/D Out";
+		deli.innerHTML ="Deli";
+		prepfood.innerHTML ="Prepaired Food";
+		tobacco.innerHTML ="Tobacco";
+		rx.innerHTML ="RX";
+		empty.innerHTML ="";
+	
+/*
+		grocery.value = "1";
+		produce
+		floral
+		beer
+		telein
+		groceryTax
+		meat
+		kosherMeat
+		bottleDeposit
+		hdIn
+		generalmdse
+		seafood
+		sushi
+		charity
+		teleOut
+		hbc
+		bakery
+		kosherDeli
+		starbucks
+		hdout
+		deli
+		prepfood
+		tobacco
+		rx
+		empty
+
+		grocery.addEventListener("click",keyEntryForDepartmentsPopOut);
+		produce
+		floral
+		beer
+		telein
+		groceryTax
+		meat
+		kosherMeat
+		bottleDeposit
+		hdIn
+		generalmdse
+		seafood
+		sushi
+		charity
+		teleOut
+		hbc
+		bakery
+		kosherDeli
+		starbucks
+		hdout
+		deli
+		prepfood
+		tobacco
+		rx
+		empty
+*/
 	}
 
 	function keyEntryForDepartmentsPopOut(){
+
+		manualEntryBoxActive = true;
+
 		document.querySelector("#insideRegisterGrid15").classList.remove("hideDisplay");
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
-		let createTheOutsideDivForPopOut = document.createElement("div");
-		createTheOutsideDivForPopOut.id = "departmentInputPopout";
-		grabRegisterMainScreenDiv.appendChild(createTheOutsideDivForPopOut);
-	}
+		let createTheOutsideSectionForPopOut = document.createElement("section");
+		createTheOutsideSectionForPopOut.id = "departmentInputPopout";
 
+		createTheOutsideSectionForPopOut.innerHTML = `<div id="manualEntry">Manual Entry</div>
+													  <div id="departmentNumberDivInManualEntry">Department # ${this.value}</div>
+													  <div id="departmentNameDivInManualEntry">${this.innerHTML}</div>
+													  <div id="OuterDivForManualEntry">
+													  	<div id="enterAmountDivInManualEntry">Enter Amount</div>
+														<div id="priceInputInManualEntry">0.00</div>
+													  </div>`;
+
+		grabRegisterMainScreenDiv.appendChild(createTheOutsideSectionForPopOut);
+		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "gray";
+		document.querySelector("#insideRegisterGrid15").style.visibility = "hidden";
+
+
+	}
 
 
 
