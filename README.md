@@ -1,5 +1,20 @@
 # Report-card-generator
 Designed to read and extract information from an Excel file to generate report cards for each person on the list. This can be used by managers to coach and counsel teammates with individualized information. 
+*Update* 2/14/2023
+
+*Four products added to the product list: 
+4173512345
+4173598765
+4173511111
+5002099902
+
+*Fix for the manual entry box - working
+*Fix for the C button - now will clear the optional menus, not reset the register.
+*Fix for when user enters a value code, the numberpad box will now clear.
+
+*Features added:
+
+*Lesson one testing is started.
 
 *Update* 1/4/2023
 
