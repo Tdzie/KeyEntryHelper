@@ -148,7 +148,7 @@ let manualEntryBoxActive = false;
 		document.getElementById("numpadDiv5").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv6").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv7").addEventListener("click", numberPadButtonPress);
-		document.getElementById("numpadDiv8").addEventListener("click", numberPadButtonPress);		
+		document.getElementById("numpadDiv8").addEventListener("click", backbutton);		
 		document.getElementById("numpadDiv9").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv10").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv11").addEventListener("click", numberPadButtonPress);
@@ -186,6 +186,17 @@ let manualEntryBoxActive = false;
 			return currentPrice;
 		}
 
+	
+	}
+
+	function backbutton(){
+		let price = document.querySelector("#priceInputInManualEntry");
+		let priceWithout = price.innerHTML.replace(".", "");
+		priceWithout =  priceWithout.substring(0,priceWithout.length -1);
+
+		priceWithout = priceWithout.substring(0,priceWithout.length -2) + "." + priceWithout.substring(priceWithout.length -2);
+		
+		price.innerHTML = priceWithout;
 	}
 	// Change text when the more or back button is clicked
 	function MoreScreenOnNormalRegister(){
@@ -469,7 +480,7 @@ setTimeout(() => {
 
 function runFirstLesson(){
 	lessonOne = true;
-	let grabHelpfulSection = document.querySelector("#rightPanel");
+	let grabHelpfulSection = document.querySelector("#rightPanelMainContent");
 	grabHelpfulSection.innerHTML = `<h1>Lesson one: How to enter a normal UPC.`;
 	setTimeout(() => {
 		grabHelpfulSection.innerHTML += `<p>First we will learn how to enter a product by its UPC code when it won't scan.</p>`;
@@ -484,12 +495,27 @@ function runFirstLesson(){
 
 									
 }
+
+function errorbox(){
+	let grabmain = document.querySelector("#mainWindow");
+	let outerDiv = document.createElement("div");
+	let register = document.querySelector("#registerDiv");
+	outerDiv.id = "outerDivForErrorBox";
+	outerDiv.innerHTML = "TESTING";
+	grabmain.insertBefore(outerDiv,register);
+}
 function lessonOneEnterButton(value){
-			let grabHelpfulSection = document.querySelector("#rightPanel");
+			let grabHelpfulSection = document.querySelector("#rightPanelMainContent");
+			let createErrorBox = document.querySelector("rightPanel");
 			if(value != 5002099902){
 				if(!lessonOneFirstFail){
-					grabHelpfulSection.innerHTML += `<p>Looks like you entered the incorrect UPC, try again.</p>`;
-					lessonOneFirstFail = true;
+					errorbox();
+					/*
+					let createDivForFail = document.createElement("div");
+					createDivForFail.id = "FailAlertBox";
+					createDivForFail.innerHTML += `<p>Looks like you entered the incorrect UPC, try again.</p>`;
+					*/
+					//lessonOneFirstFail = true;
 				}
 				
 			}else{
