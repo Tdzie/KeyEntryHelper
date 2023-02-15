@@ -195,8 +195,12 @@ let manualEntryBoxActive = false;
 		priceWithout =  priceWithout.substring(0,priceWithout.length -1);
 
 		priceWithout = priceWithout.substring(0,priceWithout.length -2) + "." + priceWithout.substring(priceWithout.length -2);
+
+		if(priceWithout.length == 3){
+			price.innerHTML = "0" + priceWithout;	
+		}
 		
-		price.innerHTML = priceWithout;
+
 	}
 	// Change text when the more or back button is clicked
 	function MoreScreenOnNormalRegister(){
