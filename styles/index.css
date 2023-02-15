@@ -1,4 +1,31 @@
+/*Right panel styles - used to hold content for lessons*/
+#rightPanel{
+    display: grid;
+    grid-template-rows: 0.5fr 10fr 1fr;
+    max-width: 600px;
+}
+#rightPanelMainContent{
+    padding-top: 1%;
+}
+#rightPanel > div.progress{
+    animation:progressBar 10s linear;
+}
+@keyframes progressBar{
+    from {width:0%;}
+    to{width: 100%;}
+}
+#outerDivForErrorBox{
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    width: 250px;
+    height: 250px;
+    background-color:  black;
+}
 
+
+/*End of right panel styles*/
 /*start of pop-out for manual entry*/
 /*Code for the keyed in pop-outs*/
 #departmentInputPopout{
@@ -61,7 +88,8 @@ main {
 	border: white double 5px;
     border-radius: 10px;
     height: 650px;
-    
+    display: block;
+    position: relative;
 }
 
 section > div{
