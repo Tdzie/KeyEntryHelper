@@ -2,6 +2,9 @@
 	const mainWindow = document.getElementById("mainWindow");
 	const altWindow = document.getElementById("rightPanel");
 	
+//Lesson states
+var lessonOne = false;
+var lessonOneFirstFail = false;
 
 // Variables to check what screen is active
 let normalRegisterActive = false;
@@ -13,8 +16,9 @@ let orderTotal = 0.00;
 let manualEntryBoxActive = false;
 //Startup used to load the normal register setup
 	window.onload = () => {
-
+		runFirstLesson();
 		normalRegister();
+		
 
 	};
 
@@ -134,7 +138,7 @@ let manualEntryBoxActive = false;
 		//Add event for more and back div
 		document.getElementById("moreDiv").addEventListener("click", MoreScreenOnNormalRegister);
 		document.getElementById("backDiv").addEventListener("click", MoreScreenOnNormalRegister);
-		document.getElementById("numpadDiv12").addEventListener("click", normalRegister);
+		document.getElementById("numpadDiv12").addEventListener("click", clear);
 
 		//Event listeners for number keys
 		document.getElementById("numpadDiv1").addEventListener("click", numberPadButtonPress);
@@ -150,37 +154,10 @@ let manualEntryBoxActive = false;
 		document.getElementById("numpadDiv11").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv14").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv15").addEventListener("click", enterButtonPressPLULookup);
+		document.getElementById("insideRegisterGrid3").addEventListener("dblclick", normalRegister);
 
     }
 
-	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
-	function enterButtonPressPLULookup(){
-		let itemNumber;
-		if(manualEntryBoxActive){
-			itemNumber = document.querySelector("#priceInputInManualEntry");
-			let departmentName = document.querySelector("#departmentNameDivInManualEntry").innerHTML;
-			document.querySelector("#itemDescription").innerHTML += departmentName + "<br>";
-			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
-			document.querySelector("#priceOfProduct").innerHTML += itemNumber.innerHTML + "<br>";
-			orderTotal += parseFloat(itemNumber.innerHTML);
-			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
-
-
-
-		}else{
-			itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
-		}
-		
-
-		if(itemNumber == 41735){
-			document.querySelector("#itemDescription").innerHTML += "PICS items<br>";
-			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
-			document.querySelector("#priceOfProduct").innerHTML += "$4.25<br>"
-			orderTotal += 4.25;
-			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
-		}
-		manualEntryBoxActive = false;
-	}
 
 	//Number Pad Functions
 	function numberPadButtonPress(){
@@ -241,7 +218,7 @@ let manualEntryBoxActive = false;
 
 	// dept div click event to change the register and add the departments
 	function showDepartments(){
-		document.querySelector("#insideRegisterGrid15").classList.add("hideDisplay");
+		//document.querySelector("#insideRegisterGrid15").classList.add("hideDisplay");
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 
 		
@@ -360,12 +337,18 @@ let manualEntryBoxActive = false;
 		empty
 */
 	}
-
+	// function to clear the main div for menus. Does not reset the register price list.
+	function clear(){
+		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
+		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
+		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
+		manualEntryBoxActive = false;
+	}
 	function keyEntryForDepartmentsPopOut(){
 
 		manualEntryBoxActive = true;
 
-		document.querySelector("#insideRegisterGrid15").classList.remove("hideDisplay");
+		//document.querySelector("#insideRegisterGrid15").classList.remove("hideDisplay");
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 		let createTheOutsideSectionForPopOut = document.createElement("section");
@@ -381,12 +364,80 @@ let manualEntryBoxActive = false;
 
 		grabRegisterMainScreenDiv.appendChild(createTheOutsideSectionForPopOut);
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "gray";
-		document.querySelector("#insideRegisterGrid15").style.visibility = "hidden";
+		//document.querySelector("#insideRegisterGrid15").style.visibility = "hidden";
 
 
 	}
 
 
+	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
+	function enterButtonPressPLULookup(){
+		let itemNumber;
+		//Manual Entry box is currently being displayed
+		if(manualEntryBoxActive){
+			itemNumber = document.querySelector("#priceInputInManualEntry");
+			let departmentName = document.querySelector("#departmentNameDivInManualEntry").innerHTML;
+			document.querySelector("#itemDescription").innerHTML += departmentName + "<br>";
+			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
+			document.querySelector("#priceOfProduct").innerHTML += "$" + itemNumber.innerHTML + "<br>";
+			orderTotal += parseFloat(itemNumber.innerHTML);
+			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
+
+		}else{
+			itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
+			let product = listOfProducts.product;
+			for (const item of product) {
+				if(itemNumber == item.PLU){
+					document.querySelector("#itemDescription").innerHTML += `${item.description}<br>`;
+					document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
+					document.querySelector("#priceOfProduct").innerHTML += `$${item.price}<br>`;
+					orderTotal += item.price;
+					document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
+					document.querySelector("#bottomEnterItemCode").innerHTML = "";
+				}	
+			}
+
+			
+		}
+		
+	
+		
+
+		manualEntryBoxActive = false;
+		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
+		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
+		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
+
+		if(lessonOne){
+			lessonOneEnterButton(itemNumber);
+		}
+
+	}
+
+
+const listOfProducts = {
+	"product": [
+		{
+			"PLU": 4173512345,
+			"description": "PICS Pasta",
+			"price": 1.25
+		},
+		{
+			"PLU": 4173598765,
+			"description": "PICS Candy",
+			"price": 2.00
+		},
+		{
+			"PLU": 4173511111,
+			"description": "PICS Cheese",
+			"price": 3.79
+		},{
+			"PLU":5002099902,
+			"description": "Wild Good Ice Cream",
+			"price": 5.99
+		}
+	]
+}
 
 
 
@@ -407,19 +458,57 @@ let manualEntryBoxActive = false;
 
 
 
+/*
+setTimeout(() => {
+
+	}, 2000);
+*/
 
 
 
 
+function runFirstLesson(){
+	lessonOne = true;
+	let grabHelpfulSection = document.querySelector("#rightPanel");
+	grabHelpfulSection.innerHTML = `<h1>Lesson one: How to enter a normal UPC.`;
+	setTimeout(() => {
+		grabHelpfulSection.innerHTML += `<p>First we will learn how to enter a product by its UPC code when it won't scan.</p>`;
+	}, 3000);
+	setTimeout(() => {
+		grabHelpfulSection.innerHTML += `<p>1) Find the barcode on the product.</p>`;
+		grabHelpfulSection.innerHTML +=`<img id="wildgoodUPC" src="images/wildgoodUPC.jpeg" alt="Picture of a UPC for ice cream"></img>`;
+	}, 6000);
+	setTimeout(() => {
+		grabHelpfulSection.innerHTML +=`<p>2) Use the number pad to enter the UPC found on the barcode.`;
+	}, 9000);
+
+									
+}
+function lessonOneEnterButton(value){
+			let grabHelpfulSection = document.querySelector("#rightPanel");
+			if(value != 5002099902){
+				if(!lessonOneFirstFail){
+					grabHelpfulSection.innerHTML += `<p>Looks like you entered the incorrect UPC, try again.</p>`;
+					lessonOneFirstFail = true;
+				}
+				
+			}else{
+				grabHelpfulSection.innerHTML = `<h1>Lesson one: How to enter a normal UPC.`;
+				
+				grabHelpfulSection.innerHTML += `<h2>Great Work!</h2>`
+												
+				setTimeout(() => {
+					grabHelpfulSection.innerHTML += `<p>Wild Good Ice Cream is now rung into your order.</p>`;
+				}, 2000);
+				setTimeout(() => {
+					grabHelpfulSection.innerHTML +=`<p>lets try another one.</p>`;
+				}, 4000);
+			}
+}
 
 
 
-
-
-
-
-
-
+/*
 	function whatIsKeyEntry(){
 		let makeDiv = document.createElement("div");
 		// Messages
@@ -480,4 +569,4 @@ let manualEntryBoxActive = false;
 			}, 9000);
 	};
 
-	
+	*/

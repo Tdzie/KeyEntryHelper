@@ -1,3 +1,11 @@
+
+/*start of pop-out for manual entry*/
+/*Code for the keyed in pop-outs*/
+#departmentInputPopout{
+    grid-area: 2/2/7/5;
+    background-color: rgb(249, 249, 249);
+    z-index: 1;
+}
 #departmentNameDivInManualEntry{
     color: gray;
     padding-left: 2%;
@@ -34,10 +42,13 @@
 display: grid;
 grid-template-columns: 3fr 10fr;
 }
+/* End of pop-out for manual entry*/
+
+
 .containerDiv{
     display: grid;
     grid-template-areas: "aside main section";
-    grid-template-columns: 1fr 5fr 2fr;
+    grid-template-columns: 1fr 5fr 5fr;
     gap: 1rem;
     padding-top: 1.5rem;
 }
@@ -50,7 +61,7 @@ main {
 	border: white double 5px;
     border-radius: 10px;
     height: 650px;
-    max-width: 1000px;
+    
 }
 
 section > div{
@@ -72,11 +83,7 @@ aside{
 .showDisplay{
     visibility: initial;
 }
-/*Code for the keyed in pop-outs*/
-#departmentInputPopout{
-    grid-area: 2/2/7/5;
-    background-color: rgb(249, 249, 249);
-}
+
 
 
 /*Code for department keys*/
@@ -407,6 +414,7 @@ align-items: end;
     grid-area: 4/3/last-line/end;
      border: 1px gray solid;
      justify-content: center;
+     z-index: 1;
 }
 #numpadDiv1{
  border: 1px gray solid;
@@ -522,3 +530,8 @@ align-items: end;
 }
 /* End of Normal Register*/
 
+/*Image*/
+#wildgoodUPC{
+    height: 350px;
+    width: 250px;
+}
