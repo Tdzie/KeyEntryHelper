@@ -13,19 +13,19 @@ let normalRegisterActive = false;
 let orderTotal = 0.00;
 
 // Bool to direct the location of the number pad
-let manualEntryBoxActive = false;
+let manualEntryBoxActive = false
 //Startup used to load the normal register setup
 	window.onload = () => {
-		//runFirstLesson();
 		normalRegister();
-		//runLessons(lessons.lessonOne.lessonOneStepOne.steps);
 
 	};
 
 //Button click event
-document.querySelector("#nextButtonAndProgressBarContainer > button").addEventListener("click",runLessons(lessons.lessonOne.lessonOneStepOne.steps));
+document.querySelector("#nextButtonAndProgressBarContainer > button").addEventListener("click",selectLession);
 
-
+function selectLession(){
+	runLessons(lessons.lessonOne.lessonOneStepOne.steps);
+}
 
 
     function normalRegister(){
