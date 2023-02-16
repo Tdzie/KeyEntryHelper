@@ -1,0 +1,36 @@
+**Fixes**
+
+Issue:	User is able to interact with the text inside the button.
+
+Solution: In the CSS file on the main section:
+     
+cursor: pointer;
+user-select: none;
+
+Issue: Incorrect Functionality for backspace button.
+
+Solution:
+
+The back button now calls a function to decide what to do. The manualEntryBoxActive is a bool value that is true only when the manual entry box is being display on screen.
+
+
+	function backbutton(){
+		if(manualEntryBoxActive){
+			document.querySelector("#priceInputInManualEntry").innerHTML = backspaceManualEntry(document.querySelector("#priceInputInManualEntry").innerHTML);
+		}else{
+			document.getElementById("bottomEnterItemCode").innerHTML = document.getElementById("bottomEnterItemCode").innerHTML.slice(0, -1);
+		}
+	}
+
+	function backspaceManualEntry(price){
+		price = price.replace(".", "");
+		price = price.slice(0, -1);
+		price = price.padStart(4, "0");
+		price = price.slice(0, 2) + "." + price.slice(2, 4);
+		return price;
+		
+	}
+
+Issue: No start Button to begin the lessons.
+
+

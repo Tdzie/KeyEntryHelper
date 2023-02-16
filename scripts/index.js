@@ -3,7 +3,7 @@
 	const altWindow = document.getElementById("rightPanel");
 	
 //Lesson states
-var lessonOne = false;
+var lessonOne = true;
 var lessonOneFirstFail = false;
 
 // Variables to check what screen is active
@@ -16,9 +16,9 @@ let orderTotal = 0.00;
 let manualEntryBoxActive = false;
 //Startup used to load the normal register setup
 	window.onload = () => {
-		runFirstLesson();
+		//runFirstLesson();
 		normalRegister();
-		
+		runLessons(lessons.lessonOne.lessonOneStepOne);
 
 	};
 
@@ -190,18 +190,22 @@ let manualEntryBoxActive = false;
 	}
 
 	function backbutton(){
-		let price = document.querySelector("#priceInputInManualEntry");
-		let priceWithout = price.innerHTML.replace(".", "");
-		priceWithout =  priceWithout.substring(0,priceWithout.length -1);
-
-		priceWithout = priceWithout.substring(0,priceWithout.length -2) + "." + priceWithout.substring(priceWithout.length -2);
-
-		if(priceWithout.length == 3){
-			price.innerHTML = "0" + priceWithout;	
+		if(manualEntryBoxActive){
+			document.querySelector("#priceInputInManualEntry").innerHTML = backspaceManualEntry(document.querySelector("#priceInputInManualEntry").innerHTML);
+		}else{
+			document.getElementById("bottomEnterItemCode").innerHTML = document.getElementById("bottomEnterItemCode").innerHTML.slice(0, -1);
 		}
-		
-
 	}
+
+	function backspaceManualEntry(price){
+		price = price.replace(".", "");
+		price = price.slice(0, -1);
+		price = price.padStart(4, "0");
+		price = price.slice(0, 2) + "." + price.slice(2, 4);
+		return price;
+		
+	}
+
 	// Change text when the more or back button is clicked
 	function MoreScreenOnNormalRegister(){
 		if(normalRegisterActive){
@@ -479,26 +483,53 @@ setTimeout(() => {
 	}, 2000);
 */
 
-
-
-
-function runFirstLesson(){
-	lessonOne = true;
-	let grabHelpfulSection = document.querySelector("#rightPanelMainContent");
-	grabHelpfulSection.innerHTML = `<h1>Lesson one: How to enter a normal UPC.`;
-	setTimeout(() => {
-		grabHelpfulSection.innerHTML += `<p>First we will learn how to enter a product by its UPC code when it won't scan.</p>`;
-	}, 3000);
-	setTimeout(() => {
-		grabHelpfulSection.innerHTML += `<p>1) Find the barcode on the product.</p>`;
-		grabHelpfulSection.innerHTML +=`<img id="wildgoodUPC" src="images/wildgoodUPC.jpeg" alt="Picture of a UPC for ice cream"></img>`;
-	}, 6000);
-	setTimeout(() => {
-		grabHelpfulSection.innerHTML +=`<p>2) Use the number pad to enter the UPC found on the barcode.`;
-	}, 9000);
-
-									
+const lessons = {
+	"lessonOne": {
+		"lessonOneStepOne": {
+			"stepOne": "First we will learn how to enter a product by its UPC code when it won't scan.",
+			"stepTwo": "1) Find the barcode on the product.",
+			"stepThree": "2) Use the number pad to enter the UPC found on the barcode.",
+			"stepFour": "3) Press the enter button to complete the lookup.",
+			"stepFive": "4) If the product is not found, press the C button to try again.",
+			"image": "images/wildgoodUPC.jpeg"
+		},
+		"lessonOneStepTwo": {
+			"stepOne": "Great Work!",
+			"stepTwo": "Wild Good Ice Cream is now rung into your order.",
+			"stepThree": "lets try another one!",
+			"stepFour": "",
+			"stepFive": "",
+			"image": ""
+		}
+	},
 }
+
+function runLessons(lesson){
+	document.querySelector("#numpadDiv15").style = "pointer-events: none;";
+	let header = document.querySelector("#rightPanel > h3")
+	header.innerHTML = lesson.stepOne;
+	let helpfulSection = document.querySelector("#rightPanelMainContent");
+	helpfulSection.innerHTML = "";
+	const createAnImage = document.createElement("img");
+	createAnImage.src = lesson.image;
+	helpfulSection.appendChild(createAnImage);
+	setTimeout(() => {let createAParagraph = document.createElement("p");
+	createAParagraph.innerHTML = lesson.stepTwo;
+	helpfulSection.appendChild(createAParagraph);}, 1000);
+	setTimeout(() => {createAParagraph = document.createElement("p");
+	createAParagraph.innerHTML = lesson.stepThree;
+	helpfulSection.appendChild(createAParagraph);}, 4000);
+	setTimeout(() => {createAParagraph = document.createElement("p");
+	createAParagraph.innerHTML = lesson.stepFour;
+	helpfulSection.appendChild(createAParagraph);}, 7000);
+	setTimeout(() => {createAParagraph = document.createElement("p");
+	createAParagraph.innerHTML = lesson.stepFive;
+	helpfulSection.appendChild(createAParagraph);
+	document.querySelector("#numpadDiv15").style = "pointer-events: auto;";}, 10000);
+}
+	
+
+
 
 function errorbox(){
 	let grabmain = document.querySelector("#mainWindow");
@@ -508,9 +539,9 @@ function errorbox(){
 	outerDiv.innerHTML = "TESTING";
 	grabmain.insertBefore(outerDiv,register);
 }
+
+
 function lessonOneEnterButton(value){
-			let grabHelpfulSection = document.querySelector("#rightPanelMainContent");
-			let createErrorBox = document.querySelector("rightPanel");
 			if(value != 5002099902){
 				if(!lessonOneFirstFail){
 					errorbox();
@@ -521,21 +552,13 @@ function lessonOneEnterButton(value){
 					*/
 					//lessonOneFirstFail = true;
 				}
-				
+			
 			}else{
-				grabHelpfulSection.innerHTML = `<h1>Lesson one: How to enter a normal UPC.`;
-				
-				grabHelpfulSection.innerHTML += `<h2>Great Work!</h2>`
-												
-				setTimeout(() => {
-					grabHelpfulSection.innerHTML += `<p>Wild Good Ice Cream is now rung into your order.</p>`;
-				}, 2000);
-				setTimeout(() => {
-					grabHelpfulSection.innerHTML +=`<p>lets try another one.</p>`;
-				}, 4000);
-			}
-}
-
+					lessonOneFirstFail = false;
+					lessonOne = false;
+					runLessons(lessons.lessonOne.lessonOneStepTwo);
+				}
+		}
 
 
 /*
