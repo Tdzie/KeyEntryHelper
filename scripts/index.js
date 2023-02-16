@@ -3,7 +3,7 @@
 	const altWindow = document.getElementById("rightPanel");
 	
 //Lesson states
-var lessonOne = true;
+var lessonOne = false;
 var lessonOneFirstFail = false;
 
 // Variables to check what screen is active
@@ -25,6 +25,7 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 
 function selectLession(){
 	runLessons(lessons.lessonOne.lessonOneStepOne.steps);
+	lessonOne = true;
 }
 
 
