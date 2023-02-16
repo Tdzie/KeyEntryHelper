@@ -582,7 +582,7 @@ function closeErrorBox(){
 }
 
 function lessonOneEnterButton(value){
-			if(lessonOneStepTwo = false){
+			if(!lessonOneStepTwo){
 				if(value != 5002099902){
 					let title = "<h3>ERROR</h3>";
 					let image = "<img src='images/KeyInHelper.jpg' >";
@@ -597,7 +597,10 @@ function lessonOneEnterButton(value){
 			else
 			{
 				if(value!= 72277600232){
-
+					let title = "<h3>ERROR</h3>";
+					let image = "<img src='images/KeyInHelper.jpg' >";
+					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
+					errorbox(title, image, content);
 				}
 				else{
 
