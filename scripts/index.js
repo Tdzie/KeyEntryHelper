@@ -535,7 +535,9 @@ function runLessons(lesson){
 	helpfulSection.innerHTML = "";
 
 	Object.entries(lesson).forEach(([key, value]) => {
-		setTimeout(() => {helpfulSection.innerHTML += value[0]}, value[1]);
+		let createADiv = document.createElement('div');
+		createADiv.innerHTML = setTimeout(() => {value[0]}, value[1]);
+		helpfulSection.appendChild(createADiv);
 	});
 	
 }
