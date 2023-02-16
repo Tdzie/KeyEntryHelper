@@ -37,23 +37,23 @@
     }
 }
 
-#rightPanelMainContent > p:nth-child(2){
+#p1 {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;
 
 }
-#rightPanelMainContent > p:nth-child(3){
+#p2 {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;
 }
-#rightPanelMainContent > p:nth-child(4){
+#p3 {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;
 }
-#rightPanelMainContent > p:nth-child(5){
+#p4 {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;

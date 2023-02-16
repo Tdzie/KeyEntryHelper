@@ -18,7 +18,7 @@ let manualEntryBoxActive = false;
 	window.onload = () => {
 		//runFirstLesson();
 		normalRegister();
-		runLessons(lessons.lessonOne.lessonOneStepOne);
+		runLessons(lessons.lessonOne.lessonOneStepOne.steps);
 
 	};
 
@@ -486,12 +486,14 @@ setTimeout(() => {
 const lessons = {
 	"lessonOne": {
 		"lessonOneStepOne": {
-			"stepOne": "First we will learn how to enter a product by its UPC code when it won't scan.",
-			"stepTwo": "1) Find the barcode on the product.",
-			"stepThree": "2) Use the number pad to enter the UPC found on the barcode.",
-			"stepFour": "3) Press the enter button to complete the lookup.",
-			"stepFive": "4) If the product is not found, press the C button to try again.",
-			"image": "images/wildgoodUPC.jpeg"
+			"steps": {
+				"stepHeader": ["<h3>First we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
+				"image": ["<img src='images/wildgoodUPC.jpeg'>",0],
+				"stepOne": ["<p id='p1'>1) Find the barcode on the product.</p>",3000],
+				"stepTwo": ["<p id='p2'>2) Use the number pad to enter the UPC found on the barcode.</p>",5000],
+				"stepThree": ["<p id='p3'>3) Press the enter button to complete the lookup.</p>",7000],
+				"stepFour": ["<p id='p4'>4) If the product is not found, press the C button to try again.</p>",9000],
+			}
 		},
 		"lessonOneStepTwo": {
 			"stepOne": "Great Work!",
@@ -503,7 +505,7 @@ const lessons = {
 		}
 	},
 }
-
+/* 
 function runLessons(lesson){
 	document.querySelector("#numpadDiv15").style = "pointer-events: none;";
 	let header = document.querySelector("#rightPanel > h3")
@@ -527,8 +529,16 @@ function runLessons(lesson){
 	helpfulSection.appendChild(createAParagraph);
 	document.querySelector("#numpadDiv15").style = "pointer-events: auto;";}, 10000);
 }
-	
+*/	
+function runLessons(lesson){
+	let helpfulSection = document.querySelector("#rightPanelMainContent");
+	helpfulSection.innerHTML = "";
 
+	Object.entries(lesson).forEach(([key, value]) => {
+		setTimeout(() => {helpfulSection.innerHTML += value[0]}, value[1]);
+	});
+	
+}
 
 
 function errorbox(){
