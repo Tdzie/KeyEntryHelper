@@ -462,6 +462,11 @@ const listOfProducts = {
 			"PLU":2930701394,
 			"description": "Trident Gum",
 			"price": 1.39
+		},
+		{
+			"PLU":722777600232,
+			"description": "Applesauce",
+			"price": 2.99
 		}
 	]
 }
@@ -507,11 +512,12 @@ const lessons = {
 		"lessonOneStepTwo": {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepTwo": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",1000],
-				"stepThree": ["<p id='p2'>lets try another one!</p>",4000],
-				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",7000]
-				
-			}
+				"stepOne": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",1000],
+				"stepTwo": ["<p id='p2'>lets try another one!</p>",4000],
+				"image": ["<img class='imageW50H350' src='images/applesauce.jpeg'>",6000],
+				"stepThree": ["<p id='p3'>Same as last time, use the number pad to enter the UPC.</p>",6500]
+			},
+			"progressTimer": "10s"
 		}
 	},
 }
