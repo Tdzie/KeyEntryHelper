@@ -535,9 +535,12 @@ function runLessons(lesson){
 	helpfulSection.innerHTML = "";
 
 	Object.entries(lesson).forEach(([key, value]) => {
-		let createADiv = document.createElement('div');
-		createADiv.innerHTML = setTimeout(() => {value[0]}, value[1]);
-		helpfulSection.appendChild(createADiv);
+
+		setTimeout(() =>{ 
+			let createADiv = document.createElement('div');
+			createADiv.innerHTML = value[0];
+			helpfulSection.appendChild(createADiv);
+		}, value[1]);
 	});
 	
 }
