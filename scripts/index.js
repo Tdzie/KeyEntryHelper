@@ -18,11 +18,12 @@ let manualEntryBoxActive = false;
 	window.onload = () => {
 		//runFirstLesson();
 		normalRegister();
-		runLessons(lessons.lessonOne.lessonOneStepOne.steps);
+		//runLessons(lessons.lessonOne.lessonOneStepOne.steps);
 
 	};
 
-
+//Button click event
+document.querySelector("#nextButtonAndProgressBarContainer > button").addEventListener("click",runLessons(lessons.lessonOne.lessonOneStepOne.steps));
 
 
 
@@ -571,7 +572,7 @@ function lessonOneEnterButton(value){
 			}else{
 					lessonOneFirstFail = false;
 					lessonOne = false;
-					runLessons(lessons.lessonOne.lessonOneStepTwo);
+					runLessons(lessons.lessonOne.lessonOneStepTwo.steps);
 				}
 		}
 
