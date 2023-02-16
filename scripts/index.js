@@ -494,7 +494,8 @@ const lessons = {
 				"stepTwo": ["<p id='p2'>2) Use the number pad to enter the UPC found on the barcode.</p>",4000],
 				"stepThree": ["<p id='p3'>3) Press the enter button to complete the lookup.</p>",7000],
 				"stepFour": ["<p id='p4'>4) If the product is not found, press the C button to try again.</p>",10000],
-			}
+			},
+			"progressTimer": "14s"
 		},
 		"lessonOneStepTwo": {
 			"steps":{
@@ -534,7 +535,7 @@ function runLessons(lesson){
 function runLessons(lesson){
 	let helpfulSection = document.querySelector("#rightPanelMainContent");
 	helpfulSection.innerHTML = "";
-
+	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div")
 	Object.entries(lesson).forEach(([key, value]) => {
 
 		setTimeout(() =>{ 
@@ -543,7 +544,8 @@ function runLessons(lesson){
 			helpfulSection.appendChild(createADiv);
 		}, value[1]);
 	});
-	
+
+	progressBar.style.animation = `progressBar ${lesson.progressTimer} linear`
 }
 
 

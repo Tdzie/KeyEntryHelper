@@ -7,7 +7,7 @@
 }
 #nextButtonAndProgressBarContainer > div{
     height: 100%;
-    animation:progressBar 14s linear;
+    /*animation:progressBar 14s linear;*/
     margin-top: 0%;
 }
 
