@@ -500,8 +500,8 @@ const lessons = {
 		"lessonOneStepTwo": {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepTwo": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",2000],
-				"stepThree": ["<p id='p2'>lets try another one!</p>",5000],
+				"stepTwo": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",1000],
+				"stepThree": ["<p id='p2'>lets try another one!</p>",4000],
 				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",7000]
 				
 			}
