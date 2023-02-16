@@ -461,7 +461,7 @@ const listOfProducts = {
 		{
 			"PLU":2930701394,
 			"description": "Trident Gum",
-			"Price": 1.39
+			"price": 1.39
 		}
 	]
 }
