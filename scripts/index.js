@@ -4,7 +4,7 @@
 	
 //Lesson states
 var lessonOne = false;
-var lessonOneFirstFail = false;
+var lessonOneStepTwo = false;
 
 // Variables to check what screen is active
 let normalRegisterActive = false;
@@ -514,7 +514,7 @@ const lessons = {
 				"stepHeader": ["<h3>Great Work!</h3>",0],
 				"stepOne": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",1000],
 				"stepTwo": ["<p id='p2'>lets try another one!</p>",4000],
-				"image": ["<img class='imageW50H350' src='images/applesauce.jpeg'>",6000],
+				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",6000],
 				"stepThree": ["<p id='p3'>Same as last time, use the number pad to enter the UPC.</p>",6500]
 			},
 			"progressTimer": "10s"
@@ -563,33 +563,47 @@ function runLessons(lesson){
 }
 
 
-function errorbox(){
+function errorbox(title,content,image){
 	let grabmain = document.querySelector("#mainWindow");
 	let outerDiv = document.createElement("div");
 	let register = document.querySelector("#registerDiv");
 	outerDiv.id = "outerDivForErrorBox";
-	outerDiv.innerHTML = "TESTING";
+	outerDiv.innerHTML += `${title}`;
+	outerDiv.innerHTML += `${image}`;
+	outerDiv.innerHTML += `${content}`;
+	outerDiv.addEventListener("click", closeErrorBox);
 	grabmain.insertBefore(outerDiv,register);
 }
 
+function closeErrorBox(){
+	let grabmain = document.querySelector("#mainWindow");
+	let grabErrorDiv = document.querySelector("#outerDivForErrorBox");
+	grabmain.removeChild(grabErrorDiv);
+}
 
 function lessonOneEnterButton(value){
-			if(value != 5002099902){
-				if(!lessonOneFirstFail){
-					errorbox();
-					/*
-					let createDivForFail = document.createElement("div");
-					createDivForFail.id = "FailAlertBox";
-					createDivForFail.innerHTML += `<p>Looks like you entered the incorrect UPC, try again.</p>`;
-					*/
-					//lessonOneFirstFail = true;
+			if(lessonOneStepTwo = false){
+				if(value != 5002099902){
+					let title = "<h3>ERROR</h3>";
+					let image = "<img src='images/KeyInHelper.jpg' >";
+					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
+					errorbox(title, image, content);
 				}
-			
-			}else{
-					lessonOneFirstFail = false;
-					lessonOne = false;
+				else{
 					runLessons(lessons.lessonOne.lessonOneStepTwo.steps);
+					lessonOneStepTwo = true;
+				}		
+			}
+			else
+			{
+				if(value!= 72277600232){
+
 				}
+				else{
+
+				}
+			}
+			
 		}
 
 

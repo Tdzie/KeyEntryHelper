@@ -72,6 +72,7 @@
     width: 90%;
     height: 90%;
     background-color:  black;
+    z-index: 1;
 }
 body > div{
     max-height: 700px;
