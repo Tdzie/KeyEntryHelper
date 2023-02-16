@@ -59,7 +59,7 @@
     white-space: nowrap;
 }
 
-#rightPanelMainContent > img{
+.imageW50H350{
     width: 50%;
     height: 350px;
 }

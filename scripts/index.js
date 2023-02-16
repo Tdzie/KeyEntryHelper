@@ -488,20 +488,20 @@ const lessons = {
 		"lessonOneStepOne": {
 			"steps": {
 				"stepHeader": ["<h3>First we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
-				"image": ["<img src='images/wildgoodUPC.jpeg'>",0],
-				"stepOne": ["<p id='p1'>1) Find the barcode on the product.</p>",3000],
-				"stepTwo": ["<p id='p2'>2) Use the number pad to enter the UPC found on the barcode.</p>",5000],
+				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",0],
+				"stepOne": ["<p id='p1'>1) Find the barcode on the product.</p>",1000],
+				"stepTwo": ["<p id='p2'>2) Use the number pad to enter the UPC found on the barcode.</p>",4000],
 				"stepThree": ["<p id='p3'>3) Press the enter button to complete the lookup.</p>",7000],
-				"stepFour": ["<p id='p4'>4) If the product is not found, press the C button to try again.</p>",9000],
+				"stepFour": ["<p id='p4'>4) If the product is not found, press the C button to try again.</p>",10000],
 			}
 		},
 		"lessonOneStepTwo": {
-			"stepOne": "Great Work!",
-			"stepTwo": "Wild Good Ice Cream is now rung into your order.",
-			"stepThree": "lets try another one!",
-			"stepFour": "",
-			"stepFive": "",
-			"image": ""
+			"steps":{
+				"stepHeader": ["<h3>Great Work!</h3>",0],
+				"stepTwo": ["<p id='p1>>Wild Good Ice Cream is now rung into your order.",1000],
+				"stepThree": ["<p id='p2'>lets try another one!</p>",4000],
+				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",0]
+			}
 		}
 	},
 }
