@@ -451,10 +451,16 @@ const listOfProducts = {
 			"PLU": 4173511111,
 			"description": "PICS Cheese",
 			"price": 3.79
-		},{
+		},
+		{
 			"PLU":5002099902,
 			"description": "Wild Good Ice Cream",
 			"price": 5.99
+		},
+		{
+			"PLU":2930701394,
+			"description": "Trident Gum",
+			"Price": 1.39
 		}
 	]
 }
