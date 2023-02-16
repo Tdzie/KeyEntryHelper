@@ -14,7 +14,7 @@
 /*Right panel styles - used to hold content for lessons*/
 #rightPanel{
     display: grid;
-    grid-template-rows: 0.5fr 10fr 1fr;
+    grid-template-rows:10fr 1fr;
     max-width: 600px;
     max-height: 700px;
     border: 5px outset gray;
