@@ -502,7 +502,7 @@ const lessons = {
 				"stepHeader": ["<h3>Great Work!</h3>",0],
 				"stepTwo": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",2000],
 				"stepThree": ["<p id='p2'>lets try another one!</p>",5000],
-				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",0]
+				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",7000]
 				
 			}
 		}
