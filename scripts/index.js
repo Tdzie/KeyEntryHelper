@@ -585,7 +585,7 @@ function lessonOneEnterButton(value){
 			if(!lessonOneStepTwo){
 				if(value != 5002099902){
 					let title = "<h3>ERROR</h3>";
-					let image = "<img src='images/KeyInHelper.jpg' height='300' width='250'>";
+					let image = "<img src='images/keyEnterNormalUPC.jpg' height='300' width='250'>";
 					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
 					errorbox(title, image, content);
 				}
@@ -598,7 +598,7 @@ function lessonOneEnterButton(value){
 			{
 				if(value!= 72277600232){
 					let title = "<h3>ERROR</h3>";
-					let image = "<img src='images/KeyInHelper.jpg' height='300' width='250'>";
+					let image = "<img src='images/keyEnterNormalUPC.jpg' height='300' width='250'>";
 					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
 					errorbox(title, image, content);
 				}
