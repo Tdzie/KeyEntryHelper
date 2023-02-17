@@ -639,7 +639,7 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
 				"stepTwo": ["<p class='panimate'>Practice!</p>",3000],
 				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",4000],
-				"image": ["<img height='300' width='40%' src='brokenCheeseLabel.jpeg'>",5000],
+				"image": ["<img height='300' width='40%' src='images/brokenCheeseLabel.jpeg'>",5000],
 				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",8000],
 				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
 			},
