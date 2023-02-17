@@ -582,7 +582,7 @@ const lessons = {
 
 			},
 			"progressTimer": {
-				"time":"10s"
+				"time":"9s"
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -592,7 +592,7 @@ const lessons = {
 				"image": ["<img height='300' width='90%' src='images/keyInScaleLabel.jpg'>",3000],
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
-				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label and that we need to skip the last digit.</p>",10000],
+				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label, and we need to skip the last digit.</p>",10000],
 			},
 			"progressTimer": {
 				"time":"10s"
@@ -658,7 +658,10 @@ function lessonOneEnterButton(value){
 					lessonOneStepTwo = false;
 					lessonOneStepThree = true;
 					runLessons(lessons.lessonOne.lessonOneStepThree);
-					document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
+					setTimeout(() =>{ 
+						document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
+
+					}, 16000);
 					lessonOne = false;
 					lessonTwo = true;
 				}
