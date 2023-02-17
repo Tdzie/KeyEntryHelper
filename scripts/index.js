@@ -675,7 +675,7 @@ const lessons = {
 				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
 			},
 			"progressTimer":{
-				"time": "14s"
+				"time": "12s"
 			},
 			"button": {
 				"status": true,
@@ -683,7 +683,7 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 14000
+				"time": 12000
 			}
 		},
 		"lessonTwoStepFour":{
@@ -800,6 +800,7 @@ function lessonTwoEnterButton(value){
 			lessonTwoStepTwo = true;
 			lessonTwoStepThree = true;
 			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
+		}
 	}else if(lessonTwoStepThree){
 		if(value == 21696900674){
 			lessonTwoStepOne = false;
@@ -809,7 +810,6 @@ function lessonTwoEnterButton(value){
 			runLessons(lessons.lessonTwo.lessonTwoStepFour)
 		}
 	}
-}
 }
 
 
