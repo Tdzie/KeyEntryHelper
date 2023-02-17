@@ -800,7 +800,7 @@ function lessonTwoEnterButton(value){
 			lessonTwoStepTwo = true;
 			lessonTwoStepThree = true;
 			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
-	} else if(lessonOneStepThree){
+	}else if(lessonTwoStepThree){
 		if(value == 21696900674){
 			lessonTwoStepOne = false;
 			lessonTwoStepTwo = false;
