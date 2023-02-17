@@ -564,7 +564,7 @@ const lessons = {
 				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='50%'>",8000],
 				"stepFour": ["<p class='panimate'>There are times when both numbers will not work.</p>",8500],
 				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",11000],
-				"stepSix": ["<p class='panimate'>Press the Next button to continue to the next lesson.</p>",14000]
+				"stepSix": ["<p class='panimate'>Press the Continue button to continue to the next lesson.</p>",14000]
 			},
 			"progressTimer": {
 				"time":"16s"
@@ -580,6 +580,19 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>In order to enter this PLU, you need to skip the last digit.</p>",4000],
 				"stepThree": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7000],
 
+			},
+			"progressTimer": {
+				"time":"10s"
+			}
+		},
+		"lessonTwoStepTwo": {
+			"steps": {
+				"stepHeader": ["<h3>Great work!.</h3>", 0],
+				"stepOne": ["<p class='panimate'>Ground Beef for $3.73 was added to the order.</p>",0],
+				"image": ["<img height='300' width='90%' src='images/keyInScaleLabel.jpg'>",3000],
+				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
+				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
+				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label and that we need to skip the last digit.</p>",10000],
 			},
 			"progressTimer": {
 				"time":"10s"
@@ -633,16 +646,19 @@ function closeErrorBox(){
 
 function lessonOneEnterButton(value){
 			if(lessonOneStepOne){
+				document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 				if(value == 5002099902){
 					lessonOneStepTwo = true;	
 					lessonOneStepOne = false;
 					runLessons(lessons.lessonOne.lessonOneStepTwo);
+
 				}
 			}else if(lessonOneStepTwo){
 				if(value == 72277600232){
 					lessonOneStepTwo = false;
 					lessonOneStepThree = true;
 					runLessons(lessons.lessonOne.lessonOneStepThree);
+					document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
 					lessonOne = false;
 					lessonTwo = true;
 				}
@@ -651,6 +667,8 @@ function lessonOneEnterButton(value){
 				}
 			}	
 		}
+
+
 
 function lessonTwoEnterButton(value){
 	if(lessonTwoStepOne){
