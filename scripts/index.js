@@ -35,8 +35,12 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 //Lessons
 function selectLession(){
 	if(lessonTwo){
-
-		runLessons(lessons.lessonTwo.lessonTwoStepOne);
+		if(lessonOneStepTwo){
+			runLessons(lessons.lessonTwo.lessonTwoStepThree)
+		}else{
+		runLessons(lessons.lessonTwo.lessonTwoStepOne);	
+		}
+		
 	}else{
 		lessonOne = true;
 		lessonOneStepOne = true;
@@ -566,7 +570,7 @@ const lessons = {
 				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='50%'>",8000],
 				"stepFour": ["<p class='panimate'>There are times when both numbers will not work.</p>",8500],
 				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",11000],
-				"stepSix": ["<p class='panimate'>Press the Continue button to continue to the next lesson.</p>",14000]
+				"stepSix": ["<p class='panimate'>Press the Continue button to proceed to the next lesson.</p>",14000]
 			},
 			"progressTimer": {
 				"time":"16s"
@@ -594,10 +598,24 @@ const lessons = {
 				"image": ["<img height='300' width='90%' src='images/keyInScaleLabel.jpg'>",3000],
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
-				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label, and we need to skip the last digit.</p>",10000]
-			},
+				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
+			},	"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",10000],
 			"progressTimer": {
 				"time":"10s"
+			}
+		},
+		"lessonTwoStepThree":{
+			"steps": {
+				"stepHeader": ["<h3>What if...</h3>", 0],
+				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
+				"stepTwo": ["<p class='panimate'>Practice!</p>",4000],
+				"stepThree": ["<p class='panimate'>Sooner or later you will encounter items like this:</p>",7000],
+				"image": ["<img height='300' width='40%' src='brokenCheeseLabel.jpeg'>",9000],
+				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",10000],
+				"stepFive": ["<p class='panimate'>Try it now!</p>",13000]
+			},
+			"progressTimer":{
+				"time": "16s"
 			}
 		}
 		
@@ -678,12 +696,15 @@ function lessonOneEnterButton(value){
 
 
 function lessonTwoEnterButton(value){
+	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 	if(lessonTwoStepOne){
 		if(value == 21065630373){
 			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
 			lessonTwoStepOne = false;
 			lessonTwoStepTwo = true;
-			
+			setTimeout(() =>{ 
+				document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
+			}, 10000);
 		}
 	}
 }
