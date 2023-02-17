@@ -622,7 +622,9 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
 				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
-			},	"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",13000],
+				"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",13000]
+			},	
+
 			"progressTimer": {
 				"time":"16s"
 			},
@@ -635,14 +637,14 @@ const lessons = {
 			"steps": {
 				"stepHeader": ["<h3>What if...</h3>", 0],
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
-				"stepTwo": ["<p class='panimate'>Practice!</p>",4000],
-				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",7000],
-				"image": ["<img height='300' width='40%' src='brokenCheeseLabel.jpeg'>",9000],
-				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",10000],
-				"stepFive": ["<p class='panimate'>Try it now!</p>",13000]
+				"stepTwo": ["<p class='panimate'>Practice!</p>",3000],
+				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",4000],
+				"image": ["<img height='300' width='40%' src='brokenCheeseLabel.jpeg'>",5000],
+				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",8000],
+				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
 			},
 			"progressTimer":{
-				"time": "16s"
+				"time": "14s"
 			},
 			"button": {
 				"status": true,
