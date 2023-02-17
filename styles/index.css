@@ -7,7 +7,7 @@
 }
 #nextButtonAndProgressBarContainer > div{
     height: 100%;
-    /*animation:progressBar 14s linear;*/
+    /*animation:progressBar 0s linear;*/
     margin-top: 0%;
 }
 
@@ -37,12 +37,13 @@
     }
 }
 
-#p1 {
+.panimate {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;
 
 }
+/*
 #p2 {
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
@@ -58,7 +59,12 @@
     overflow: hidden;
     white-space: nowrap;
 }
-
+#p4 {
+    animation: displayFromLeftToRight 3s linear;
+    overflow: hidden;
+    white-space: nowrap;
+}
+*/
 .imageW50H350{
     width: 50%;
     height: 350px;

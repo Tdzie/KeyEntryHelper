@@ -4,8 +4,12 @@
 	
 //Lesson states
 var lessonOne = false;
+var lessonOneStepOne = false;
 var lessonOneStepTwo = false;
+var lessonOneStepThree = false;
 
+var lessonTwo = false;
+var lessonTwoStepOne = false;
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -14,6 +18,9 @@ let orderTotal = 0.00;
 
 // Bool to direct the location of the number pad
 let manualEntryBoxActive = false
+
+// Not on file screen active
+let notOnFileScreenActive = false;
 //Startup used to load the normal register setup
 	window.onload = () => {
 		normalRegister();
@@ -23,9 +30,16 @@ let manualEntryBoxActive = false
 //Button click event
 document.querySelector("#nextButtonAndProgressBarContainer > button").addEventListener("click",selectLession);
 
+
+//Lessons
 function selectLession(){
-	runLessons(lessons.lessonOne.lessonOneStepOne.steps);
-	lessonOne = true;
+	if(lessonTwo){
+		runLessons(lessons.lessonTwo.lessonTwoStepOne);
+	}else{
+		lessonOne = true;
+		lessonOneStepOne = true;
+		runLessons(lessons.lessonOne.lessonOneStepOne);
+	}
 }
 
 
@@ -202,7 +216,7 @@ function selectLession(){
 	function backspaceManualEntry(price){
 		price = price.replace(".", "");
 		price = price.slice(0, -1);
-		price = price.padStart(4, "0");
+		price = price.padStart(3, "0");
 		price = price.slice(0, 2) + "." + price.slice(2, 4);
 		return price;
 		
@@ -364,12 +378,13 @@ function selectLession(){
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
 		manualEntryBoxActive = false;
+		notOnFileScreenActive = false;
+		document.querySelector("#bottomEnterItemCode").innerHTML = "";
 	}
+
+	//Manual Entry Box popout
 	function keyEntryForDepartmentsPopOut(){
-
 		manualEntryBoxActive = true;
-
-		//document.querySelector("#insideRegisterGrid15").classList.remove("hideDisplay");
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 		let createTheOutsideSectionForPopOut = document.createElement("section");
@@ -385,15 +400,30 @@ function selectLession(){
 
 		grabRegisterMainScreenDiv.appendChild(createTheOutsideSectionForPopOut);
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "gray";
-		//document.querySelector("#insideRegisterGrid15").style.visibility = "hidden";
-
-
 	}
+		function notOnFileScreen(){
+			notOnFileScreenActive = true;
+			let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
+			grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
+			let createTheOutsideSectionForPopOut = document.createElement("section");
+			createTheOutsideSectionForPopOut.id = "departmentInputPopout";
 
+			createTheOutsideSectionForPopOut.innerHTML = `<div id="manualEntry">Not Found</div>
+													  <div id="departmentNumberDivInManualEntry">Enter price / department</div>
+													  <div id="departmentNameDivInManualEntry"></div>
+													  <div id="OuterDivForManualEntry">
+													  	<div id="enterAmountDivInManualEntry"></div>
+														<div id="priceInputInManualEntry"></div>
+													  </div>`;
+
+			grabRegisterMainScreenDiv.appendChild(createTheOutsideSectionForPopOut);
+			document.querySelector("#insideRegisterGrid1").style.backgroundColor = "gray";
+	}
 
 	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
 	function enterButtonPressPLULookup(){
 		let itemNumber;
+		let itemfound = false;
 		//Manual Entry box is currently being displayed
 		if(manualEntryBoxActive){
 			itemNumber = document.querySelector("#priceInputInManualEntry");
@@ -403,6 +433,11 @@ function selectLession(){
 			document.querySelector("#priceOfProduct").innerHTML += "$" + itemNumber.innerHTML + "<br>";
 			orderTotal += parseFloat(itemNumber.innerHTML);
 			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
+
+			manualEntryBoxActive = false;
+			let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
+			grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
+			document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
 
 		}else{
 			itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
@@ -415,6 +450,7 @@ function selectLession(){
 					orderTotal += item.price;
 					document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
 					document.querySelector("#bottomEnterItemCode").innerHTML = "";
+					itemfound = true;
 				}	
 			}
 
@@ -422,17 +458,17 @@ function selectLession(){
 		}
 		
 	
-		
-
-		manualEntryBoxActive = false;
-		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
-		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
-		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
+		if(itemfound == false){
+			notOnFileScreen();
+		}
 
 		if(lessonOne){
 			lessonOneEnterButton(itemNumber);
+		}else if(lessonTwo){
+			lessonTwoEnterButton(itemNumber);
 		}
 
+		
 	}
 
 
@@ -464,37 +500,19 @@ const listOfProducts = {
 			"price": 1.39
 		},
 		{
-			"PLU":722777600232,
+			"PLU":72277600232,
 			"description": "Applesauce",
 			"price": 2.99
+		},
+		{
+			"PLU":21065630373,
+			"description": "Ground Beef",
+			"price": 3.73
 		}
 	]
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-setTimeout(() => {
-
-	}, 2000);
-*/
 
 const lessons = {
 	"lessonOne": {
@@ -502,55 +520,80 @@ const lessons = {
 			"steps": {
 				"stepHeader": ["<h3>First we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
 				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",0],
-				"stepOne": ["<p id='p1'>1) Find the barcode on the product.</p>",1000],
-				"stepTwo": ["<p id='p2'>2) Use the number pad to enter the UPC found on the barcode.</p>",4000],
-				"stepThree": ["<p id='p3'>3) Press the enter button to complete the lookup.</p>",7000],
-				"stepFour": ["<p id='p4'>4) If the product is not found, press the C button to try again.</p>",10000],
+				"stepOne": ["<p class='panimate'>1) Find the barcode on the product.</p>",1000],
+				"stepTwo": ["<p class='panimate'>2) Use the number pad to enter the UPC found on the barcode.</p>",4000],
+				"stepThree": ["<p class='panimate'>3) Press the enter button to complete the lookup.</p>",7000],
+				"stepFour": ["<p class='panimate'>4) If the product is not found, press the C button to try again.</p>",10000]
 			},
-			"progressTimer": "14s"
+			"progressTimer": {
+				"time":"12s"
+			}
 		},
 		"lessonOneStepTwo": {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepOne": ["<p id='p1'>Wild Good Ice Cream is now rung into your order.</p>",1000],
-				"stepTwo": ["<p id='p2'>lets try another one!</p>",4000],
+				"stepOne": ["<p class='panimate'>Wild Good Ice Cream is now rung into your order.</p>",1000],
+				"stepTwo": ["<p class='panimate'>lets try another one!</p>",4000],
 				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",6000],
-				"stepThree": ["<p id='p3'>Same as last time, use the number pad to enter the UPC.</p>",6500]
+				"stepThree": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC.</p>",6500]
 			},
-			"progressTimer": "10s"
+			"progressTimer": {
+				"time":"9s"
+			}
+		},
+		"lessonOneStepTwoFail": {
+			"steps":{
+				"stepHeader": ["<h3>Oops!</h3>",0],
+				"stepOne": ["<p class='panimate'>The UPC you entered was not found.</p>",1000],
+				"stepTwo": ["<p class='panimate'>Lets try again!</p>",4000], 
+				"stepThree": ["<p class='panimate'>But remember, when the center digits do not work, include the leading number.",5000],
+				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",8000],
+				"stepFour": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC.</p>",9000],
+				"stepFive": ["<p class='panimate'>Click the C button to clear your screen and try again.</p>",12000]
+			},
+			"progressTimer": {
+				"time":"14s"
+			}
+		},
+		"lessonOneStepThree": {
+			"steps":{
+				"stepHeader": ["<h3>Great Work!</h3>",0],
+				"stepOne": ["<p class='panimate'>Applesauce is now rung into your order.</p>",1000],
+				"stepTwo": ["<p class='panimate'><strong>Remember</strong></p>",4000],
+				"stepThree": ["<p class='panimate'>If the center digits do not work, try it again with the leading number</p>",5000],
+				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='50%'>",8000],
+				"stepFour": ["<p class='panimate'>There are times when both numbers will not work.</p>",8500],
+				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",11000],
+				"stepSix": ["<p class='panimate'>Press the Next button to continue to the next lesson.</p>",14000]
+			},
+			"progressTimer": {
+				"time":"16s"
+			}
 		}
 	},
+	"lessonTwo": {
+		"lessonTwoStepOne": {
+			"steps": {
+				"stepHeader": ["<h3>Now we will learn how to enter a product with a scale label.</h3>", 0],
+				"image": ["<img height='400' width='90%' src='images/keyInScaleLabel.jpg'>",0],
+				"stepOne": ["<p class='panimate'>This is a Meat, Seafood, or Deli product that has a random weight.</p>",1000],
+				"stepTwo": ["<p class='panimate'>In order to enter this PLU, you need to skip the last digit.</p>",4000],
+				"stepThree": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7000],
+
+			},
+			"progressTimer": {
+				"time":"10s"
+			}
+		}
+		
+	}															
 }
-/* 
-function runLessons(lesson){
-	document.querySelector("#numpadDiv15").style = "pointer-events: none;";
-	let header = document.querySelector("#rightPanel > h3")
-	header.innerHTML = lesson.stepOne;
-	let helpfulSection = document.querySelector("#rightPanelMainContent");
-	helpfulSection.innerHTML = "";
-	const createAnImage = document.createElement("img");
-	createAnImage.src = lesson.image;
-	helpfulSection.appendChild(createAnImage);
-	setTimeout(() => {let createAParagraph = document.createElement("p");
-	createAParagraph.innerHTML = lesson.stepTwo;
-	helpfulSection.appendChild(createAParagraph);}, 1000);
-	setTimeout(() => {createAParagraph = document.createElement("p");
-	createAParagraph.innerHTML = lesson.stepThree;
-	helpfulSection.appendChild(createAParagraph);}, 4000);
-	setTimeout(() => {createAParagraph = document.createElement("p");
-	createAParagraph.innerHTML = lesson.stepFour;
-	helpfulSection.appendChild(createAParagraph);}, 7000);
-	setTimeout(() => {createAParagraph = document.createElement("p");
-	createAParagraph.innerHTML = lesson.stepFive;
-	helpfulSection.appendChild(createAParagraph);
-	document.querySelector("#numpadDiv15").style = "pointer-events: auto;";}, 10000);
-}
-*/	
+
 function runLessons(lesson){
 	let helpfulSection = document.querySelector("#rightPanelMainContent");
 	helpfulSection.innerHTML = "";
-	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div")
-	Object.entries(lesson).forEach(([key, value]) => {
+	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div");
+	Object.entries(lesson.steps).forEach(([key, value]) => {
 
 		setTimeout(() =>{ 
 			let createADiv = document.createElement('div');
@@ -559,8 +602,13 @@ function runLessons(lesson){
 		}, value[1]);
 	});
 
-	progressBar.style.animation = `progressBar ${lesson.progressTimer} linear`
+	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
+	progressBar.style.removeProperty("animation");
+	progressBar.offsetWidth;
+	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
 }
+
+
 
 
 function errorbox(title,content,image){
@@ -581,94 +629,37 @@ function closeErrorBox(){
 	grabmain.removeChild(grabErrorDiv);
 }
 
-function lessonOneEnterButton(value){
-			if(!lessonOneStepTwo){
-				if(value != 5002099902){
-					let title = "<h3>ERROR</h3>";
-					let image = "<img src='images/keyEnterNormalUPC.jpg' height='300' width='250'>";
-					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
-					errorbox(title, image, content);
-				}
-				else{
-					runLessons(lessons.lessonOne.lessonOneStepTwo.steps);
-					lessonOneStepTwo = true;
-				}		
-			}
-			else
-			{
-				if(value!= 72277600232){
-					let title = "<h3>ERROR</h3>";
-					let image = "<img src='images/keyEnterNormalUPC.jpg' height='300' width='250'>";
-					let content = "<p>Remember, if the center ten numbers do not work, try to include the first digit</p>.";
-					errorbox(title, image, content);
-				}
-				else{
 
+
+function lessonOneEnterButton(value){
+			if(lessonOneStepOne){
+				if(value == 5002099902){
+					lessonOneStepTwo = true;	
+					lessonOneStepOne = false;
+					runLessons(lessons.lessonOne.lessonOneStepTwo);
 				}
-			}
-			
+			}else if(lessonOneStepTwo){
+				if(value == 72277600232){
+					lessonOneStepTwo = false;
+					lessonOneStepThree = true;
+					runLessons(lessons.lessonOne.lessonOneStepThree);
+					lessonOne = false;
+					lessonTwo = true;
+				}
+				else{
+					runLessons(lessons.lessonOne.lessonOneStepTwoFail);
+				}
+			}	
 		}
 
-
-/*
-	function whatIsKeyEntry(){
-		let makeDiv = document.createElement("div");
-		// Messages
-		let firstMessage = "Key Entry is when the department keys are used to enter in a product.";
-		let secondMessage = "While the customer is charged for the item, there is no data on what product is sold.";
-		let thirdMessage = "Because we have no data, the margin cannot be created and the value of the entry is considered shrink, or a loss to the store.";
-		
-		let marginMessage = "<strong>What is sales margin?</strong> A sales margin calculation measures the amount of profit you make on the sale of a product or service after all costs related to the item are accounted for. The higher your sales margin, the higher your potential for profit on that product or service.";
-		let shrinkMessage = "<strong>Shrink</strong> is the loss of inventory that can be attributed to factors such as employee theft, shoplifting, administrative error, vendor fraud, damage, and cashier error. Shrinkage is the difference between recorded inventory on a company's balance sheet and its actual inventory. This concept is a key problem for retailers, as it results in the loss of inventory, which ultimately means loss of profits.";
-		
+function lessonTwoEnterButton(value){
+	if(lessonTwoStepOne){
+		if(value == 21065630373){
+			lessonTwoStepOne = false;
+			lessonTwoStepTwo = true;
+			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
+		}
+	}
+}
 
 
-		//Timeout functions to load the messages
-			setTimeout(() => {
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = firstMessage;
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-				makeDiv.style.height = "150px";
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = "<img src='Grocery-page-001.jpg' alt='buttons for various departments'>";
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-
-
-			}, 2000);
-			
-			setTimeout(() => {
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = secondMessage;
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-				makeDiv.style.height = "150px";
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = "TODO insert image file";
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-				makeDiv.style.height = "150px";
-				makeDiv = document.createElement("div");
-				makeDiv.innerHTML = marginMessage;
-				altWindow.appendChild(makeDiv);	
-			}, 5000);
-
-			setTimeout(() => {
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = thirdMessage;
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-				makeDiv.style.height = "150px";
-				makeDiv= document.createElement("div");
-				makeDiv.innerHTML = "TODO insert image file";
-				makeDiv.style.height = "150px";
-				mainWindow.appendChild(makeDiv);
-				makeDiv.style.height = "150px";
-				makeDiv = document.createElement("div");
-				makeDiv.innerHTML = shrinkMessage;
-				altWindow.appendChild(makeDiv);	
-			}, 9000);
-	};
-
-	*/
