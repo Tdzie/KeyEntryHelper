@@ -36,7 +36,7 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 //Lessons
 function selectLession(){
 	if(lessonTwo){
-		if(lessonOneStepTwo){
+		if(lessonTwoStepTwo){
 			runLessons(lessons.lessonTwo.lessonTwoStepThree)
 			lessonTwoStepThree = true;
 			lessonTwoStepTwo = false;
