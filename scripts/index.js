@@ -35,6 +35,7 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 //Lessons
 function selectLession(){
 	if(lessonTwo){
+
 		runLessons(lessons.lessonTwo.lessonTwoStepOne);
 	}else{
 		lessonOne = true;
@@ -593,7 +594,7 @@ const lessons = {
 				"image": ["<img height='300' width='90%' src='images/keyInScaleLabel.jpg'>",3000],
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
-				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label, and we need to skip the last digit.</p>",10000],
+				"stepFour": ["<p class='panimate'>Because of this, we know that it is a scale label, and we need to skip the last digit.</p>",10000]
 			},
 			"progressTimer": {
 				"time":"10s"
@@ -660,6 +661,7 @@ function lessonOneEnterButton(value){
 				if(value == 72277600232){
 					lessonOneStepTwo = false;
 					lessonOneStepThree = true;
+					lessonTwoStepOne = true;
 					runLessons(lessons.lessonOne.lessonOneStepThree);
 					setTimeout(() =>{ 
 						document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
