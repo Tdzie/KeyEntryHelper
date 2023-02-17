@@ -12,6 +12,7 @@ var lessonTwo = false;
 var lessonTwoStepOne = false;
 var lessonTwoStepTwo = false;
 var lessonTwoStepThree = false;
+var lessonTwoStepFour = false;
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -37,9 +38,10 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 function selectLession(){
 	if(lessonTwo){
 		if(lessonTwoStepTwo){
-			runLessons(lessons.lessonTwo.lessonTwoStepThree)
 			lessonTwoStepThree = true;
 			lessonTwoStepTwo = false;
+			runLessons(lessons.lessonTwo.lessonTwoStepThree)
+
 		}else{
 		runLessons(lessons.lessonTwo.lessonTwoStepOne);	
 		}
@@ -517,6 +519,11 @@ const listOfProducts = {
 			"PLU":21065630373,
 			"description": "Ground Beef",
 			"price": 3.73
+		},
+		{
+			"PLU": 21696900674,
+			"description": "GNG DW Cheese",
+			"price": 6.74
 		}
 	]
 }
@@ -626,7 +633,7 @@ const lessons = {
 			},	
 
 			"progressTimer": {
-				"time":"16s"
+				"time":"15s"
 			},
 			"button": {
 				"status": false,
@@ -639,7 +646,7 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
 				"stepTwo": ["<p class='panimate'>Practice!</p>",3000],
 				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",4000],
-				"image": ["<img height='300' width='40%' src='images/brokenCheeseLabel.jpeg'>",5000],
+				"image": ["<img height='370' width='60%' src='images/brokenCheeseLabel.jpeg'>",5000],
 				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",8000],
 				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
 			},
@@ -654,11 +661,19 @@ const lessons = {
 		"lessonTwoStepFour":{
 			"steps": {
 				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
-				"stepOne": ["<p class='panimate'></p>",0],
+				"stepOne": ["<p class='panimate'>GNG DW Cheese for $6.74 is now added to the order.</p>",0],
+				"stepTwo": ["<p class='panimate'>Remember, scale labels are used for random weight items</p>",3000],
+				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli./p>",5500],
+				"stepFour": ["<p class='panimate'>Don't forget to skip the last digit when entering the UPC.</p>",8000],
+				"image": ["<img height='280' width='80%' src='images/keyInScaleLabel.jpg'>",11000],
+				"stepFive": ["<p class='panimate'>Click the Continue button to proceed to the next lesson.</p>",12000]
+			},
+			"progressTimer":{
+				"time": "15s"
 			},
 			"button": {
-				"status": true,
-				"time": 0
+				"status": false,
+				"time": 15000
 			}
 		}
 		
@@ -744,11 +759,15 @@ function lessonTwoEnterButton(value){
 		if(value == 21065630373){
 		    lessonTwoStepOne = false;
 			lessonTwoStepTwo = true;
-			lessonOneStepThree = true;
+			lessonTwoStepThree = true;
 			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
 	} else if(lessonOneStepThree){
 		if(value == 21696900674){
-			
+			lessonTwoStepOne = false;
+			lessonTwoStepTwo = false;
+			lessonTwoStepThree = false;
+			lessonTwoStepFour = true;
+			runLessons(lessons.lessonTwo.lessonTwoStepFour)
 		}
 	}
 }
