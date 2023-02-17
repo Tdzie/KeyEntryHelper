@@ -623,7 +623,7 @@ const lessons = {
 		"lessonTwoStepOne": {
 			"steps": {
 				"stepHeader": ["<h3>Now we will learn how to enter a product with a scale label.</h3>", 0],
-				"image": ["<img height='400' width='90%' src='images/keyInScaleLabel.jpg'>",0],
+				"image": ["<img height='380' width='90%' src='images/keyInScaleLabel.jpg'>",0],
 				"stepOne": ["<p class='panimate'>This is a Meat, Seafood, or Deli product that has a random weight.</p>",1000],
 				"stepTwo": ["<p class='panimate'>In order to enter this PLU, you need to skip the last digit.</p>",4000],
 				"stepThree": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7000],
@@ -670,7 +670,7 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
 				"stepTwo": ["<p class='panimate'>Practice!</p>",3000],
 				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",4000],
-				"image": ["<img height='370' width='60%' src='images/brokenCheeseLabel.jpeg'>",5000],
+				"image": ["<img height='350' width='60%' src='images/brokenCheeseLabel.jpeg'>",5000],
 				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",8000],
 				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
 			},
@@ -691,7 +691,7 @@ const lessons = {
 				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
 				"stepOne": ["<p class='panimate'>GNG DW Cheese for $6.74 is now added to the order.</p>",0],
 				"stepTwo": ["<p class='panimate'>Remember, scale labels are used for random weight items</p>",3000],
-				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli./p>",5500],
+				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli.</p>",5500],
 				"stepFour": ["<p class='panimate'>Don't forget to skip the last digit when entering the UPC.</p>",8000],
 				"image": ["<img height='280' width='80%' src='images/keyInScaleLabel.jpg'>",11000],
 				"stepFive": ["<p class='panimate'>Click the Continue button to proceed to the next lesson.</p>",12000]
@@ -709,6 +709,29 @@ const lessons = {
 			}
 		}
 		
+	},
+	"lessonThree": {
+		"lessonThreeStepOne":{
+			"steps": {
+				"stepHeader": ["<h3>Meat products over $99.99.</h3>", 0],
+				"stepOne": ["<p class='panimate'>Now that you are familer with scale labels</p>",0],
+				"stepTwo": ["<p class='panimate'>we will look at very expense products from those departments.</p>",2500],
+				"stepThree": ["<p class='panimate'>In store department scales are unable to print a barcode if the</p>",5500],
+				"stepFour": ["<p class='panimate'>price of the item is $100.00 or more.</p>",8000],
+				"image": ["<img height='280' width='80%' src='images/keyInScaleLabel.jpg'>",11000]
+			},
+			"progressTimer":{
+				"time": "15s",
+			},
+			"button": {
+				"status": false,
+				"time": 15000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		}	
 	}															
 }
 
