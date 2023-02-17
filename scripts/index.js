@@ -547,6 +547,9 @@ const lessons = {
 			"button": {
 				"status": true,
 				"time": 0
+			},
+			"enterButton": {
+				"value": 1
 			}
 		},
 		"lessonOneStepTwo": {
@@ -684,6 +687,7 @@ function runLessons(lesson){
 	let helpfulSection = document.querySelector("#rightPanelMainContent");
 	helpfulSection.innerHTML = "";
 	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div");
+	
 	Object.entries(lesson.steps).forEach(([key, value]) => {
 
 		setTimeout(() =>{ 
@@ -701,6 +705,8 @@ function runLessons(lesson){
 	progressBar.style.removeProperty("animation");
 	progressBar.offsetWidth;
 	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
+
+	document.querySelector("#numpadDiv15").style.zIndex = lesson.enterButton.value;
 }
 
 
