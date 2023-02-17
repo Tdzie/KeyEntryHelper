@@ -748,5 +748,6 @@ function lessonTwoEnterButton(value){
 		}
 	}
 }
+}
 
 
