@@ -45,7 +45,6 @@ function selectLession(){
 		}
 		
 	}else{
-		document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 		lessonOne = true;
 		lessonOneStepOne = true;
 		runLessons(lessons.lessonOne.lessonOneStepOne);
@@ -537,6 +536,10 @@ const lessons = {
 			},
 			"progressTimer": {
 				"time":"12s"
+			},
+			"button": {
+				"status": false,
+				"time": 0
 			}
 		},
 		"lessonOneStepTwo": {
@@ -549,6 +552,10 @@ const lessons = {
 			},
 			"progressTimer": {
 				"time":"9s"
+			},
+			"button": {
+				"status": false,
+				"time": 0
 			}
 		},
 		"lessonOneStepTwoFail": {
@@ -563,6 +570,10 @@ const lessons = {
 			},
 			"progressTimer": {
 				"time":"14s"
+			},
+			"button": {
+				"status": false,
+				"time": 0
 			}
 		},
 		"lessonOneStepThree": {
@@ -578,6 +589,10 @@ const lessons = {
 			},
 			"progressTimer": {
 				"time":"16s"
+			},
+			"button": {
+				"status": true,
+				"time": 16000
 			}
 		}
 	},
@@ -593,6 +608,10 @@ const lessons = {
 			},
 			"progressTimer": {
 				"time":"9s"
+			},
+			"button": {
+				"status": false,
+				"time": 0
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -603,9 +622,13 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
 				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
-			},	"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",10000],
+			},	"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",13000],
 			"progressTimer": {
-				"time":"13s"
+				"time":"16s"
+			},
+			"button": {
+				"status": true,
+				"time": 13000
 			}
 		},
 		"lessonTwoStepThree":{
@@ -613,13 +636,27 @@ const lessons = {
 				"stepHeader": ["<h3>What if...</h3>", 0],
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
 				"stepTwo": ["<p class='panimate'>Practice!</p>",4000],
-				"stepThree": ["<p class='panimate'>Sooner or later you will encounter items like this:</p>",7000],
+				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",7000],
 				"image": ["<img height='300' width='40%' src='brokenCheeseLabel.jpeg'>",9000],
 				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",10000],
 				"stepFive": ["<p class='panimate'>Try it now!</p>",13000]
 			},
 			"progressTimer":{
 				"time": "16s"
+			},
+			"button": {
+				"status": false,
+				"time": 0
+			}
+		},
+		"lessonTwoStepFour":{
+			"steps": {
+				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
+				"stepOne": ["<p class='panimate'></p>",0],
+			},
+			"button": {
+				"status": true,
+				"time": 0
 			}
 		}
 		
@@ -638,7 +675,9 @@ function runLessons(lesson){
 			helpfulSection.appendChild(createADiv);
 		}, value[1]);
 	});
-
+	setTimeout(() =>{ 
+		document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = lesson.button.status;
+	}, lesson.button.time);
 	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
 	progressBar.style.removeProperty("animation");
 	progressBar.offsetWidth;
@@ -685,9 +724,6 @@ function lessonOneEnterButton(value){
 					lessonOneStepThree = true;
 					lessonTwoStepOne = true;
 					runLessons(lessons.lessonOne.lessonOneStepThree);
-					setTimeout(() =>{ 
-						document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
-					}, 16000);
 					lessonOne = false;
 					lessonTwo = true;
 				}
@@ -700,17 +736,15 @@ function lessonOneEnterButton(value){
 
 
 function lessonTwoEnterButton(value){
-	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 	if(lessonTwoStepOne){
 		if(value == 21065630373){
 		    lessonTwoStepOne = false;
 			lessonTwoStepTwo = true;
-
+			lessonOneStepThree = true;
 			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
-	
-			setTimeout(() =>{ 
-				document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
-			}, 10000);
+	} else if(lessonOneStepThree){
+		if(value == 21696900674){
+			
 		}
 	}
 }
