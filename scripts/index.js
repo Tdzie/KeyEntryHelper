@@ -10,6 +10,7 @@ var lessonOneStepThree = false;
 
 var lessonTwo = false;
 var lessonTwoStepOne = false;
+var lessonTwoStepTwo = false;
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -559,7 +560,7 @@ const lessons = {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
 				"stepOne": ["<p class='panimate'>Applesauce is now rung into your order.</p>",1000],
-				"stepTwo": ["<p class='panimate'><strong>Remember</strong></p>",4000],
+				"stepTwo": ["<p class='panimate'><strong>Remember...</strong></p>",4000],
 				"stepThree": ["<p class='panimate'>If the center digits do not work, try it again with the leading number</p>",5000],
 				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='50%'>",8000],
 				"stepFour": ["<p class='panimate'>There are times when both numbers will not work.</p>",8500],
@@ -645,12 +646,14 @@ function closeErrorBox(){
 
 
 function lessonOneEnterButton(value){
+			document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 			if(lessonOneStepOne){
-				document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
+
 				if(value == 5002099902){
+					runLessons(lessons.lessonOne.lessonOneStepTwo);
 					lessonOneStepTwo = true;	
 					lessonOneStepOne = false;
-					runLessons(lessons.lessonOne.lessonOneStepTwo);
+					
 
 				}
 			}else if(lessonOneStepTwo){
@@ -660,7 +663,6 @@ function lessonOneEnterButton(value){
 					runLessons(lessons.lessonOne.lessonOneStepThree);
 					setTimeout(() =>{ 
 						document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
-
 					}, 16000);
 					lessonOne = false;
 					lessonTwo = true;
@@ -676,9 +678,10 @@ function lessonOneEnterButton(value){
 function lessonTwoEnterButton(value){
 	if(lessonTwoStepOne){
 		if(value == 21065630373){
+			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
 			lessonTwoStepOne = false;
 			lessonTwoStepTwo = true;
-			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
+			
 		}
 	}
 }
