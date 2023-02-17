@@ -591,7 +591,7 @@ const lessons = {
 				"time":"16s"
 			},
 			"button": {
-				"status": flase,
+				"status": false,
 				"time": 16000
 			}
 		}
