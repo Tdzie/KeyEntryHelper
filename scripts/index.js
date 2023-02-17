@@ -11,6 +11,7 @@ var lessonOneStepThree = false;
 var lessonTwo = false;
 var lessonTwoStepOne = false;
 var lessonTwoStepTwo = false;
+var lessonTwoStepThree = false;
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -37,11 +38,14 @@ function selectLession(){
 	if(lessonTwo){
 		if(lessonOneStepTwo){
 			runLessons(lessons.lessonTwo.lessonTwoStepThree)
+			lessonTwoStepThree = true;
+			lessonTwoStepTwo = false;
 		}else{
 		runLessons(lessons.lessonTwo.lessonTwoStepOne);	
 		}
 		
 	}else{
+		document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 		lessonOne = true;
 		lessonOneStepOne = true;
 		runLessons(lessons.lessonOne.lessonOneStepOne);
@@ -601,7 +605,7 @@ const lessons = {
 				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
 			},	"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",10000],
 			"progressTimer": {
-				"time":"10s"
+				"time":"13s"
 			}
 		},
 		"lessonTwoStepThree":{
@@ -665,7 +669,7 @@ function closeErrorBox(){
 
 
 function lessonOneEnterButton(value){
-			document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
+			
 			if(lessonOneStepOne){
 
 				if(value == 5002099902){
@@ -699,9 +703,11 @@ function lessonTwoEnterButton(value){
 	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 	if(lessonTwoStepOne){
 		if(value == 21065630373){
-			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
-			lessonTwoStepOne = false;
+		    lessonTwoStepOne = false;
 			lessonTwoStepTwo = true;
+
+			runLessons(lessons.lessonTwo.lessonTwoStepTwo);
+	
 			setTimeout(() =>{ 
 				document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = false;
 			}, 10000);
