@@ -538,7 +538,7 @@ const lessons = {
 				"time":"12s"
 			},
 			"button": {
-				"status": false,
+				"status": true,
 				"time": 0
 			}
 		},
@@ -554,7 +554,7 @@ const lessons = {
 				"time":"9s"
 			},
 			"button": {
-				"status": false,
+				"status": true,
 				"time": 0
 			}
 		},
@@ -572,7 +572,7 @@ const lessons = {
 				"time":"14s"
 			},
 			"button": {
-				"status": false,
+				"status": true,
 				"time": 0
 			}
 		},
@@ -591,7 +591,7 @@ const lessons = {
 				"time":"16s"
 			},
 			"button": {
-				"status": true,
+				"status": flase,
 				"time": 16000
 			}
 		}
@@ -610,7 +610,7 @@ const lessons = {
 				"time":"9s"
 			},
 			"button": {
-				"status": false,
+				"status": true,
 				"time": 0
 			}
 		},
@@ -627,7 +627,7 @@ const lessons = {
 				"time":"16s"
 			},
 			"button": {
-				"status": true,
+				"status": false,
 				"time": 13000
 			}
 		},
@@ -645,7 +645,7 @@ const lessons = {
 				"time": "16s"
 			},
 			"button": {
-				"status": false,
+				"status": true,
 				"time": 0
 			}
 		},
@@ -675,9 +675,11 @@ function runLessons(lesson){
 			helpfulSection.appendChild(createADiv);
 		}, value[1]);
 	});
+
 	setTimeout(() =>{ 
 		document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = lesson.button.status;
 	}, lesson.button.time);
+
 	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
 	progressBar.style.removeProperty("animation");
 	progressBar.offsetWidth;
