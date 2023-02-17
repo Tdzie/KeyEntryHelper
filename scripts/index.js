@@ -549,7 +549,8 @@ const lessons = {
 				"time": 0
 			},
 			"enterButton": {
-				"value": 1
+				"value": "all",
+				"time": 12000
 			}
 		},
 		"lessonOneStepTwo": {
@@ -566,6 +567,10 @@ const lessons = {
 			"button": {
 				"status": true,
 				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 9000
 			}
 		},
 		"lessonOneStepTwoFail": {
@@ -579,11 +584,15 @@ const lessons = {
 				"stepFive": ["<p class='panimate'>Click the C button to clear your screen and try again.</p>",12000]
 			},
 			"progressTimer": {
-				"time":"14s"
+				"time":"14s",
 			},
 			"button": {
 				"status": true,
 				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 14000
 			}
 		},
 		"lessonOneStepThree": {
@@ -603,6 +612,10 @@ const lessons = {
 			"button": {
 				"status": false,
 				"time": 16000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
 			}
 		}
 	},
@@ -622,6 +635,10 @@ const lessons = {
 			"button": {
 				"status": true,
 				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 9000
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -636,11 +653,15 @@ const lessons = {
 			},	
 
 			"progressTimer": {
-				"time":"15s"
+				"time":"15s",
 			},
 			"button": {
 				"status": false,
 				"time": 13000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
 			}
 		},
 		"lessonTwoStepThree":{
@@ -659,6 +680,10 @@ const lessons = {
 			"button": {
 				"status": true,
 				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 14000
 			}
 		},
 		"lessonTwoStepFour":{
@@ -672,11 +697,15 @@ const lessons = {
 				"stepFive": ["<p class='panimate'>Click the Continue button to proceed to the next lesson.</p>",12000]
 			},
 			"progressTimer":{
-				"time": "15s"
+				"time": "15s",
 			},
 			"button": {
 				"status": false,
 				"time": 15000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
 			}
 		}
 		
@@ -706,7 +735,11 @@ function runLessons(lesson){
 	progressBar.offsetWidth;
 	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
 
-	document.querySelector("#numpadDiv15").style.zIndex = lesson.enterButton.value;
+	document.querySelector("#numpadDiv15").style.pointerEvents = "none";
+	setTimeout(() =>{
+		document.querySelector("#numpadDiv15").style.pointerEvents = lesson.enterButton.value;
+	}, lesson.enterButton.time);
+	
 }
 
 

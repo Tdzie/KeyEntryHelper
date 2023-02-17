@@ -21,6 +21,9 @@
     padding: 10px;
    
 }
+.disable{
+    pointer-events: none;
+}
 #rightPanelMainContent{
     padding-top: 1%;
 }
