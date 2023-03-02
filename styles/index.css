@@ -9,8 +9,40 @@
     height: 100%;
     /*animation:progressBar 0s linear;*/
     margin-top: 0%;
+    background-color: rgb(51, 162, 26);
 }
 
+.cButtonStyle{
+    color: red;
+    border: 1px solid gray;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: small;
+    background-color: black;
+}
+
+.enterButtonStyle{
+    color:  rgb(51, 162, 26);
+    border: 1px solid gray;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: small;
+    background-color: black;
+}
+
+.continueButtonStyle{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: small;
+    background-color: #0d6efd;
+    border-radius: 10%;
+}
 /*Right panel styles - used to hold content for lessons*/
 #rightPanel{
     display: grid;
@@ -20,6 +52,10 @@
     border: 5px outset gray;
     padding: 10px;
    
+}
+.w350h90{
+    width: 350px;
+    height: 90%;
 }
 .disable{
     pointer-events: none;
@@ -503,6 +539,8 @@ align-items: end;
      border: 1px gray solid;
      justify-content: center;
      z-index: 1;
+     color: rgb(9, 182, 9);
+     letter-spacing: .1rem;
 }
 #numpadDiv1{
  border: 1px gray solid;
@@ -599,6 +637,7 @@ align-items: end;
     padding-left: 3%;
     grid-area: 3/4/4/5;
     justify-content: center;
+    color: red;
 }
 #numpadDiv13{
  border: 1px gray solid;

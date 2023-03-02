@@ -2,6 +2,7 @@
 	const mainWindow = document.getElementById("mainWindow");
 	const altWindow = document.getElementById("rightPanel");
 	
+let registerBeep = new Audio('sounds/registerBeep.mp3');
 //Lesson states
 var lessonOne = false;
 var lessonOneStepOne = false;
@@ -13,6 +14,9 @@ var lessonTwoStepOne = false;
 var lessonTwoStepTwo = false;
 var lessonTwoStepThree = false;
 var lessonTwoStepFour = false;
+
+var lessonThree = false;
+var lessonThreeStepOne = false;
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -36,7 +40,12 @@ document.querySelector("#nextButtonAndProgressBarContainer > button").addEventLi
 
 //Lessons
 function selectLession(){
-	if(lessonTwo){
+	if(lessonThree){
+		if(lessonThreeStepOne){
+			lessonTwo = false;
+			runLessons(lessons.lessonThree.lessonThreeStepOne);
+		}
+	}else if(lessonTwo){
 		if(lessonTwoStepTwo){
 			lessonTwoStepThree = true;
 			lessonTwoStepTwo = false;
@@ -188,12 +197,14 @@ function selectLession(){
 
 	//Number Pad Functions
 	function numberPadButtonPress(){
-		if(manualEntryBoxActive){
-		document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML,this.innerHTML);
-		}else(
-		document.getElementById("bottomEnterItemCode").innerHTML += this.innerHTML
-		)
-
+		//registerBeep.load();
+		//registerBeep.play();
+		if(!notOnFileScreenActive){
+			if(manualEntryBoxActive)
+				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML,this.innerHTML);
+			else
+				document.getElementById("bottomEnterItemCode").innerHTML += this.innerHTML;
+		}
 	}
 
 	//Handle the manual entry input
@@ -385,6 +396,8 @@ function selectLession(){
 	}
 	// function to clear the main div for menus. Does not reset the register price list.
 	function clear(){
+		//registerBeep.load();
+		//registerBeep.play();
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
@@ -431,8 +444,29 @@ function selectLession(){
 			document.querySelector("#insideRegisterGrid1").style.backgroundColor = "gray";
 	}
 
+
+
+
+
+
+
+
+
+
 	// item lookup from enter button -----------------NEED TO FIX HOW THE LOOKUP OCCURS--------------
+
+
+
+
+
+
+
+
+
+
 	function enterButtonPressPLULookup(){
+		//registerBeep.load();
+		//registerBeep.play();
 		let itemNumber;
 		let itemfound = false;
 		//Manual Entry box is currently being displayed
@@ -444,7 +478,7 @@ function selectLession(){
 			document.querySelector("#priceOfProduct").innerHTML += "$" + itemNumber.innerHTML + "<br>";
 			orderTotal += parseFloat(itemNumber.innerHTML);
 			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
-
+			itemfound = true;
 			manualEntryBoxActive = false;
 			let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 			grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
@@ -481,6 +515,15 @@ function selectLession(){
 
 		
 	}
+
+
+
+
+
+
+
+
+
 
 
 const listOfProducts = {
@@ -536,13 +579,13 @@ const lessons = {
 			"steps": {
 				"stepHeader": ["<h3>First we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
 				"image": ["<img class='imageW50H350' src='images/wildgoodUPC.jpeg'>",0],
-				"stepOne": ["<p class='panimate'>1) Find the barcode on the product.</p>",1000],
-				"stepTwo": ["<p class='panimate'>2) Use the number pad to enter the UPC found on the barcode.</p>",4000],
-				"stepThree": ["<p class='panimate'>3) Press the enter button to complete the lookup.</p>",7000],
-				"stepFour": ["<p class='panimate'>4) If the product is not found, press the C button to try again.</p>",10000]
+				"stepOne": ["<p class='panimate'>1) Find the barcode on the product.</p>",500],
+				"stepTwo": ["<p class='panimate'>2) Use the number pad to enter the UPC found on the barcode.</p>",2500],
+				"stepThree": ["<p class='panimate'>3) Press the <span class='enterButtonStyle'>ENTER</span> button to complete the lookup.</p>",5500],
+				"stepFour": ["<p class='panimate'>4) If the product is not found, press the <span class='cButtonStyle'>C</span> button to try again.</p>",8500]
 			},
 			"progressTimer": {
-				"time":"12s"
+				"time":"11s"
 			},
 			"button": {
 				"status": true,
@@ -550,19 +593,20 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 12000
+				"time": 11000
 			}
 		},
 		"lessonOneStepTwo": {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepOne": ["<p class='panimate'>Wild Good Ice Cream is now rung into your order.</p>",1000],
+				"stepOne": ["<p class='panimate'>Wild Good Ice Cream was added to your order.</p>",1000],
 				"stepTwo": ["<p class='panimate'>lets try another one!</p>",4000],
-				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",6000],
-				"stepThree": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC.</p>",6500]
+				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",5012],
+				"stepThree": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC and press <span class='enterButtonStyle'>ENTER</span>.</p>",6500],
+				"stepFour": ["<p class='panimate'>If the product is not found, click the <span class='cButtonStyle'>C</span> button to clear your screen and try again.</p>",9500]
 			},
 			"progressTimer": {
-				"time":"9s"
+				"time":"12.5s"
 			},
 			"button": {
 				"status": true,
@@ -570,7 +614,7 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 9000
+				"time": 12500
 			}
 		},
 		"lessonOneStepTwoFail": {
@@ -578,10 +622,10 @@ const lessons = {
 				"stepHeader": ["<h3>Oops!</h3>",0],
 				"stepOne": ["<p class='panimate'>The UPC you entered was not found.</p>",1000],
 				"stepTwo": ["<p class='panimate'>Lets try again!</p>",4000], 
-				"stepThree": ["<p class='panimate'>But remember, when the center digits do not work, include the leading number.",5000],
+				"stepThree": ["<p class='panimate'>But remember, when the center digits do not work, include the leading digit.",5000],
 				"image": ["<img class='imageW50H350' src='images/applesaucePLU.jpeg'>",8000],
-				"stepFour": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC.</p>",9000],
-				"stepFive": ["<p class='panimate'>Click the C button to clear your screen and try again.</p>",12000]
+				"stepFour": ["<p class='panimate'>First, click the <span class='cButtonStyle'>C</span> button to clear that Not Found box.</p>",9000],
+				"stepFive": ["<p class='panimate'>After it's gone, use the number pad to enter the UPC and click <span class='enterButtonStyle'>ENTER</span>.</p>",12000]
 			},
 			"progressTimer": {
 				"time":"14s",
@@ -598,20 +642,20 @@ const lessons = {
 		"lessonOneStepThree": {
 			"steps":{
 				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepOne": ["<p class='panimate'>Applesauce is now rung into your order.</p>",1000],
-				"stepTwo": ["<p class='panimate'><strong>Remember...</strong></p>",4000],
-				"stepThree": ["<p class='panimate'>If the center digits do not work, try it again with the leading number</p>",5000],
-				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='50%'>",8000],
-				"stepFour": ["<p class='panimate'>There are times when both numbers will not work.</p>",8500],
+				"stepOne": ["<p class='panimate'>Applesauce was added to your order.</p>",1000],
+				"stepTwo": ["<p class='panimate'><strong>Remember...</strong></p>",3000],
+				"stepThree": ["<p class='panimate'>If the center digits do not work, try it again with the leading number.</p>",4500],
+				"image": ["<img  src='images/keyEnterNormalUPC.jpg' height='300' width='90%'>",7500],
+				"stepFour": ["<p class='panimate'>There are times when both methods will result in a Not Found error box.</p>",8000],
 				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",11000],
-				"stepSix": ["<p class='panimate'>Press the Continue button to proceed to the next lesson.</p>",14000]
+				"stepSix": ["<p class='panimate'>Press the <span class='continueButtonStyle'>Continue</span> button to proceed to the next lesson.</p>",13500]
 			},
 			"progressTimer": {
-				"time":"16s"
+				"time":"15.5s"
 			},
 			"button": {
 				"status": false,
-				"time": 16000
+				"time": 15500
 			},
 			"enterButton": {
 				"value": "all",
@@ -623,14 +667,15 @@ const lessons = {
 		"lessonTwoStepOne": {
 			"steps": {
 				"stepHeader": ["<h3>Now we will learn how to enter a product with a scale label.</h3>", 0],
-				"image": ["<img height='380' width='90%' src='images/keyInScaleLabel.jpg'>",0],
+				"image": ["<img height='360' width='90%' src='images/keyInScaleLabel.jpg'>",0],
 				"stepOne": ["<p class='panimate'>This is a Meat, Seafood, or Deli product that has a random weight.</p>",1000],
-				"stepTwo": ["<p class='panimate'>In order to enter this PLU, you need to skip the last digit.</p>",4000],
-				"stepThree": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7000],
+				"stepTwo": ["<p class='panimate'>In order to enter this UPC </p>",3500],
+				"stepThree": ["<p class='panimate'>You need to enter in all but the last digit and click <span class='enterButtonStyle'>ENTER</span>.</p>",5000],
+				"stepFour": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7200]
 
 			},
 			"progressTimer": {
-				"time":"9s"
+				"time":"9.2s"
 			},
 			"button": {
 				"status": true,
@@ -638,7 +683,7 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 9000
+				"time": 9200
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -649,7 +694,7 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
 				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
-				"stepFive": ["<p class='panimate'>Click the Continue button to proceed.</p>",13000]
+				"stepFive": ["<p class='panimate'>Click the <span class='continueButtonStyle'>Continue</span> button to proceed.</p>",13000]
 			},	
 
 			"progressTimer": {
@@ -694,7 +739,7 @@ const lessons = {
 				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli.</p>",5500],
 				"stepFour": ["<p class='panimate'>Don't forget to skip the last digit when entering the UPC.</p>",8000],
 				"image": ["<img height='280' width='80%' src='images/keyInScaleLabel.jpg'>",11000],
-				"stepFive": ["<p class='panimate'>Click the Continue button to proceed to the next lesson.</p>",12000]
+				"stepFive": ["<p class='panimate'>Click the <span class='continueButtonStyle'>Continue</span> button to proceed to the next lesson.</p>",12000]
 			},
 			"progressTimer":{
 				"time": "15s",
@@ -718,20 +763,21 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>we will look at very expense products from those departments.</p>",2500],
 				"stepThree": ["<p class='panimate'>In store department scales are unable to print a barcode if the</p>",5500],
 				"stepFour": ["<p class='panimate'>price of the item is $100.00 or more.</p>",8000],
-				"image": ["<img height='280' width='80%' src='images/keyInScaleLabel.jpg'>",11000]
+				"image": ["<img height='280' width='80%' src='images/keyInMeatOver100.jpg'>",11000],
+				"stepFive": ["<p class='panimate'></p>",12000]
 			},
 			"progressTimer":{
-				"time": "15s",
+				"time": "14s",
 			},
 			"button": {
 				"status": false,
-				"time": 15000
+				"time": 14000
 			},
 			"enterButton": {
 				"value": "all",
 				"time": 0
 			}
-		}	
+		}
 	}															
 }
 
@@ -759,8 +805,10 @@ function runLessons(lesson){
 	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
 
 	document.querySelector("#numpadDiv15").style.pointerEvents = "none";
+	document.querySelector("#numpadDiv15").style.opacity = "0.2";
 	setTimeout(() =>{
 		document.querySelector("#numpadDiv15").style.pointerEvents = lesson.enterButton.value;
+		document.querySelector("#numpadDiv15").style.opacity = "1";
 	}, lesson.enterButton.time);
 	
 }
@@ -830,6 +878,8 @@ function lessonTwoEnterButton(value){
 			lessonTwoStepTwo = false;
 			lessonTwoStepThree = false;
 			lessonTwoStepFour = true;
+			lessonThree = true;
+			lessonThreeStepOne = true;
 			runLessons(lessons.lessonTwo.lessonTwoStepFour)
 		}
 	}
