@@ -1,6 +1,29 @@
 # Report-card-generator
 Designed to read and extract information from an Excel file to generate report cards for each person on the list. This can be used by managers to coach and counsel teammates with individualized information.
 
+*Update* 3/2/2023
+
+The quick links sidebar now can be used as a navigation tool for the lessons. (This is a work in progress. Only the first 3 lessons are currently linked.)
+
+Added a new PLU box for the manual price entry of a special products.
+
+Codes for new products:
+688 - CAB TENDERLOIN
+201 - GROCERY MARKDOWN
+204 - GROCERY MARKDOWN TAXABLE
+150 - GROCERY DISCONTINED
+
+Accesibility improvements:
+
+The lesson font now has a larger font size.
+
+The register and lesson is slightly larger.
+
+Images in the lesson can be clicked to enlarge them.
+
+
+
+
 *Update* 3/1/2023
 
 Register button C now has a font color of red.

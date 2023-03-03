@@ -13,8 +13,8 @@
       <nav class="nav nav-pills flex-column flex-sm-row">
         <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Home</a>
         <a class="flex-sm-fill text-sm-center nav-link" href="reportCard.html">Report Card</a>
-        <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
-        <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="#"></a>
+        <a class="flex-sm-fill text-sm-center nav-link disabled"></a>
       </nav>
     </header>
 
@@ -24,13 +24,13 @@
 			<h3>Quick Links</h3>
 			<ul>
 				<li>Introduction</li>
-				<li>Normal UPC overview</li>
-				<li>Scale label overview</li>
-				<li>Meat Dept. product over $99.99</li>
-				<li>Grocery Markdown</li>
-        <li>Floral upgrade codes</li>
-        <li>Produce berries</li>
-        <li>PLU's for Dept</li>
+				<li id="lessonOneLink" value="1">Normal UPC overview</li>
+				<li id="lessonTwoLink" value="2">Scale label overview</li>
+				<li id="lessonThreeLink" value="3">Meat Dept. product over $99.99</li>
+				<li id="lessonFourLink" value="4">Grocery Markdown</li>
+        <li id="lessonFiveLink" value="5">Floral upgrade codes</li>
+        <li id="lessonSixLink" value="6">Produce berries</li>
+        <li id="lessonSevenLink" value="7">PLU's for Dept</li>
 			</ul>
 		</aside>
 		<main id="mainWindow">
@@ -41,7 +41,7 @@
         <h3>Welcome to KeyInHelper</h3>
         <p>This interactive lesson will guide you through the steps of entering in various types of products.</p>
         <p>First, study this example of how to enter in a normal UPC.</p>
-        <img src="images/keyEnterNormalUPC.jpg" width="370" height="185">
+        <img src="images/keyEnterNormalUPC.jpg" onclick='Helpbox("images/keyEnterNormalUPC.jpg")' width="50%" height="220"> Click image to enlarge!
         <p style="padding-top: 10px;">Throughout the lessons, you will be asked to interact with the register on the left to complete the steps.</p>
         <p><strong>Try it out!</strong> Using your mouse, use the number pad on the right side of the register to add digits to the display, then click <span class='enterButtonStyle'>ENTER</span> to run the lookup.</p>
         <p><strong>Try entering the UPC from the barcode in the above picture.</strong></p>
