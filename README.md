@@ -1,6 +1,30 @@
 # Report-card-generator
 Designed to read and extract information from an Excel file to generate report cards for each person on the list. This can be used by managers to coach and counsel teammates with individualized information.
 
+*Update* 3/3/2023
+
+Bug fix: Entering a price in the manual entry screen with a 0 in the middle will not reset the current number.
+
+Bug fix: The backspace button will now work display the correct number of placeholder zeros when the length is less than 3.
+
+Bug fix: The Continue button will now properly turn on and off when needed.
+
+Lesson 3 is now complete.
+
+Lesson 4 is now complete.
+
+lesson 5 is now complete.
+
+lesson 6 is almost complete.
+
+lesson 7 is in progress.
+
+Minor update to the way lessons are being created. This will allow for more flexibility in the future.
+
+
+
+
+
 *Update* 3/2/2023
 
 The quick links sidebar now can be used as a navigation tool for the lessons. (This is a work in progress. Only the first 3 lessons are currently linked.)

@@ -28,6 +28,7 @@ li{
     padding-right: 5px;
     font-size: small;
     background-color: black;
+    font-weight: bold;
 }
 
 .enterButtonStyle{
@@ -39,6 +40,7 @@ li{
     padding-right: 8px;
     font-size: small;
     background-color: black;
+    font-weight: bold;
 }
 
 .continueButtonStyle{
@@ -49,6 +51,7 @@ li{
     font-size: small;
     background-color: #0d6efd;
     border-radius: 10%;
+    font-weight: bold;
 }
 /*Right panel styles - used to hold content for lessons*/
 #rightPanel{

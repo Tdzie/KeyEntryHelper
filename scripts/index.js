@@ -17,6 +17,25 @@ var lessonTwoStepFour = false;
 
 var lessonThree = false;
 var lessonThreeStepOne = false;
+var lessonThreeStepTwo = false;
+var lessonThreeStepThree = false;
+var lessonThreeStepFour = false;
+
+
+var lessonFour = false;
+var lessonFourStepOne = false;
+var lessonFourStepTwo = false;
+var lessonFourStepThree = false;
+var lessonFourStepFour = false;
+
+var lessonFive = false;
+var lessonFiveStepOne = false;
+var lessonFiveStepTwo = false;
+
+var lessonSix = false;
+var lessonSixStepOne = false;
+var lessonSixStepTwo = false;
+
 // Variables to check what screen is active
 let normalRegisterActive = false;
 
@@ -48,13 +67,54 @@ function selectLession(){
 	if(zoomedImageActive){
 		closeHelpBox();
 	}
-
-
-
-	if(lessonThree){
-		if(lessonThreeStepOne){
+	if(lessonSix){
+		if(lessonSixStepOne){
+			lessonSixStepOne = false;
+			lessonSix = false;
+			lessonSeven = true;
+			lessonSevenStepOne = true;
+			runLessons(lessons.lessonSeven.lessonSevenStepOne);
+		}	
+	}else if(lessonFive){
+	
+		if(lessonFiveStepTwo){
+			lessonFiveStepOne = false;
+			lessonFiveStepTwo = false;
+			lessonFive = false;
+			lessonSix = true;
+			lessonSixStepOne = true;
+			runLessons(lessons.lessonSix.lessonSixStepOne);
+		}
+	}else if(lessonFour){
+	
+		if(lessonFourStepOne){
+			lessonFourStepOne = false;
+			lessonFourStepTwo = true;
+			runLessons(lessons.lessonFour.lessonFourStepOne);
+		}else if(lessonFourStepTwo){
+			runLessons(lessons.lessonFour.lessonFourStepTwo);
+		}else if(lessonFourStepFour){
+			lessonFourStepFour = false;
+			lessonFour = false;
+			lessonFive = true;
+			lessonFiveStepOne = true;
+			runLessons(lessons.lessonFive.lessonFiveStepOne);
+		}
+    }else if(lessonThree){
+		if(lessonThreeStepTwo){
+			lessonThreeStepOne = false;
+			runLessons(lessons.lessonThree.lessonThreeStepTwo)
+		}else if(lessonThreeStepOne){
 			lessonTwo = false;
+			
+			lessonThreeStepTwo = true;
 			runLessons(lessons.lessonThree.lessonThreeStepOne);
+
+		}else if(lessonThreeStepFour){
+			lessonThreeStepFour = false;
+			lessonFourStepOne = true;
+			lessonFour = true;
+			runLessons(lessons.lessonFour.lessonFourStepOne);
 		}
 	}else if(lessonTwo){
 		if(lessonTwoStepTwo){
@@ -220,19 +280,26 @@ function selectLession(){
 
 	//Handle the manual entry input
 	function addToManualEntryPrice(currentPrice,NewDigit){
-		if(currentPrice.lastIndexOf("0") == 3){
-			return `0.0${NewDigit}`;
-		}else if(currentPrice.lastIndexOf("0") == 2){
-			return `0.${currentPrice[3]}${NewDigit}`;
-		}else if(currentPrice.lastIndexOf("0") == 0){
-			return `${currentPrice[2]}.${currentPrice[3]}${NewDigit}`;
+		currentPrice = currentPrice.replace(".", "");
+		currentPrice = currentPrice += NewDigit;
+		if(currentPrice[0] == "0"){
+			currentPrice = currentPrice.slice(1);
+		}
+		currentPrice = currentPrice.padStart(3, "0");
+		if(currentPrice.length > 4){
+			currentPrice = currentPrice.slice(0, 3) + "." + currentPrice.slice(3, 5);
 		}else if(currentPrice.length == 4){
-			return `${currentPrice[0]}${currentPrice[2]}.${currentPrice[3]}${NewDigit}`;
-		}else if(currentPrice.length == 5){
-			return `${currentPrice[0]}${currentPrice[1]}${currentPrice[3]}.${currentPrice[4]}${NewDigit}`;
+			currentPrice = currentPrice.slice(0, 2) + "." + currentPrice.slice(2, 4);
+		}else if(currentPrice.length == 3){
+			currentPrice = currentPrice.slice(0, 1) + "." + currentPrice.slice(1, 3);
+		}else{
+			currentPrice = currentPrice.slice(0, 0) + "." + currentPrice.slice(0, 2);
+		}
+
+		if(currentPrice <= 999.99){
+			return currentPrice;
 		}else{
 			alert("TODO - Value is greater than the allowed amount of 999.99");
-			return currentPrice;
 		}
 
 	
@@ -250,7 +317,15 @@ function selectLession(){
 		price = price.replace(".", "");
 		price = price.slice(0, -1);
 		price = price.padStart(3, "0");
-		price = price.slice(0, 2) + "." + price.slice(2, 4);
+		if(price.length > 4){
+			price = price.slice(0, 3) + "." + price.slice(3, 5);
+		}else if(price.length == 4){
+			price = price.slice(0, 2) + "." + price.slice(2, 4);
+		}else if(price.length == 3){
+			price = price.slice(0, 1) + "." + price.slice(1, 3);
+		}else{
+			price = price.slice(0, 0) + "." + price.slice(0, 2);
+		}
 		return price;
 		
 	}
@@ -414,6 +489,7 @@ function selectLession(){
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
 		manualEntryBoxActive = false;
 		notOnFileScreenActive = false;
+		pluItemBoxActive = false;
 		document.querySelector("#bottomEnterItemCode").innerHTML = "";
 	}
 
@@ -531,6 +607,30 @@ function pluItemBox(desc){
 			grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 			document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
 			document.querySelector("#bottomEnterItemCode").innerHTML = "";
+
+			if(lessonThreeStepThree = true){
+				if(itemNumber.innerHTML == "140.14"){
+				lessonThreeStepThree = false;
+				lessonThree = false;
+				lessonFour = true;
+				lessonFourStepOne = true;
+				if(zoomedImageActive){
+				closeHelpBox();
+				}
+				runLessons(lessons.lessonThree.lessonThreeStepFour);
+				}
+			}
+
+			if(lessonFourStepThree){
+				if(itemNumber.innerHTML == "2.91"){
+					lessonFourStepThree = false;
+					lessonFourStepFour = true;
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				runLessons(lessons.lessonFour.lessonFourStepFour);
+				}
+			}
 		}else{
 			itemNumber = document.querySelector("#bottomEnterItemCode").innerHTML;
 			let product = listOfProducts.product;
@@ -561,8 +661,13 @@ function pluItemBox(desc){
 			lessonOneEnterButton(itemNumber);
 		}else if(lessonTwo){
 			lessonTwoEnterButton(itemNumber);
+		}else if(lessonThree){
+			lessonThreeEnterButton(itemNumber);
+		}else if(lessonFour){
+			lessonFourEnterButton(itemNumber);
+		}else if(lessonFive){
+			lessonFiveEnterButton(itemNumber);
 		}
-
 		
 	}
 
@@ -648,9 +753,18 @@ const listOfProducts = {
 			"price": 0.00,
 			"manualPrice": true
 		},
+		{
+			"PLU": 35830,
+			"description": "Floral Upgrade",
+			"price": 49.99,
+			"manualPrice": false
+		}
 	]
 }
 
+const spanC = `<span class='cButtonStyle'>C</span>`;
+const spanEnter = `<span class='enterButtonStyle'>ENTER</span>`;
+const spanContinue = `<span class='continueButtonStyle'>CONTINUE</span>`;
 
 
 const lessons = {
@@ -660,9 +774,9 @@ const lessons = {
 				"stepHeader": ["<h3>First we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
 				"image": [`<img class='imageW50H350' onclick='Helpbox("images/wildgoodUPC.jpeg")' src='images/wildgoodUPC.jpeg'>`,0],
 				"stepOne": ["<p class='panimate'>1) Find the barcode on the product.</p>",500],
-				"stepTwo": ["<p class='panimate'>2) Use the number pad to enter the UPC found on the barcode.</p>",2500],
-				"stepThree": ["<p class='panimate'>3) Press the <span class='enterButtonStyle'>ENTER</span> button to complete the lookup.</p>",5500],
-				"stepFour": ["<p class='panimate'>4) If the product is not found, press the <span class='cButtonStyle'>C</span> button to try again.</p>",8500]
+				"stepTwo": ["<p class='panimate'>2) <strong>Use the number pad to enter the UPC found on the barcode.</strong></p>",2500],
+				"stepThree": [`<p class='panimate'>3) <strong>Press the ${spanEnter} button to complete the lookup.</strong></p>`,5500],
+				"stepFour": [`<p class='panimate'>4) If the product is not found, press the ${spanC} button to try again.</p>`,8500]
 			},
 			"progressTimer": {
 				"time":"11s"
@@ -682,8 +796,8 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Wild Good Ice Cream was added to your order.</p>",1000],
 				"stepTwo": ["<p class='panimate'>lets try another one!</p>",4000],
 				"image": [`<img class='imageW50H350' onclick='Helpbox("images/applesaucePLU.jpeg")' src='images/applesaucePLU.jpeg'>`,5012],
-				"stepThree": ["<p class='panimate'>Same as last time, use the number pad to enter the UPC and press <span class='enterButtonStyle'>ENTER</span>.</p>",6500],
-				"stepFour": ["<p class='panimate'>If the product is not found, click the <span class='cButtonStyle'>C</span> button to clear your screen and try again.</p>",9500]
+				"stepThree": [`<p class='panimate'>Same as last time, use the number pad to enter the UPC and press ${spanEnter}.</p>`,6500],
+				"stepFour": [`<p class='panimate'><strong>If the product is not found, click the ${spanC} button to clear your screen and try again.</strong></p>`,9500]
 			},
 			"progressTimer": {
 				"time":"12.5s"
@@ -704,8 +818,8 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>Lets try again!</p>",4000], 
 				"stepThree": ["<p class='panimate'>But remember, when the center digits do not work, include the leading digit.",5000],
 				"image": [`<img class='imageW50H350' onclick='Helpbox("images/applesaucePLU.jpeg")' src='images/applesaucePLU.jpeg'>`,8000],
-				"stepFour": ["<p class='panimate'>First, click the <span class='cButtonStyle'>C</span> button to clear that Not Found box.</p>",9000],
-				"stepFive": ["<p class='panimate'>After it's gone, use the number pad to enter the UPC and click <span class='enterButtonStyle'>ENTER</span>.</p>",12000]
+				"stepFour": [`<p class='panimate'>First, click the ${spanC} button to clear that Not Found box.</p>`,9000],
+				"stepFive": [`<p class='panimate'>After it's gone, <strong>use the number pad to enter the UPC and click ${spanEnter}.</strong></p>`,12000]
 			},
 			"progressTimer": {
 				"time":"14s",
@@ -728,7 +842,7 @@ const lessons = {
 				"image": [`<img  src='images/keyEnterNormalUPC.jpg' onclick='Helpbox("images/keyEnterNormalUPC.jpg")' height='300' width='90%'>`,7500],
 				"stepFour": ["<p class='panimate'>There are times when both methods will result in a Not Found error box.</p>",8000],
 				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",11000],
-				"stepSix": ["<p class='panimate'>Press the <span class='continueButtonStyle'>Continue</span> button to proceed to the next lesson.</p>",13500]
+				"stepSix": [`<p class='panimate'><strong>Press the ${spanContinue} button to proceed to the next lesson.</strong></p>`,13500]
 			},
 			"progressTimer": {
 				"time":"15.5s"
@@ -749,13 +863,14 @@ const lessons = {
 				"stepHeader": ["<h3>Now we will learn how to enter a product with a scale label.</h3>", 0],
 				"image": [`<img height='360' width='90%' onclick='Helpbox("images/keyInScaleLabel.jpg")' src='images/keyInScaleLabel.jpg'>`,0],
 				"stepOne": ["<p class='panimate'>This is a Meat, Seafood, or Deli product that has a random weight.</p>",1000],
-				"stepTwo": ["<p class='panimate'>In order to enter this UPC </p>",3500],
-				"stepThree": ["<p class='panimate'>You need to enter in all but the last digit and click <span class='enterButtonStyle'>ENTER</span>.</p>",5000],
-				"stepFour": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7200]
+				"stepTwo": ["<p class='panimate'>In order to enter this UPC, </p>",3500],
+				"stepThree": [`<p class='panimate'>You need to enter in all but the last digit and click ${spanEnter}.</p>`,4700],
+				"stepFour": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",7200],
+				"stepFive": [`<p class='panimate'><strong>If you get a Not Found error box, click ${spanC} and try again.</strong></p>`,9200]
 
 			},
 			"progressTimer": {
-				"time":"9.2s"
+				"time":"11.2s"
 			},
 			"button": {
 				"status": true,
@@ -763,7 +878,7 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 9200
+				"time": 11200
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -774,7 +889,7 @@ const lessons = {
 				"stepTwo": ["<p class='panimate'>Look closely at the last digits of this UPC, notice anything similar?</p>",4000],
 				"stepThree": ["<p class='panimate'>If you exclude the very last digit, the final numbers are the price of the item!</p>",7000],
 				"stepFour": ["<p class='panimate'>Now that we can identify a scale label, we know when to skip the last digit.</p>",10000],
-				"stepFive": ["<p class='panimate'>Click the <span class='continueButtonStyle'>Continue</span> button to proceed.</p>",13000]
+				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed.</strong></p>`,13000]
 			},	
 
 			"progressTimer": {
@@ -782,7 +897,7 @@ const lessons = {
 			},
 			"button": {
 				"status": false,
-				"time": 13000
+				"time": 15000
 			},
 			"enterButton": {
 				"value": "all",
@@ -791,16 +906,16 @@ const lessons = {
 		},
 		"lessonTwoStepThree":{
 			"steps": {
-				"stepHeader": ["<h3>What if...</h3>", 0],
+				"stepHeader": ["<h3>Are you ready?</h3>", 0],
 				"stepOne": ["<p class='panimate'>Why are we keying in items that should normally scan?</p>",0],
 				"stepTwo": ["<p class='panimate'>Practice!</p>",3000],
 				"stepThree": ["<p class='panimate'>Because sooner or later you will encounter items like this:</p>",4000],
-				"image": [`<img height='350' width='60%' onclick='Helpbox("images/brokenCheeseLabel.jpeg")' src='images/brokenCheeseLabel.jpeg'>`,5000],
+				"image": [`<img height='350' width='60%' onclick='Helpbox("images/brokenCheeseLabel.jpeg")' src='images/brokenCheeseLabel.jpeg'>`,7000],
 				"stepFour": ["<p class='panimate'>Now that we know how to enter these UPC's, we are ready!</p>",8000],
-				"stepFive": ["<p class='panimate'>Try it now!</p>",11000]
+				"stepFive": [`<p class='panimate'><strong>Try it now! Remember, if you get a Not Found error box, click ${spanC} and try again.</strong></p>`,11000]
 			},
 			"progressTimer":{
-				"time": "12s"
+				"time": "14s"
 			},
 			"button": {
 				"status": true,
@@ -808,7 +923,7 @@ const lessons = {
 			},
 			"enterButton": {
 				"value": "all",
-				"time": 12000
+				"time": 14000
 			}
 		},
 		"lessonTwoStepFour":{
@@ -816,17 +931,17 @@ const lessons = {
 				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
 				"stepOne": ["<p class='panimate'>GNG DW Cheese for $6.74 is now added to the order.</p>",0],
 				"stepTwo": ["<p class='panimate'>Remember, scale labels are used for random weight items</p>",3000],
-				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli.</p>",5500],
-				"stepFour": ["<p class='panimate'>Don't forget to skip the last digit when entering the UPC.</p>",8000],
-				"image": [`<img height='280' width='80%' onclick='Helpbox("images/keyInScaleLabel.jpg")' src='images/keyInScaleLabel.jpg'>`,11000],
-				"stepFive": ["<p class='panimate'>Click the <span class='continueButtonStyle'>Continue</span> button to proceed to the next lesson.</p>",12000]
+				"stepThree": ["<p class='panimate'>and they can be from the Meat, Seafood, or Deli.</p>",5200],
+				"stepFour": ["<p class='panimate'>Don't forget to skip the last digit when entering the UPC.</p>",7200],
+				"image": [`<img height='280' width='80%' onclick='Helpbox("images/keyInScaleLabel.jpg")' src='images/keyInScaleLabel.jpg'>`,10000],
+				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`,12000]
 			},
 			"progressTimer":{
-				"time": "15s",
+				"time": "14s"
 			},
 			"button": {
 				"status": false,
-				"time": 15000
+				"time": 14000
 			},
 			"enterButton": {
 				"value": "all",
@@ -839,32 +954,273 @@ const lessons = {
 		"lessonThreeStepOne":{
 			"steps": {
 				"stepHeader": ["<h3>Meat products over $99.99.</h3>", 0],
-				"stepOne": ["<p class='panimate'>Now that you are familer with scale labels</p>",0],
-				"stepTwo": ["<p class='panimate'>we will look at very expense products from those departments.</p>",2500],
-				"stepThree": ["<p class='panimate'>In store department scales are unable to print a barcode if the</p>",5500],
-				"stepFour": ["<p class='panimate'>price of the item is $100.00 or more.</p>",8000],
-				"image": [`<img height='280' width='80%' onclick='Helpbox("images/keyInMeatOver100.jpg")' src='images/keyInMeatOver100.jpg'>`,11000],
-				"stepFive": ["<p class='panimate'></p>",12000]
-			},
-			"progressTimer":{
-				"time": "14s",
+				"stepOne": ["<p class='panimate'>Now that you are familer with scale labels for random weight products.</p>",0],
+				"stepTwo": ["<p class='panimate'>We will look at very expense products from the Meat Department.</p>",2500],
+				"stepThree": ["<p class='panimate'>In-store department scales are unable to print a barcode if the</p>",5500],
+				"stepFour": ["<p class='panimate'>price of the item is $100.00 or more.</p>",7800],
+				"image": [`<img height='310' width='90%' onclick='Helpbox("images/tenderNoBarcode.jpg")' src='images/tenderNoBarcode.jpg'>`,10000],
+				"stepFive": ["<p class='panimate'>See how this label has no barcode to scan?</p>",10500],
+				"stepSix": ["<p class='panimate'>This is because the price is $140.14, which exceeds the limit for our scales.</p>",13000],
+				"stepSeven": ["<p class='panimate'>We will need to <strong>find the 3 digit PLU</strong> that is located in the description</p>",16000],
+				"stepEight": ["<p class='panimate'>and type it into the register to perform a lookup.</p>",18700],
+				"stepNine": [`<p class='panimate'><strong>Confused? Press ${spanContinue} to for a little more information.</p>`,22000]
+			},	
+
+			"progressTimer": {
+				"time":"24s",
 			},
 			"button": {
 				"status": false,
+				"time": 24000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		},
+		"lessonThreeStepTwo":{
+			"steps": {
+				"stepHeader": ["<h3>More Information</h3>", 0],
+				"stepOne": ["<p class='panimate'>Take a look at this job aide.</p>",0],
+				"stepTwo": [`<img height='250' width='80%' onclick='Helpbox("images/keyInMeatOver100.jpg")' src='images/keyInMeatOver100.jpg'>`,1500],
+				"stepThree": ["<p class='panimate'>Look at the end of the discription, can you find the three digit PLU code?</p>",4000],
+				"stepFour": ["<p class='panimate'>This is the number we will use to perform a lookup.</p>",7000],
+				"stepFive": [`<p class='panimate'>Lets look back at the orginal item.</p>`,9000],
+				"image": [`<img height='250' width='60%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,10000],
+				"stepFour": [`<p class='panimate'><strong>Use the number pad to enter the PLU and click ${spanEnter}</strong></p>`,12000]
+			},
+			"progressTimer":{
+				"time": "14s"
+			},
+			"button": {
+				"status": true,
+				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
 				"time": 14000
+			}
+		},
+		"lessonThreeStepThree":{
+			"steps": {
+				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
+				"stepOne": ["<p class='panimate'>A pop-up box is now displayed for CAB BEEF TENDERLOIN.</p>", 0],
+				"stepTwo": ["<p class='panimate'>The next step is to locate the PRICE of the product.</p>", 3000],
+				"stepThree": ["<p class='panimate'>Lets look at that label again...</p>", 5500],
+				"image": [`<img height='300' width='80%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,7500],
+				"stepThree": [`<p class='panimate'>Now use the number pad to enter the PRICE and press ${spanEnter}.</p>`, 10000]
+				
+			},
+			"progressTimer":{
+				"time": "13s"
+			},
+			"button": {
+				"status": true,
+				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 13000
+			}
+		},
+		"lessonThreeStepFour":{
+			"steps": {
+				"stepHeader": ["<h3>Now we're cooking with fire!</h3>", 0],
+				"stepOne": ["<p class='panimate'>CAB TENDERLOIN for $140.14 is added to the order.</p>", 0],
+				"stepTwo": ["<p class='panimate'>While the Meat department items have use this method to enter items over $99.99</p>", 3000],
+				"stepThree": ["<p class='panimate'>The Seafood and Deli departments do not.</p>", 5500],
+				"stepFour": ["<p class='panimate'>If you find one of these items, please call a supervisor to assist you.</p>", 7500],
+				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`, 10000],
+			},
+			"progressTimer":{
+				"time": "13s"
+			},
+			"button": {
+				"status": false,
+				"time": 13000
 			},
 			"enterButton": {
 				"value": "all",
 				"time": 0
 			}
 		}
-	}															
+				
+				
+	},
+	"lessonFour":{
+		"lessonFourStepOne":{
+			"steps": {
+				"stepHeader": ["<h3>How to enter a Grocery Markdown</h3>", 0],
+				"stepOne": ["<p class='panimate'>What's a Grocery markdown?</p>", 0],
+				"stepTwo": ["<p class='panimate'>When a product is damaged or discontinued, a markdown sticker is used.</p>", 2000],
+				"stepThree": ["<p class='panimate'>The sticker will have a three digit PLU code and a hand written price.</p>", 5000],
+				"image": [`<img height='400' width='80%' onclick='Helpbox("images/GroceryMarkdowns.jpg")' src='images/GroceryMarkdowns.jpg'>`,8000],
+				"stepFour": [`<p class='panimate'>Just like Meat items over $99.99, enter the three digit PLU, then the price of the item. </p>`, 9000],
+				"stepFive": [`<p class='panimate'><strong>Click ${spanContinue} to see a example and to try it out!.</strong></p>`, 12500],
+			},
+			"progressTimer":{
+				"time": "15s"
+			},
+			"button": {
+				"status": false,
+				"time": 15000
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		},
+		"lessonFourStepTwo":{
+			"steps": {
+				"stepHeader": ["<h3>How to enter a Grocery Markdown</h3>", 0],
+				"image": [`<img height='500' width='60%' onclick='Helpbox("images/150code.jpg")' src='images/150code.jpg'>`,0],
+				"stepOne": ["<p class='panimate'>Check out this discontinued item. </p>", 500],
+				"stepTwo": ["<p class='panimate'>Do you see the PLU code on the markdown sticker?</p>", 2500],
+				"stepThree": [`<p class='panimate'><strong>Enter the three digits after the @ symbol and press ${spanEnter}</strong></p>`, 4500],
+			},
+			"progressTimer":{
+				"time": "7.5s"
+			},
+			"button": {
+				"status": true,
+				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 7500
+			}
+		},
+		"lessonFourStepThree":{
+			"steps": {
+				"stepHeader": ["<h3>Nice Work!</h3>", 0],
+				"stepOne": ["<p class='panimate'>The pop-up display for Grocery Discontinued is active.</p>", 0],
+				"image": [`<img height='500' width='60%' onclick='Helpbox("images/150code.jpg")' src='images/150code.jpg'>`,2500],
+				"stepTwo": [`<p class='panimate'><strong>Enter the price of the item and press ${spanEnter}</strong></p>`, 3200],
+			},
+			"progressTimer":{
+				"time": "6s"
+			},
+			"button": {
+				"status": true,
+				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 6000
+			}
+		},
+		"lessonFourStepFour":{
+			"steps": {
+				"stepHeader": ["<h3>That's it!</h3>", 0],
+				"stepOne": ["<p class='panimate'>Grocery Discontinued for $2.91 is now added to the order.</p>", 0],
+				"stepTwo": ["<p class='panimate'>150, 201, and 204 are common codes for these stickers.</p>", 3000],
+				"stepThree": ["<p class='panimate'>Be sure to use these codes ONLY when the sticker is present.</p>", 5500],
+				"image": [`<img height='400' width='80%' onclick='Helpbox("images/GroceryMarkdowns.jpg")' src='images/GroceryMarkdowns.jpg'>`,8000],
+				"stepFour": ["<p class='panimate'>These codes are not to be used to change the price of a product.</p>", 9000],
+				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`, 11500],
+			},
+			"progressTimer":{
+				"time": "14.5s"
+			},
+			"button": {
+				"status": false,
+				"time": 14500
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		}
+
+	},
+	"lessonFive":{
+		"lessonFiveStepOne":{
+			"steps": {
+				"stepHeader": ["<h3>Now we will learn what a Floral Upgrade code is, and how to enter it.</h3>", 0],
+				"stepOne": ["<p class='panimate'>What's a Floral Upgrade?</p>", 0],
+				"stepTwo": ["<p class='panimate'>When a customer wants to upgrade a floral arrangement, a sticker is used.</p>", 2000],
+				"image": [`<img height='400' width='80%' onclick='Helpbox("images/keyEnterFloralUpgrades.jpg")' src='images/keyEnterFloralUpgrades.jpg'>`,5000],
+				"stepThree": ["<p class='panimate'>The sticker will have a five digit PLU code and a stamped price.</p>", 7000],
+				"stepFour": ["<p class='panimate'>This one is really easy!</p>", 9000],
+				"stepFive": [`<p class='panimate'><strong>Use the number pad to enter the five digits and press ${spanEnter}</strong></p>`, 10500],
+			},
+			"progressTimer":{
+				"time": "13.5s"
+			},
+			"button": {
+				"status": true,
+				"time": 0
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 13500
+			}
+		},
+		"lessonFiveStepTwo":{
+			"steps": {
+				"stepHeader": ["<h3>Nice Work!</h3>", 0],
+				"stepOne": ["<p class='panimate'>Floral Upgrade for $49.99 is added to your order.</p>", 0],
+				"stepTwo": ["<p class='panimate'>While this was easy to enter. Sometimes the sticker is hard to find.</p>", 2800],
+				"stepThree": ["<p class='panimate'>Be diligent and check the entire product, sometimes its on the bottom of the vase.</p>", 5800],
+				"stepFour": [`<p class='panimate'><strong>Press ${spanContinue} to proceed to the nex lesson.</strong></p>`, 8800],
+			},
+			"progressTimer":{
+				"time": "11.8s"
+			},
+			"button": {
+				"status": false,
+				"time": 11800
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		}
+			
+		
+	},
+	"lessonSix":{
+		"lessonSixStepOne":{
+			"steps": {
+				"stepHeader": ["<h3>Lets take a look at containers of berries from Produce</h3>", 0],
+				"stepOne": ["<p class='panimate'>Strawberries, Blueberries, Raspberries, and Blackberries are sold in containers.</p>", 0],
+				"stepTwo": ["<p class='panimate'>Sometimes, the UPC for these items produce a Not Found error box.</p>", 3000],
+				"stepThree": ["<p class='panimate'>Lucky for us, these products have a four digit code associated with them.</p>", 6000],
+				"image": [`<img height='400' width='80%' onclick='Helpbox("images/ProduceBerryPLUs.jpg")' src='images/ProduceBerryPLUs.jpg'>`,9000],
+				"stepFour": ["<p class='panimate'>In the next few examples, use the training aide to input the products.</p>", 10000],
+				"stepFive": [`<p class='panimate'><strong>Press ${spanContinue} to get started!</strong></p>`, 13000],
+			},
+			"progressTimer":{
+				"time": "15.5s"
+			},
+			"button": {
+				"status": false,
+				"time": 15500
+			},
+			"enterButton": {
+				"value": "all",
+				"time": 0
+			}
+		}
+	}
+
+
 }
+
+
+
+
+
+
+
+
+
 
 function runLessons(lesson){
 	let helpfulSection = document.querySelector("#rightPanelMainContent");
 	helpfulSection.innerHTML = "";
 	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div");
+	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
 	
 	Object.entries(lesson.steps).forEach(([key, value]) => {
 
@@ -998,6 +1354,68 @@ function lessonTwoEnterButton(value){
 		}
 	}
 }
+
+function lessonThreeEnterButton(value){
+	if(lessonThreeStepTwo){
+		if(value == 688){
+			lessonThreeStepTwo = false;
+			lessonThreeStepThree = true;
+			if(zoomedImageActive){
+				closeHelpBox();
+			}
+			runLessons(lessons.lessonThree.lessonThreeStepThree);
+
+		}
+	}else if(lessonThreeStepThree){
+		if(value == 14014){
+			lessonThreeStepThree = false;
+			lessonThree = false;
+			lessonFour = true;
+			lessonFourStepOne = true;
+			if(zoomedImageActive){
+				closeHelpBox();
+			}
+			runLessons(lessons.lessonThree.lessonThreeStepFour);
+		}
+	}
+}
+
+function lessonFourEnterButton(value){
+	if(lessonFourStepTwo){
+		if(value == 150){
+			lessonFourStepTwo = false;
+			lessonFourStepThree = true;
+			if(zoomedImageActive){
+				closeHelpBox();
+			}
+			runLessons(lessons.lessonFour.lessonFourStepThree);
+		}
+	}else if(lessonFourStepThree){
+		if(value == 291){
+			lessonFourStepThree = false;
+			lessonFourStepFour = true;
+			if(zoomedImageActive){
+				closeHelpBox();
+			}
+			runLessons(lessons.lessonFour.lessonFourStepFour);
+		}
+	}
+}
+
+
+function lessonFiveEnterButton(value){
+	if(lessonFiveStepOne){
+		if(value == 35830){
+			lessonFiveStepOne = false;
+			lessonFiveStepTwo = true;
+			if(zoomedImageActive){
+				closeHelpBox();
+			}
+			runLessons(lessons.lessonFive.lessonFiveStepTwo);
+		}
+	}
+}
+
 function startLessonFromLink(){
 	if(zoomedImageActive){
 		closeHelpBox();
@@ -1008,7 +1426,7 @@ function startLessonFromLink(){
 		lessonTwo = false;
 		lessonOneStepOne = true;
 		lessonOne = true;
-	runLessons(lessons.lessonOne.lessonOneStepOne);	
+		runLessons(lessons.lessonOne.lessonOneStepOne);	
 	}else if(this.value == 2){
 		lessonThree = false;
 		lessonTwo = true;
@@ -1021,6 +1439,33 @@ function startLessonFromLink(){
 		lessonOne = false;
 		lessonThreeStepOne = true;
 		runLessons(lessons.lessonThree.lessonThreeStepOne);
+		lessonThreeStepOne = false;
+		lessonThreeStepTwo = true;
+	}else if(this.value == 4){
+		lessonThree = false;
+		lessonTwo = false;
+		lessonOne = false;
+		lessonFour = true;
+		lessonFourStepTwo = true;
+		lessonFourStepOne = false;
+		runLessons(lessons.lessonFour.lessonFourStepOne);
+	}else if(this.value == 5){
+		lessonThree = false;
+		lessonTwo = false;
+		lessonOne = false;
+		lessonFour = false;
+		lessonFive = true;
+		lessonFiveStepOne = true;
+		runLessons(lessons.lessonFive.lessonFiveStepOne);
+	}else if(this.value){
+		lessonThree = false;
+		lessonTwo = false;
+		lessonOne = false;
+		lessonFour = false;
+		lessonFive = false;
+		lessonSix = true;
+		lessonSixStepOne = true;
+		runLessons(lessons.lessonSix.lessonSixStepOne);
 	}
 	
 }
@@ -1030,5 +1475,72 @@ function startLessonFromLink(){
 document.querySelector("#lessonOneLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonTwoLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonThreeLink").addEventListener("click", startLessonFromLink);
+document.querySelector("#lessonFourLink").addEventListener("click", startLessonFromLink);
+document.querySelector("#lessonFiveLink").addEventListener("click", startLessonFromLink);
+document.querySelector("#lessonSixLink").addEventListener("click", startLessonFromLink);
+
+
+function numberPadButtonKey(key){
+		//registerBeep.load();
+		//registerBeep.play();
+		if(!notOnFileScreenActive){
+			if(manualEntryBoxActive || pluItemBoxActive)
+				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML, key);
+			else
+				document.getElementById("bottomEnterItemCode").innerHTML += key;
+		}
+	}
+
+
+window.addEventListener("keydown", function(event) {
+
+
+  switch (event.key) {
+	case "1":
+		numberPadButtonKey(1);
+		break;
+	case "2":
+		numberPadButtonKey(2);
+		break;
+	case "3":
+		numberPadButtonKey(3);
+		break;
+	case "4":
+		numberPadButtonKey(4);
+		break;
+	case "5":
+		numberPadButtonKey(5);
+		break;
+	case "6":
+		numberPadButtonKey(6);
+		break;
+	case "7":
+		numberPadButtonKey(7);
+		break;
+	case "8":
+		numberPadButtonKey(8);
+		break;
+	case "9":
+		numberPadButtonKey(9);
+		break;
+	case "0":
+		numberPadButtonKey(0);
+		break;
+	case "Enter":
+		enterButtonPressPLULookup();
+		break;
+	case "Backspace":
+		backbutton();
+		break;
+	case "Escape":
+		clear();	
+		break;
+	case " ":
+		selectLession();
+		break;
+	default:
+		break;
+  }
+});
 
 
