@@ -1174,7 +1174,7 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Floral Upgrade for $49.99 is added to your order.</p>", 0],
 				"stepTwo": ["<p class='panimate'>While this was easy to enter. Sometimes the sticker is hard to find.</p>", 2800],
 				"stepThree": ["<p class='panimate'>You might also find a sheet like this.</p>", 5800],
-				"image": [`<img height='400' width='50%' onclick='Helpbox("images/m32floral.jpeg")' src='images/m32floral.jpeg'>`,8000],
+				"image": [`<img height='400' width='50%' onclick='Helpbox("images/m32floral.jpg")' src='images/m32floral.jpg'>`,8000],
 				"stepFour": [`<p class='panimate'>See PLU code on the bottom right? Remember to use that code for these products.</p>`, 8700],
 				"stepFive": [`<p class='panimate'><strong>Press ${spanContinue} to proceed to the nex lesson.</strong></p>`, 11700],
 			},
