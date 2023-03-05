@@ -2,20 +2,55 @@
   .hideDisplay{
     display: none;
   }
+
+
+
+    @media screen and (min-width: 1441px) {
+        .containerDiv{
+            display: grid;
+            grid-template-areas: "aside main section";
+            grid-template-columns: 1fr 5fr 5fr;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+        p,span{
+            font-size: 1.3rem;
+        }
+        
+      }
+
+
+
+    @media screen and (max-width: 1440px) {
+        .containerDiv{
+            display: grid;
+            grid-template-areas: "aside main section";
+            grid-template-columns: 8fr 5fr;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+        p,span{
+            font-size: 1.0rem;
+        }
+        body > div > aside{
+            display: none;
+        }
+
+        body > div{
+            display: none;
+        }
+        
+      }
+
+
+  
     .containerDivTablet{
         display: grid;
         grid-template-areas: "aside main section";
-        grid-template-columns: 9fr 5fr;
+        grid-template-columns: 8fr 5fr;
         gap: 1rem;
         padding-top: 1.5rem;
     }
-
-
-
-
-p,span{
-    font-size: 1.3rem;
-}
 
 /*Progress bar and next button container*/
 #nextButtonAndProgressBarContainer{
@@ -210,7 +245,7 @@ grid-template-columns: 3fr 10fr;
 }
 /* End of pop-out for manual entry*/
 
-
+/*
 .containerDiv{
     display: grid;
     grid-template-areas: "aside main section";
@@ -218,7 +253,7 @@ grid-template-columns: 3fr 10fr;
     gap: 1rem;
     padding-top: 1.5rem;
 }
-
+*/
 li {
 	padding-top: 1.2rem;
 }
