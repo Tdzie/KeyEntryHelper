@@ -280,8 +280,8 @@ function selectLession(){
 
 	//Number Pad Functions
 	function numberPadButtonPress(){
-		//registerBeep.load();
-		//registerBeep.play();
+		registerBeep.load();
+		registerBeep.play();
 		if(!notOnFileScreenActive){
 			if(manualEntryBoxActive || pluItemBoxActive)
 				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML,this.innerHTML);
@@ -494,8 +494,8 @@ function selectLession(){
 	}
 	// function to clear the main div for menus. Does not reset the register price list.
 	function clear(){
-		//registerBeep.load();
-		//registerBeep.play();
+		registerBeep.load();
+		registerBeep.play();
 		let grabRegisterMainScreenDiv = document.getElementById("insideRegisterGrid1");
 		grabRegisterMainScreenDiv.innerHTML = ""; // Clear the deparments
 		document.querySelector("#insideRegisterGrid1").style.backgroundColor = "rgb(245, 245, 245)";
@@ -585,8 +585,8 @@ function pluItemBox(desc){
 
 
 	function enterButtonPressPLULookup(){
-		//registerBeep.load();
-		//registerBeep.play();
+		registerBeep.load();
+		registerBeep.play();
 		let itemNumber;
 		let itemfound = false;
 		
@@ -1493,8 +1493,8 @@ document.querySelector("#lessonSixLink").addEventListener("click", startLessonFr
 
 
 function numberPadButtonKey(key){
-		//registerBeep.load();
-		//registerBeep.play();
+		registerBeep.load();
+		registerBeep.play();
 		if(!notOnFileScreenActive){
 			if(manualEntryBoxActive || pluItemBoxActive)
 				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML, key);

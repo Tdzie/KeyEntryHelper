@@ -16,6 +16,16 @@
         p,span{
             font-size: 1.3rem;
         }
+        #rightPanel{
+            display: grid;
+            grid-template-rows:10fr 1fr;
+            max-width: 800px;
+            height: 900px;
+            border: 5px outset gray;
+            padding: 10px;
+            position: relative;
+           
+        }
         
       }
 
@@ -38,6 +48,16 @@
 
         body > header{
             display: none;
+        }
+        #rightPanel{
+            display: grid;
+            grid-template-rows:10fr 1fr;
+            max-width: 800px;
+            height: 847px;
+            border: 5px outset gray;
+            padding: 10px;
+            position: relative;
+           
         }
         
       }
@@ -104,15 +124,7 @@ li{
     font-weight: bold;
 }
 /*Right panel styles - used to hold content for lessons*/
-#rightPanel{
-    display: grid;
-    grid-template-rows:10fr 1fr;
-    max-width: 800px;
-    border: 5px outset gray;
-    padding: 10px;
-    position: relative;
-   
-}
+
 .w350h90{
     width: 350px;
     height: 90%;
