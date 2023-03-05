@@ -36,6 +36,18 @@ var lessonSix = false;
 var lessonSixStepOne = false;
 var lessonSixStepTwo = false;
 
+
+
+// Tablet layout
+
+function tabletCss(){
+	document.querySelector("body > header").classList.add("hideDisplay");
+	document.querySelector("body > div > aside").classList.add("hideDisplay");
+
+	document.querySelector("body > div").classList.remove("containerDiv");
+	document.querySelector("body > div").classList.add("containerDivTablet");
+
+}
 // Variables to check what screen is active
 let normalRegisterActive = false;
 

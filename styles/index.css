@@ -1,3 +1,18 @@
+
+  .hideDisplay{
+    display: none;
+  }
+    .containerDivTablet{
+        display: grid;
+        grid-template-areas: "aside main section";
+        grid-template-columns: 9fr 5fr;
+        gap: 1rem;
+        padding-top: 1.5rem;
+    }
+
+
+
+
 p,span{
     font-size: 1.3rem;
 }
