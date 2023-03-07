@@ -3,6 +3,16 @@
 	const altWindow = document.getElementById("rightPanel");
 	
 let registerBeep = new Audio('sounds/registerBeep.mp3');
+const lessonOneStepOneAudio = new Audio('sounds/LessonOneStepOne.mp3');
+const lessonOneStepTwoAudio = new Audio('sounds/LessonOneStepTwo.mp3');
+const lessonOneStepThreeAudio = new Audio('sounds/LessonOneStepThree.mp3');
+const lessonOneStepTwoFailAudio = new Audio('sounds/LessonOneStepThree.mp3');
+const lessonTwoStepOneAudio = new Audio('sounds/LessonTwoStepOne.mp3');
+const lessonTwoStepTwoAudio = new Audio('sounds/LessonTwoStepTwo.mp3');
+const lessonTwoStepThreeAudio = new Audio('sounds/LessonTwoStepThree.mp3');
+const lessonTwoStepFourAudio = new Audio('sounds/LessonTwoStepFour.mp3');
+const lessonThreeStepOneAudio = new Audio('sounds/LessonThreeStepOne.mp3');
+
 //Lesson states
 var lessonOne = false;
 var lessonOneStepOne = false;
@@ -808,7 +818,7 @@ const lessons = {
 				"time": 15500
 			},
 			"Audio": {
-				"sound": "sounds/lessonOneStepOne.mp3"
+				"sound": lessonOneStepOneAudio
 			}
 
 		},
@@ -833,7 +843,7 @@ const lessons = {
 				"time": 14000
 			},
 			"Audio": {
-				"sound": "sounds/lessonOneStepTwo.mp3"
+				"sound": lessonOneStepTwoAudio
 			}
 		},
 		"lessonOneStepTwoFail": {
@@ -858,7 +868,7 @@ const lessons = {
 				"time": 17000
 			},
 			"Audio": {
-				"sound": "sounds/lessonOneStepTwoFail.mp3"
+				"sound": lessonOneStepTwoFailAudio
 			}
 		},
 		"lessonOneStepThree": {
@@ -884,7 +894,7 @@ const lessons = {
 				"time": 0
 			},
 			"Audio": {
-				"sound": "sounds/lessonOneStepThree.mp3"
+				"sound": lessonOneStepThreeAudio
 			}
 		}
 	},
@@ -912,7 +922,7 @@ const lessons = {
 				"time": 26000
 			},
 			"Audio": {
-				"sound": "sounds/lessonTwoStepOne.mp3"
+				"sound": lessonTwoStepOneAudio
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -938,7 +948,7 @@ const lessons = {
 				"time": 0
 			},
 			"Audio": {
-				"sound": "sounds/lessonTwoStepTwo.mp3"
+				"sound": lessonTwoStepTwoAudio
 			}
 		},
 		"lessonTwoStepThree":{
@@ -964,7 +974,7 @@ const lessons = {
 				"time": 20000
 			},
 			"Audio": {
-				"sound": "sounds/lessonTwoStepThree.mp3"
+				"sound": lessonTwoStepThreeAudio
 			}
 		},
 		"lessonTwoStepFour":{
@@ -989,7 +999,7 @@ const lessons = {
 				"time": 0
 			},
 			"Audio": {
-				"sound": "sounds/lessonTwoStepFour.mp3"
+				"sound": lessonTwoStepFourAudio
 			}
 		}
 		
@@ -1022,7 +1032,7 @@ const lessons = {
 				"time": 0
 			},
 			"Audio": {
-				"sound": "sounds/lessonThreeStepOne.mp3"
+				"sound": lessonThreeStepOneAudio
 			}
 		},
 		"lessonThreeStepTwo":{
@@ -1048,7 +1058,7 @@ const lessons = {
 				"time": 14000
 			},
 			"Audio": {
-				"sound": "sounds/lessonThreeStepTwo.mp3"
+				"sound": "TODO"
 			}
 		},
 		"lessonThreeStepThree":{
@@ -1073,7 +1083,7 @@ const lessons = {
 				"time": 13000
 			},
 			"Audio": {
-				"sound": "sounds/lessonThreeStepThree.mp3"
+				"sound": "sounds/lessonThreeStepThreeAudio.mp3"
 			}
 		},
 		"lessonThreeStepFour":{
@@ -1300,8 +1310,8 @@ function runLessons(lesson){
 	helpfulSection.innerHTML = "";
 	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div");
 	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
-	let registerBeep = new Audio(lesson.Audio.sound);
-	registerBeep.play();
+
+	lesson.Audio.sound.play();
 	
 	Object.entries(lesson.steps).forEach(([key, value]) => {
 
