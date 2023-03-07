@@ -1,0 +1,130 @@
+Lesson one step one.
+
+				First we will learn how to enter a product by its UPC code when it won't scan.
+
+				Find the barcode on the product.
+				Use the number pad to enter the UPC found on the barcode.
+				Press the Enter button to complete the lookup.
+				If the product is not found, press the C button to try again.
+
+
+Lesson ONE step TWO.
+
+				Great Work!
+				Wild Good Ice Cream was added to your order.
+				lets try another one!
+				Same as last time, use the number pad to enter the UPC and press enter.
+				If the product is not found, click the ${spanC} button to clear your screen and try again.
+
+Lesson ONE step TWO fail
+
+				Oops!
+				The UPC you entered was not found.
+				Lets try again!
+				But remember, when the center digits do not work, include the leading digit.
+				First, click the c button to clear that Not Found box.
+				After it's gone, use the number pad to enter the UPC and click Enter.
+
+Lesson ONE step THREE
+
+				Great Work!
+				Applesauce was added to your order.
+				Remember,
+				If the center digits do not work, try it again with the leading number.
+				There are times when both methods will result in a Not Found error box.
+				In this case, you will need to ask your supervisor for help.
+				Press the Continue button to proceed to the next lesson.
+
+
+Lesson TWO step ONE
+
+				Now we will learn how to enter a product with a scale label.
+				
+				This is a Meat, Seafood, or Deli product that has a random weight.
+				In order to enter this UPC,
+				you need to enter in all but the last digit and click Enter.
+				Give it a try with the UPC in the above picture.
+				<strong>If you get a Not Found error box, click C and try again.
+
+Lesson TWO step TWO
+
+OLD
+Great work!.
+Ground Beef for $3.73 was added to the order.
+Look closely at the last digits of this UPC, notice anything similar?
+If you exclude the very last digit, the final numbers are the price of the item!
+Now that we can identify a scale label, we know when to skip the last digit.
+Click the spanContinue button to proceed.
+
+NEW
+Well done!
+We have added Ground Beef to the order for $3.73.
+Observe the last digits of the UPC closely, do you see any similarities?
+If you omit the last digit, the remaining digits represent the price of the product!
+Now that we can recognize a scale label, we know when to exclude the final digit.
+Click on the "Continue" button to move forward.
+
+Lesson TWO step THREE
+runLessons(lessons.lessonTwo.lessonTwoStepThree)
+OLD
+Are you ready?
+Why are we keying in items that should normally scan?
+Practice!
+Because sooner or later you will encounter items like this:
+Now that we know how to enter these UPC's, we are ready!
+Try it now! Remember, if you get a Not Found error box, click C and try again.
+
+NEW
+
+Are you prepared?
+Why are we manually entering items that are usually scanned?
+It's all for practice!
+Because eventually, you will come across products like this:
+Now that we are familiar with the process of entering these UPCs, this should be easy.
+Give it a try now! And remember, if you see a Not Found error message, click on C to try again.
+
+
+runLessons(lessons.lessonTwo.lessonTwoStepFour)
+
+
+OLD
+
+
+Wonderful Job!
+GNG DW Cheese for $6.74 is now added to the order.
+Remember, scale labels are used for random weight items and they can be from the Meat, Seafood, or Deli.
+Don't forget to skip the last digit when entering the UPC.
+Click the continue button to proceed to the next lesson.
+
+NEW
+
+
+Excellent work!
+We have successfully added Deli cheese for $6.74 to the order.
+Please keep in mind that scale labels are utilized for products with unpredictable weights and they can belong to the Meat, Seafood, or Deli category.
+Remember to exclude the last digit when entering the UPC.
+Click on the Continue button to proceed to the next lesson.
+
+
+runLessons(lessons.lessonThree.lessonThreeStepOne)
+
+
+OLD
+
+Meat products over $99.99.
+Now that you are familer with scale labels for random weight products, we will look at very expense products from the Meat Department.
+In-store department scales are unable to print a barcode if the price of the item is $100.00 or more.
+See how this label has no barcode to scan?
+This is because the price is $140.14, which exceeds the limit for our scales.
+We will need tofind the 3 digit PLU that is located in the description and type it into the register to perform a lookup.
+Confused? Press Continue to for a little more information.
+
+NEW
+
+Meat items priced over $99.99 can be challenging to process.
+Now that you have learned about scale labels for random weight products, we will take a look at very expensive Meat Department items.
+If the price of an item is $100.00 or higher, the in-store department scales cannot generate a barcode.
+Observe how this label does not contain a barcode to scan?
+This is because the price of the product is $140.14, which surpasses the limit for our scales.
+We must locate the 3-digit PLU code provided in the description and enter it into the register for a lookup.
+Confused? Press the continue button, and we'll walk you through the process.
