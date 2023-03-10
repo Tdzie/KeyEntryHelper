@@ -128,3 +128,126 @@ Observe how this label does not contain a barcode to scan?
 This is because the price of the product is $140.14, which surpasses the limit for our scales.
 We must locate the 3-digit PLU code provided in the description and enter it into the register for a lookup.
 Confused? Press the continue button, and we'll walk you through the process.
+
+
+runLessons(lessons.lessonThree.lessonThreeStepTwo)
+
+OLD
+
+More Information
+Take a second to study this process.
+Look at the end of the discription, can you find the three digit PLU code?
+This is the number we will use to perform a lookup.
+Lets look back at the orginal item.
+Use the number pad to enter the PLU and click enter.
+
+NEW
+
+Please take a moment to review the first step involved in this process. 
+At the end of the description, try to locate the PLU code consisting of three digits.
+This code will be used to conduct a search. 
+Now, let's return to the original item.
+Use the number pad to input the PLU code, then click enter.
+
+runLessons(lessons.lessonThree.lessonThreeStepThree)
+
+Wonderful Job!
+A pop-up box is now displayed for CAB BEEF TENDERLOIN.
+The next step is to find the PRICE of the product.
+Let's review the label again to locate the price.
+Now that we know thr price, use the number pad to enter it and press enter
+
+
+runLessons(lessons.lessonThree.lessonThreeStepFour)
+
+Perfecto!
+CAB TENDERLOIN for $140.14 is added to the order.
+While the Meat department items have use this method to enter items over $99.99
+The Seafood and Deli departments do not.
+If you find one of these items, please call a supervisor to assist you.
+Click the Continue button to proceed to the next lesson.
+
+
+You did it!
+The order now includes CAB TENDERLOIN for $140.14. 
+Please note that this method is used for entering Meat department items that cost over $99.99,
+ but it is not used for Seafood and Deli department items. 
+If you come across any of these items, kindly seek assistance from a supervisor. 
+Click the Continue button to move on to the next lesson.
+
+
+runLessons(lessons.lessonFour.lessonFourStepOne)
+
+OLD 
+
+Now we will learn the process of entering in a gorcery markdown label.
+What is a Grocery markdown?
+When a product is damaged or discontinued, a markdown sticker is used to reduce the price of that product.
+The sticker will have a three digit PLU code and a hand written price.
+Just like Meat items over $99.99, enter the three digit PLU, then the price of the item.
+Click Continue to see a example and to try it out!
+
+
+runLessons(lessons.lessonFour.lessonFourStepTwo)
+
+
+OLD
+
+How to enter a Grocery Markdown
+Check out this discontinued item.
+Do you see the PLU code on the markdown sticker?
+Enter the three digits after the @ symbol and press
+
+
+runLessons(lessons.lessonFour.lessonFourStepThree)
+
+OLD
+
+Nice Work!
+The pop-up display for Grocery Discontinued is active.
+Enter the price of the item and press enter.
+
+
+runLessons(lessons.lessonFour.lessonFourStepFour)
+
+OLD
+
+That's it!
+>Grocery Discontinued for $2.91 is now added to the order.
+150, 201, and 204 are common codes for these stickers.
+Be sure to use these codes ONLY when the sticker is present.
+These codes are not to be used to change the price of a product.
+Click the continue button to proceed to the next lesson.
+
+runLessons(lessons.lessonFive.lessonFiveStepOne)
+
+OLD
+
+Now we will learn what a Floral Upgrade code is, and how to enter it.
+What's a Floral Upgrade?
+When a customer wants to upgrade a floral arrangement, a sticker is used.
+The sticker will have a five digit PLU code and a stamped price.
+This one is really easy!
+Use the number pad to enter the five digits and press enter.
+
+runLessons(lessons.lessonFive.lessonFiveStepTwo)
+
+OLD
+
+Nice Work!
+Floral Upgrade for $49.99 is added to your order.
+While this was easy to enter. Sometimes the sticker is hard to find.
+ou might also find a sheet like this.
+See PLU code on the bottom right? Remember to use that code for these products.
+Press continue to proceed to the next lesson.
+
+
+runLessons(lessons.lessonSix.lessonSixStepOne)
+
+
+Lets take a look at containers of berries from Produce.
+Strawberries, Blueberries, Raspberries, and Blackberries are sold in containers.
+Sometimes, the UPC for these items produce a Not Found error box.
+Lucky for us, these products have a four digit code associated with them.
+In the next few examples, use the training aide to input the products.
+Press continue to get started!

@@ -2,14 +2,18 @@
   .hideDisplay{
     display: none;
   }
-
-
+#leftSide>button{
+   background-color: transparent;
+}
+#leftSide{
+    width: 35px;
+}
 
     @media screen and (min-width: 1441px) {
         .containerDiv{
             display: grid;
             grid-template-areas: "aside main section";
-            grid-template-columns: 1fr 5fr 5fr;
+            grid-template-columns: 5fr 5fr;
             gap: 1rem;
             padding-top: 1.5rem;
         }
@@ -18,7 +22,7 @@
         }
         #rightPanel{
             display: grid;
-            grid-template-rows:10fr 1fr;
+            grid-template-rows: 0fr 1fr 1fr;
             max-width: 800px;
             height: 900px;
             border: 5px outset gray;
@@ -51,7 +55,7 @@
         }
         #rightPanel{
             display: grid;
-            grid-template-rows:10fr 1fr;
+            grid-template-rows: 0fr 1fr 1fr;
             max-width: 800px;
             height: 847px;
             border: 5px outset gray;
@@ -182,16 +186,19 @@ li{
     width: 80%;
     height: 350px;
 }
-
+body{
+    background-color: rgb(18, 18, 18);
+}
 #outerDivForErrorBox{
         position: absolute;
-        top: 5%;
+        top: 4%;
         left: 50%;
         transform: translate(-50%, 0%);
-    width: 90%;
-    height: 90%;
+    width: 1400px;
+    height: 850px;
     background-color:  black;
     z-index: 1;
+    border: #0d6efd 5px outset;
 }
 
 #outerDivForHelpBox{
@@ -625,7 +632,6 @@ align-items: end;
     grid-area: 4/3/last-line/end;
      border: 1px gray solid;
      justify-content: center;
-     z-index: 1;
      color: rgb(9, 182, 9);
      letter-spacing: .1rem;
 }

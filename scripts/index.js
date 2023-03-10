@@ -1,7 +1,13 @@
+//Variables for the landing page(s)
+
+const lessonOneLandingPage = ``;
+
+
 // const for elements
 	const mainWindow = document.getElementById("mainWindow");
 	const altWindow = document.getElementById("rightPanel");
-	
+
+// sounds
 let registerBeep = new Audio('sounds/registerBeep.mp3');
 const lessonOneStepOneAudio = new Audio('sounds/LessonOneStepOne.mp3');
 const lessonOneStepTwoAudio = new Audio('sounds/LessonOneStepTwo.mp3');
@@ -12,41 +18,26 @@ const lessonTwoStepTwoAudio = new Audio('sounds/LessonTwoStepTwo.mp3');
 const lessonTwoStepThreeAudio = new Audio('sounds/LessonTwoStepThree.mp3');
 const lessonTwoStepFourAudio = new Audio('sounds/LessonTwoStepFour.mp3');
 const lessonThreeStepOneAudio = new Audio('sounds/LessonThreeStepOne.mp3');
+const lessonThreeStepTwoAudio = new Audio('sounds/LessonThreeStepTwo.mp3');
+const lessonThreeStepThreeAudio = new Audio('sounds/LessonThreeStepThree.mp3');
+const lessonThreeStepFourAudio = new Audio('sounds/LessonThreeStepFour.mp3');
 
 //Lesson states
-var lessonOne = false;
-var lessonOneStepOne = false;
-var lessonOneStepTwo = false;
-var lessonOneStepThree = false;
+var stepFailCounter = 0;
+var stepsPassed = 0;
 
+var LessonCurrentStep = 1;
+
+var lessonOne = true;
 var lessonTwo = false;
-var lessonTwoStepOne = false;
-var lessonTwoStepTwo = false;
-var lessonTwoStepThree = false;
-var lessonTwoStepFour = false;
-
 var lessonThree = false;
-var lessonThreeStepOne = false;
-var lessonThreeStepTwo = false;
-var lessonThreeStepThree = false;
-var lessonThreeStepFour = false;
-
-
 var lessonFour = false;
-var lessonFourStepOne = false;
-var lessonFourStepTwo = false;
-var lessonFourStepThree = false;
-var lessonFourStepFour = false;
-
 var lessonFive = false;
-var lessonFiveStepOne = false;
-var lessonFiveStepTwo = false;
-
 var lessonSix = false;
-var lessonSixStepOne = false;
-var lessonSixStepTwo = false;
 
 
+// timing variables
+var startTime, endTime, timeDiff;
 
 // Tablet layout
 
@@ -77,15 +68,15 @@ let zoomedImageActive = false;
 //Startup used to load the normal register setup
 	window.onload = () => {
 		normalRegister();
+		//landingPage("Informaiton Title", "images/keyEnterNormalUPC.jpg", "Helpful Information");
 
 	};
 
-//Button click event
-document.querySelector("#nextButtonAndProgressBarContainer > button").addEventListener("click",selectLession);
+
 
 
 //Lessons
-function selectLession(){
+function selectLesson(){
 	if(zoomedImageActive){
 		closeHelpBox();
 	}
@@ -149,8 +140,7 @@ function selectLession(){
 		}
 		
 	}else{
-		lessonOne = true;
-		lessonOneStepOne = true;
+		startTime = Date.now();
 		runLessons(lessons.lessonOne.lessonOneStepOne);
 	}
 }
@@ -693,7 +683,123 @@ function pluItemBox(desc){
 		
 	}
 
+// Lesson One Enter Button Function
+function lessonOneEnterButton(value) {
+	
+	switch (LessonCurrentStep) {
+		case 1:
+			if(value == 85002099902){
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				runLessons(lessons.lessonOne.lessonOneStepTwo);
+				LessonCurrentStep = 2;
+				stepsPassed++;
+			}else{
+				stepFailCounter++;
+				document.querySelector("#rightHeader > h3").innerHTML = `Try again. You have ${2 - stepFailCounter} more tries.`;
+				if(stepFailCounter == 3){
+					if(zoomedImageActive){
+						closeHelpBox();
+					}
+					stepFailCounter = 0;
+					LessonCurrentStep = 2;
+					runLessons(lessons.lessonOne.lessonOneStepTwo);
+				}
+			}	
+			break;
+		case 2:
+			if(value == 72277600232){
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				runLessons(lessons.lessonOne.lessonOneStepThree);
+				LessonCurrentStep = 3;
+				stepsPassed++;
+			}else{
+				stepFailCounter++;
+				document.querySelector("#rightHeader > h3").innerHTML = `Try again. You have ${2 - stepFailCounter} more tries.`;
+				if(stepFailCounter == 3){
+					if(zoomedImageActive){
+						closeHelpBox();
+					}
+					stepFailCounter = 0;
+					LessonCurrentStep = 3;
+					runLessons(lessons.lessonOne.lessonOneStepThree);
+				}
+			}
+			break;
+		case 3:
+			if (value == 4173558745){
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				runLessons(lessons.lessonOne.lessonOneStepFour);
+				LessonCurrentStep = 4;
+				stepsPassed++;
+			}else{
+				stepFailCounter++;
+				document.querySelector("#rightHeader > h3").innerHTML = `Try again. You have ${2 - stepFailCounter} more tries.`;
+				if(stepFailCounter == 3){
+					if(zoomedImageActive){
+						closeHelpBox();
+					}
+					stepFailCounter = 0;
+					LessonCurrentStep = 4;
+					runLessons(lessons.lessonOne.lessonOneStepFour);
+				}
+			}
+			break;
+		case 4:
+			if (value == 4173525469){
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				runLessons(lessons.lessonOne.lessonOneStepFive);
+				LessonCurrentStep = 5;
+				stepsPassed++;
+			}else{
+				stepFailCounter++;
+				document.querySelector("#rightHeader > h3").innerHTML = `Try again. You have ${2 - stepFailCounter} more tries.`;
+				if(stepFailCounter == 3){
+					if(zoomedImageActive){
+						closeHelpBox();
+					}
+					stepFailCounter = 0;
+					LessonCurrentStep = 5;
+					runLessons(lessons.lessonOne.lessonOneStepFive);
+				}
+			}
+			break;
+		case 5:
+			if (value == 62930701394){
+				if(zoomedImageActive){
+					closeHelpBox();
+				}
+				endTime = Date.now();
+				stepsPassed++;
 
+				lessonOneRecap("One");
+				lessonOne = false;
+			}else{
+				stepFailCounter++;
+				document.querySelector("#rightHeader > h3").innerHTML = `Try again. You have ${2 - stepFailCounter} more tries.`;
+				if(stepFailCounter == 3){
+					if(zoomedImageActive){
+						closeHelpBox();
+					}
+					stepFailCounter = 0;
+					endTime = Date.now();
+					lessonOneRecap("One");
+					lessonOne = false;
+				}
+			}
+			break;
+
+		default:
+			break;
+	}
+}
 
 
 
@@ -722,13 +828,13 @@ const listOfProducts = {
 			"manualPrice": false
 		},
 		{
-			"PLU":5002099902,
+			"PLU":85002099902,
 			"description": "Wild Good Ice Cream",
 			"price": 5.99,
 			"manualPrice": false
 		},
 		{
-			"PLU":2930701394,
+			"PLU":62930701394,
 			"description": "Trident Gum",
 			"price": 1.39,
 			"manualPrice": false
@@ -786,7 +892,19 @@ const listOfProducts = {
 			"description": "Floral Upgrade",
 			"price": 69.99,
 			"manualPrice": false
-		}
+		},
+		{
+			"PLU": 4173558745,
+			"description": "PICS Candy",
+			"price": 2.99,
+			"manualPrice": false
+		},
+		{
+			"PLU": 4173525469,
+			"description": "PICS Chocolate",
+			"price": 1.99,
+			"manualPrice": false
+		},
 	]
 }
 
@@ -797,132 +915,50 @@ const spanContinue = `<span class='continueButtonStyle'>CONTINUE</span>`;
 
 const lessons = {
 	"lessonOne": {
-		"lessonOneStepOne": {
+		"lessonOneStepOne": { //runLessons(lessons.lessonOne.lessonOneStepOne)
 			"steps": {
-				"stepHeader": ["<h3>First, we will learn how to enter a product by its UPC code when it won't scan.</h3>", 0],
-				"image": [`<img class='imageW50H350' onclick='Helpbox("images/wildgoodUPC.jpeg")' src='images/wildgoodUPC.jpeg'>`,0],
-				"stepOne": ["<p class='panimate'>1) Find the barcode on the product.</p>",5500],
-				"stepTwo": ["<p class='panimate'>2) <strong>Use the number pad to enter the UPC found on the barcode.</strong></p>",7500],
-				"stepThree": [`<p class='panimate'>3) <strong>Press the ${spanEnter} button to complete the lookup.</strong></p>`,11000],
-				"stepFour": [`<p class='panimate'>4) If the product is not found, press the ${spanC} button to try again.</p>`,13500]
-			},
-			"progressTimer": {
-				"time":"15.5s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 15500
-			},
-			"Audio": {
-				"sound": lessonOneStepOneAudio
+				"title": "<h3>1 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/wildgoodUPC.jpg")' src='images/wildgoodUPC.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyEnterNormalUPC.jpg")' src='images/clickforhelp.jpg'>`,
 			}
 
 		},
-		"lessonOneStepTwo": {
+		"lessonOneStepTwo": {//runLessons(lessons.lessonOne.lessonOneStepTwo)
 			"steps":{
-				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepOne": ["<p class='panimate'>Wild Good Ice Cream was added to your order.</p>",1000],
-				"stepTwo": ["<p class='panimate'>lets try another one!</p>",4000],
-				"image": [`<img class='imageW50H350' onclick='Helpbox("images/applesaucePLU.jpeg")' src='images/applesaucePLU.jpeg'>`,5000],
-				"stepThree": [`<p class='panimate'>Same as last time, use the number pad to enter the UPC and press ${spanEnter}.</p>`,5200],
-				"stepFour": [`<p class='panimate'>If the product is not found, click the ${spanC} button to clear your screen and try again.</p>`,9500]
-			},
-			"progressTimer": {
-				"time":"14s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 14000
-			},
-			"Audio": {
-				"sound": lessonOneStepTwoAudio
-			}
-		},
-		"lessonOneStepTwoFail": {
-			"steps":{
-				"stepHeader": ["<h3>Oops!</h3>",0],
-				"stepOne": ["<p class='panimate'>The UPC you entered was not found.</p>",1000],
-				"stepTwo": ["<p class='panimate'>Let's try again!</p>",3300], 
-				"stepThree": ["<p class='panimate'>But remember, when the center digits do not work, you must include the leading digit.",4300],
-				"image": [`<img class='imageW50H350' onclick='Helpbox("images/applesaucePLU.jpeg")' src='images/applesaucePLU.jpeg'>`,5000],
-				"stepFour": [`<p class='panimate'>First, click the ${spanC} button to clear that Not Found box.</p>`,9000],
-				"stepFive": [`<p class='panimate'>After it's gone, <strong>use the number pad to enter the UPC and click ${spanEnter}.</strong></p>`,13000]
-			},
-			"progressTimer": {
-				"time":"17s",
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 17000
-			},
-			"Audio": {
-				"sound": lessonOneStepTwoFailAudio
+				"title": "<h3>2 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/applesauceUPC.jpg")' src='images/applesauceUPC.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyEnterNormalUPC.jpg")' src='images/clickforhelp.jpg'>`,
 			}
 		},
 		"lessonOneStepThree": {
 			"steps":{
-				"stepHeader": ["<h3>Great Work!</h3>",0],
-				"stepOne": ["<p class='panimate'>Applesauce was added to your order.</p>",1000],
-				"stepTwo": ["<p class='panimate'><strong>Remember...</strong></p>",3000],
-				"stepThree": ["<p class='panimate'>If the center digits do not work, try it again with the leading number.</p>",4200],
-				"image": [`<img  src='images/keyEnterNormalUPC.jpg' onclick='Helpbox("images/keyEnterNormalUPC.jpg")' height='300' width='90%'>`,7500],
-				"stepFour": ["<p class='panimate'>There are times when both methods will result in a Not Found error box.</p>",8000],
-				"stepFive": ["<p class='panimate'>In this case, you will need to ask your supervisor for help.</p>",12000],
-				"stepSix": [`<p class='panimate'><strong>Press the ${spanContinue} button to proceed to the next lesson.</strong></p>`,16000]
-			},
-			"progressTimer": {
-				"time":"19s"
-			},
-			"button": {
-				"status": false,
-				"time": 19000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": lessonOneStepThreeAudio
+				"title": "<h3>3 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/picsCandy.jpg")' src='images/picsCandy.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyEnterNormalUPC.jpg")' src='images/clickforhelp.jpg'>`,
+			}
+		},
+		"lessonOneStepFour": {
+			"steps":{
+				"title": "<h3>4 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/picsChocolate.jpg")' src='images/picsChocolate.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyEnterNormalUPC.jpg")' src='images/clickforhelp.jpg'>`,
+			}
+		},
+		"lessonOneStepFive": {
+			"steps":{
+				"title": "<h3>5 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/tridentGum.jpg")' src='images/tridentGum.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyEnterNormalUPC.jpg")' src='images/clickforhelp.jpg'>`,
 			}
 		}
 	},
 	"lessonTwo": {
 		"lessonTwoStepOne": {
 			"steps": {
-				"stepHeader": ["<h3>The next step is to understand the process of entering a product that has a scale label.</h3>", 0],
-				"image": [`<img height='360' width='90%' onclick='Helpbox("images/keyInScaleLabel.jpg")' src='images/keyInScaleLabel.jpg'>`,4000],
-				"stepOne": ["<p class='panimate'>This product belongs to the Meat, Seafood, or Deli category and has a random weight.</p>",5700],
-				"stepTwo": ["<p class='panimate'>In order to input this UPC, you will need to enter all digits excluding </p>",10500],
-				"stepThree": [`<p class='panimate'>the last one on the right-hand side, and then select the ${spanEnter} button.</p>`,13000],
-				"stepFour": ["<p class='panimate'>Give it a try with the UPC in the above picture.</p>",18000],
-				"stepFive": [`<p class='panimate'><strong>If you encounter an error message that reads "Not Found", click ${spanC} to try again.</strong></p>`,22000]
+				"title": "<h3>1 of 5</h3>",
+				"mainImage": `<img class='imageW50H350' onclick='Helpbox("images/groundBeef.jpg")' src='images/groundBeef.jpg'>`,
+				"altImage": `<img class='imageW50H350' onclick='showHelp("images/keyInScaleLabel.jpg")' src='images/clickforhelp.jpg'>`,
 
-			},
-			"progressTimer": {
-				"time":"26s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 26000
-			},
-			"Audio": {
-				"sound": lessonTwoStepOneAudio
 			}
 		},
 		"lessonTwoStepTwo": {
@@ -934,21 +970,6 @@ const lessons = {
 				"stepThree": ["<p class='panimate'>If you omit the last digit, the remaining digits represent the price of the product!!</p>",10000],
 				"stepFour": ["<p class='panimate'>Now that we can recognize a scale label, we know when to exclude the final digit.</p>",15000],
 				"stepFive": [`<p class='panimate'><strong>Click on the ${spanContinue} button to move forward.</strong></p>`,20000]
-			},	
-
-			"progressTimer": {
-				"time":"22s",
-			},
-			"button": {
-				"status": false,
-				"time": 22000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": lessonTwoStepTwoAudio
 			}
 		},
 		"lessonTwoStepThree":{
@@ -961,20 +982,6 @@ const lessons = {
 				"stepFour": ["<p class='panimate'>Now that we are familiar with the process of entering these UPCs, this should be easy.</p>",9000],
 				"stepFive": [`<p class='panimate'><strong>Give it a try now! And remember, </strong></p>`,14400],
 				"stepSix": [`<p class='panimate'><strong>if you see a "Not Found" error message, click on ${spanC} to try again.</strong></p>`,15700]
-			},
-			"progressTimer":{
-				"time": "20s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 20000
-			},
-			"Audio": {
-				"sound": lessonTwoStepThreeAudio
 			}
 		},
 		"lessonTwoStepFour":{
@@ -986,20 +993,6 @@ const lessons = {
 				"stepFour": ["<p class='panimate'>Remember to exclude the last digit when entering the UPC.</p>",15000],
 				"image": [`<img height='280' width='80%' onclick='Helpbox("images/keyInScaleLabel.jpg")' src='images/keyInScaleLabel.jpg'>`,17000],
 				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`,19000]
-			},
-			"progressTimer":{
-				"time": "21s"
-			},
-			"button": {
-				"status": false,
-				"time": 21000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": lessonTwoStepFourAudio
 			}
 		}
 		
@@ -1018,96 +1011,39 @@ const lessons = {
 				"stepSeven": ["<p class='panimate'>We must locate the 3-digit PLU code provided in the description</p>",27500],
 				"stepEight": ["<p class='panimate'>and enter it into the register for a lookup.</p>",30000],
 				"stepNine": [`<p class='panimate'><strong>Confused? Press the ${spanContinue} button, and we'll walk you through the process.</p>`,34000]
-			},	
-
-			"progressTimer": {
-				"time":"38s",
-			},
-			"button": {
-				"status": false,
-				"time": 38000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": lessonThreeStepOneAudio
 			}
 		},
 		"lessonThreeStepTwo":{
 			"steps": {
 				"stepHeader": ["<h3>More Information</h3>", 0],
-				"stepOne": ["<p class='panimate'>Take a look at this job aide.</p>",0],
-				"stepTwo": [`<img height='250' width='80%' onclick='Helpbox("images/keyInMeatOver100.jpg")' src='images/keyInMeatOver100.jpg'>`,1500],
-				"stepThree": ["<p class='panimate'>Look at the end of the discription, can you find the three digit PLU code?</p>",4000],
-				"stepFour": ["<p class='panimate'>This is the number we will use to perform a lookup.</p>",7000],
-				"stepFive": [`<p class='panimate'>Lets look back at the orginal item.</p>`,9000],
-				"image": [`<img height='250' width='60%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,10000],
-				"stepFour": [`<p class='panimate'><strong>Use the number pad to enter the PLU and click ${spanEnter}</strong></p>`,12000]
-			},
-			"progressTimer":{
-				"time": "14s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 14000
-			},
-			"Audio": {
-				"sound": "TODO"
+				"stepOne": ["<p class='panimate'>Please take a moment to review the first step involved in this process.</p>",0],
+				"stepTwo": [`<img height='250' width='80%' onclick='Helpbox("images/keyInMeatOver100.jpg")' src='images/keyInMeatOver100.jpg'>`, 1000],
+				"stepThree": ["<p class='panimate'>At the end of the description, try to locate the PLU code consisting of three digits.</p>", 4600],
+				"stepFour": ["<p class='panimate'>This code will be used to conduct a search.</p>", 10000],
+				"stepFive": [`<p class='panimate'>Now, let's look at the orginal item.</p>`,13000],
+				"image": [`<img height='250' width='60%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,14000],
+				"stepSix": [`<p class='panimate'><strong>Use the number pad to input the PLU and click ${spanEnter}</strong></p>`,15000]
 			}
 		},
 		"lessonThreeStepThree":{
 			"steps": {
 				"stepHeader": ["<h3>Wonderful Job!</h3>", 0],
-				"stepOne": ["<p class='panimate'>A pop-up box is now displayed for CAB BEEF TENDERLOIN.</p>", 0],
-				"stepTwo": ["<p class='panimate'>The next step is to locate the PRICE of the product.</p>", 3000],
-				"stepThree": ["<p class='panimate'>Lets look at that label again...</p>", 5500],
-				"image": [`<img height='300' width='80%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,7500],
-				"stepThree": [`<p class='panimate'>Now use the number pad to enter the PRICE and press ${spanEnter}.</p>`, 10000]
+				"stepOne": ["<p class='panimate'>A pop-up box is now displayed for CAB BEEF TENDERLOIN.</p>", 1500],
+				"stepTwo": ["<p class='panimate'>The next step is to find the PRICE of the product.</p>", 5000],
+				"stepThree": ["<p class='panimate'>Let's review the label again to locate the price.</p>", 7700],
+				"image": [`<img height='300' width='80%' onclick='Helpbox("images/tender14014.jpg")' src='images/tender14014.jpg'>`,8000],
+				"stepFour": [`<p class='panimate'>Now that we know the price, use the number pad to enter the amount and press ${spanEnter}.</p>`, 10500]
 				
-			},
-			"progressTimer":{
-				"time": "13s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 13000
-			},
-			"Audio": {
-				"sound": "sounds/lessonThreeStepThreeAudio.mp3"
 			}
 		},
 		"lessonThreeStepFour":{
 			"steps": {
-				"stepHeader": ["<h3>Now we're cooking with fire!</h3>", 0],
-				"stepOne": ["<p class='panimate'>CAB TENDERLOIN for $140.14 is added to the order.</p>", 0],
-				"stepTwo": ["<p class='panimate'>While the Meat department items have use this method to enter items over $99.99</p>", 3000],
-				"stepThree": ["<p class='panimate'>The Seafood and Deli departments do not.</p>", 5500],
-				"stepFour": ["<p class='panimate'>If you find one of these items, please call a supervisor to assist you.</p>", 7500],
-				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`, 10000],
-			},
-			"progressTimer":{
-				"time": "13s"
-			},
-			"button": {
-				"status": false,
-				"time": 13000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": "sounds/lessonThreeStepFour.mp3"
+				"stepHeader": ["<h3>You did it!</h3>", 0],
+				"stepOne": ["<p class='panimate'>The order now includes CAB TENDERLOIN for $140.14. </p>", 1000],
+				"stepTwo": ["<p class='panimate'>Please note that this method is used for entering Meat department items that cost </p>", 6200],
+				"stepThree": ["<p class='panimate'>over $99.99, but it is not used for Seafood and Deli department items. </p>", 9200],
+				"stepFour": ["<p class='panimate'>If you come across any of these items, kindly seek assistance from a supervisor. </p>", 17000],
+				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to move on to the next lesson.</strong></p>`, 22000],
 			}
 		}
 				
@@ -1122,21 +1058,7 @@ const lessons = {
 				"stepThree": ["<p class='panimate'>The sticker will have a three digit PLU code and a hand written price.</p>", 5000],
 				"image": [`<img height='400' width='80%' onclick='Helpbox("images/GroceryMarkdowns.jpg")' src='images/GroceryMarkdowns.jpg'>`,8000],
 				"stepFour": [`<p class='panimate'>Just like Meat items over $99.99, enter the three digit PLU, then the price of the item. </p>`, 9000],
-				"stepFive": [`<p class='panimate'><strong>Click ${spanContinue} to see a example and to try it out!.</strong></p>`, 12500],
-			},
-			"progressTimer":{
-				"time": "15s"
-			},
-			"button": {
-				"status": false,
-				"time": 15000
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": "sounds/lessonFourStepOne.mp3"
+				"stepFive": [`<p class='panimate'><strong>Click ${spanContinue} to see a example and to try it out!</strong></p>`, 12500],
 			}
 		},
 		"lessonFourStepTwo":{
@@ -1146,20 +1068,6 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>Check out this discontinued item. </p>", 500],
 				"stepTwo": ["<p class='panimate'>Do you see the PLU code on the markdown sticker?</p>", 2500],
 				"stepThree": [`<p class='panimate'><strong>Enter the three digits after the @ symbol and press ${spanEnter}</strong></p>`, 4500],
-			},
-			"progressTimer":{
-				"time": "7.5s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 7500
-			},
-			"Audio": {
-				"sound": "sounds/lessonFourStepTwo.mp3"
 			}
 		},
 		"lessonFourStepThree":{
@@ -1168,20 +1076,6 @@ const lessons = {
 				"stepOne": ["<p class='panimate'>The pop-up display for Grocery Discontinued is active.</p>", 0],
 				"image": [`<img height='500' width='60%' onclick='Helpbox("images/150code.jpg")' src='images/150code.jpg'>`,2500],
 				"stepTwo": [`<p class='panimate'><strong>Enter the price of the item and press ${spanEnter}</strong></p>`, 3200],
-			},
-			"progressTimer":{
-				"time": "6s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 6000
-			},
-			"Audio": {
-				"sound": "sounds/lessonFourStepThree.mp3"
 			}
 		},
 		"lessonFourStepFour":{
@@ -1193,20 +1087,6 @@ const lessons = {
 				"image": [`<img height='400' width='80%' onclick='Helpbox("images/GroceryMarkdowns.jpg")' src='images/GroceryMarkdowns.jpg'>`,8000],
 				"stepFour": ["<p class='panimate'>These codes are not to be used to change the price of a product.</p>", 9000],
 				"stepFive": [`<p class='panimate'><strong>Click the ${spanContinue} button to proceed to the next lesson.</strong></p>`, 11500],
-			},
-			"progressTimer":{
-				"time": "14.5s"
-			},
-			"button": {
-				"status": false,
-				"time": 14500
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": "sounds/lessonFourStepFour.mp3"
 			}
 		}
 
@@ -1221,20 +1101,6 @@ const lessons = {
 				"stepThree": ["<p class='panimate'>The sticker will have a five digit PLU code and a stamped price.</p>", 7000],
 				"stepFour": ["<p class='panimate'>This one is really easy!</p>", 9000],
 				"stepFive": [`<p class='panimate'><strong>Use the number pad to enter the five digits and press ${spanEnter}</strong></p>`, 10500],
-			},
-			"progressTimer":{
-				"time": "13.5s"
-			},
-			"button": {
-				"status": true,
-				"time": 0
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 13500
-			},
-			"Audio": {
-				"sound": "sounds/lessonFiveStepOne.mp3"
 			}
 		},
 		"lessonFiveStepTwo":{
@@ -1245,21 +1111,7 @@ const lessons = {
 				"stepThree": ["<p class='panimate'>You might also find a sheet like this.</p>", 5800],
 				"image": [`<img height='400' width='50%' onclick='Helpbox("images/m32floral.jpg")' src='images/m32floral.jpg'>`,8000],
 				"stepFour": [`<p class='panimate'>See PLU code on the bottom right? Remember to use that code for these products.</p>`, 8700],
-				"stepFive": [`<p class='panimate'><strong>Press ${spanContinue} to proceed to the nex lesson.</strong></p>`, 11700],
-			},
-			"progressTimer":{
-				"time": "14.8s"
-			},
-			"button": {
-				"status": false,
-				"time": 14800
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": "sounds/lessonFiveStepTwo.mp3"
+				"stepFive": [`<p class='panimate'><strong>Press ${spanContinue} to proceed to the next lesson.</strong></p>`, 11700],
 			}
 		}
 			
@@ -1275,20 +1127,6 @@ const lessons = {
 				"image": [`<img height='400' width='80%' onclick='Helpbox("images/ProduceBerryPLUs.jpg")' src='images/ProduceBerryPLUs.jpg'>`,9000],
 				"stepFour": ["<p class='panimate'>In the next few examples, use the training aide to input the products.</p>", 10000],
 				"stepFive": [`<p class='panimate'><strong>Press ${spanContinue} to get started!</strong></p>`, 13000],
-			},
-			"progressTimer":{
-				"time": "15.5s"
-			},
-			"button": {
-				"status": false,
-				"time": 15500
-			},
-			"enterButton": {
-				"value": "all",
-				"time": 0
-			},
-			"Audio": {
-				"sound": "sounds/lessonSixStepOne.mp3"
 			}
 		}
 	}
@@ -1296,68 +1134,159 @@ const lessons = {
 
 }
 
+function lessonOneRecap(lessonNumber){
+	const difference = endTime - startTime;
+
+	// Convert milliseconds to minutes and seconds
+	const minutes = Math.floor(difference / 60000);
+	const seconds = ((difference % 60000) / 1000).toFixed(0);
+
+	// Format the result into a string
+	const result = `${minutes} minutes and ${seconds} seconds`;
+
+
+	// caluculate the completion percentage
+	const passed = stepsPassed / 5;
+	const percent = passed * 100;
+
+	let header = document.querySelector("#rightHeader");
+	header.innerHTML = "";
+	header.innerHTML = `<h3>Lesson ${lessonNumber} Recap</h3>`;
+
+	let main = document.querySelector("#rightPanelMainContent");
+	main.innerHTML = "";
+	main.innerHTML = `<h3>Congratulations! You have completed Lesson ${lessonNumber}!</h3>
+						<br>
+					<p>Your completion time was ${result}.</p>
+					<br>
+					<p>Your completion percentage was ${percent}%.</p>
+					<br>
+					<button id="retryLessonOne">Retry this lesson.</button>`;
+
+	document.querySelector("#retryLessonOne").addEventListener("click", ()=> {runLessonSelect(lessonNumber);});
+
+	let alt = document.querySelector("#rightPanelAltContent");
+	alt.innerHTML = "";
+	alt.innerHTML = `<button id="startNextLesson">Launch Next Lesson</button>`;
+	let nextLesson;
+	switch (lessonNumber) {
+		case "One":
+			nextLesson = "Two";
+			break;
+		case "Two":
+			nextLesson = "Three";
+			break;
+		case "Three":
+			nextLesson = "Four";
+			break;
+		case "Four":
+			nextLesson = "Five";
+			break;
+		case "Five":
+			nextLesson = "Six";
+			break;
+	}
+	document.querySelector("#startNextLesson").addEventListener("click", ()=> {runLessonSelect(nextLesson);});
+}
 
 
 
+function runLessonSelect(lessonNumber){
+	switch (lessonNumber) {
+		case "One":
+				lessonOne = true;
+				lessonTwo = false;
+				lessonThree = false;
+				lessonFour = false;
+				lessonFive = false;
+				lessonSix = false;
 
+				stepFailCounter = 0;
+				stepsPassed = 0;
+				LessonCurrentStep = 1;
+
+				startTime = Date.now();
+
+				runLessons(lessons.lessonOne.lessonOneStepOne);
+			break;
+		case "Two":
+				lessonTwo = true;
+				lessonOne = false;
+				lessonThree = false;
+				lessonFour = false;
+				lessonFive = false;
+				lessonSix = false;
+
+				stepFailCounter = 0;
+				stepsPassed = 0;
+				LessonCurrentStep = 1;
+
+				startTime = Date.now();
+
+				runLessons(lessons.lessonTwo.lessonTwoStepOne);
+			break;
+				
+		default:
+			break;
+	}
+
+}
 
 
 
 
 
 function runLessons(lesson){
-	let helpfulSection = document.querySelector("#rightPanelMainContent");
-	helpfulSection.innerHTML = "";
-	let progressBar = document.querySelector("#nextButtonAndProgressBarContainer > div");
-	document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = true;
+	let header = document.querySelector("#rightHeader");
+	header.innerHTML = "";
+	header.innerHTML = lesson.steps.title;
 
-	lesson.Audio.sound.play();
-	
-	Object.entries(lesson.steps).forEach(([key, value]) => {
+	let main = document.querySelector("#rightPanelMainContent");
+	main.innerHTML = "";
+	main.innerHTML = lesson.steps.mainImage;
 
-		setTimeout(() =>{ 
-			let createADiv = document.createElement('div');
-			createADiv.innerHTML = value[0];
-			helpfulSection.appendChild(createADiv);
-		}, value[1]);
-	});
-
-	setTimeout(() =>{ 
-		document.querySelector("#nextButtonAndProgressBarContainer > button").disabled = lesson.button.status;
-	}, lesson.button.time);
-
-	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
-	progressBar.style.removeProperty("animation");
-	progressBar.offsetWidth;
-	progressBar.style.animation = `progressBar ${lesson.progressTimer.time} linear`;
-
-	document.querySelector("#numpadDiv15").style.pointerEvents = "none";
-	document.querySelector("#numpadDiv15").style.opacity = "0.2";
-
-	setTimeout(() =>{
-		document.querySelector("#numpadDiv15").style.pointerEvents = lesson.enterButton.value;
-		document.querySelector("#numpadDiv15").style.opacity = "1";
-	}, lesson.enterButton.time);
-	
+	let alt = document.querySelector("#rightPanelAltContent");
+	alt.innerHTML = "";
+	alt.innerHTML = lesson.steps.altImage;
 }
 
-function errorbox(title,content,image){
-	let grabmain = document.querySelector("#mainWindow");
+
+
+function landingPage(title,content,image){
+	let grabmain = document.querySelector("#containerWindow");
 	let outerDiv = document.createElement("div");
-	let register = document.querySelector("#registerDiv");
+	let register = document.querySelector("#containerWindow > aside");
 	outerDiv.id = "outerDivForErrorBox";
 	outerDiv.innerHTML += `${title}`;
 	outerDiv.innerHTML += `${image}`;
 	outerDiv.innerHTML += `${content}`;
-	outerDiv.addEventListener("click", closeErrorBox);
+	outerDiv.addEventListener("click", closeLandingPage);
 	grabmain.insertBefore(outerDiv,register);
 }
 
-function closeErrorBox(){
-	let grabmain = document.querySelector("#mainWindow");
+function closeLandingPage(){
+	let grabmain = document.querySelector("#containerWindow");
 	let grabErrorDiv = document.querySelector("#outerDivForErrorBox");
 	grabmain.removeChild(grabErrorDiv);
 }
+
+function showHelp(src){
+
+	let grabmain = document.querySelector("#rightPanelAltContent");
+	grabmain.innerHTML = "";
+	let outerDiv = document.createElement("img");
+	outerDiv.id = "showHelpImage";
+	outerDiv.src = src;
+	outerDiv.classList.add("imageW50H350");
+	grabmain.appendChild(outerDiv);
+}
+
+function closeHelp(){
+	let grabmain = document.querySelector("#rightPanelAltContent");
+	let grabErrorDiv = document.querySelector("#showHelpImage");
+	grabmain.removeChild(grabErrorDiv);
+}
+
 
 function Helpbox(src){
 	zoomedImageActive = true;
@@ -1381,40 +1310,6 @@ function closeHelpBox(){
 
 
 
-function lessonOneEnterButton(value){
-			
-			if(lessonOneStepOne){
-
-				if(value == 5002099902){
-					if(zoomedImageActive){
-						closeHelpBox();
-					}
-					runLessons(lessons.lessonOne.lessonOneStepTwo);
-					lessonOneStepTwo = true;	
-					lessonOneStepOne = false;
-					
-
-				}
-			}else if(lessonOneStepTwo){
-				if(value == 72277600232){
-					if(zoomedImageActive){
-						closeHelpBox();
-					}
-					lessonOneStepTwo = false;
-					lessonOneStepThree = true;
-					lessonTwoStepOne = true;
-					runLessons(lessons.lessonOne.lessonOneStepThree);
-					lessonOne = false;
-					lessonTwo = true;
-				}
-				else{
-					if(zoomedImageActive){
-						closeHelpBox();
-					}
-					runLessons(lessons.lessonOne.lessonOneStepTwoFail);
-				}
-			}	
-		}
 
 
 
@@ -1563,12 +1458,17 @@ function startLessonFromLink(){
 
 
 // Event listener for the the quick links to the lessons
+/*
 document.querySelector("#lessonOneLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonTwoLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonThreeLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonFourLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonFiveLink").addEventListener("click", startLessonFromLink);
 document.querySelector("#lessonSixLink").addEventListener("click", startLessonFromLink);
+
+*/
+
+document.querySelector("#start").addEventListener("click", () => { runLessonSelect("One"); });
 
 
 
@@ -1585,9 +1485,9 @@ function numberPadButtonKey(key){
 	}
 
 
+
+	//Function to allow the user to use the keyboard to enter the item code
 window.addEventListener("keydown", function(event) {
-
-
   switch (event.key) {
 	case "1":
 		numberPadButtonKey(1);
