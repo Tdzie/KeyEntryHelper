@@ -9,18 +9,7 @@ const lessonOneLandingPage = ``;
 
 // sounds
 let registerBeep = new Audio('sounds/registerBeep.mp3');
-const lessonOneStepOneAudio = new Audio('sounds/LessonOneStepOne.mp3');
-const lessonOneStepTwoAudio = new Audio('sounds/LessonOneStepTwo.mp3');
-const lessonOneStepThreeAudio = new Audio('sounds/LessonOneStepThree.mp3');
-const lessonOneStepTwoFailAudio = new Audio('sounds/LessonOneStepTwoFail.mp3');
-const lessonTwoStepOneAudio = new Audio('sounds/LessonTwoStepOne.mp3');
-const lessonTwoStepTwoAudio = new Audio('sounds/LessonTwoStepTwo.mp3');
-const lessonTwoStepThreeAudio = new Audio('sounds/LessonTwoStepThree.mp3');
-const lessonTwoStepFourAudio = new Audio('sounds/LessonTwoStepFour.mp3');
-const lessonThreeStepOneAudio = new Audio('sounds/LessonThreeStepOne.mp3');
-const lessonThreeStepTwoAudio = new Audio('sounds/LessonThreeStepTwo.mp3');
-const lessonThreeStepThreeAudio = new Audio('sounds/LessonThreeStepThree.mp3');
-const lessonThreeStepFourAudio = new Audio('sounds/LessonThreeStepFour.mp3');
+
 
 //Lesson states
 var stepFailCounter = 0;
