@@ -937,7 +937,7 @@ const listOfProducts = {
 			"price": 120.17,
 			"manualPrice": true,
 			"image": "images/598rib12017.jpeg",
-			"UPCtype": "ScaleOver100",
+			"UPCType": "ScaleOver100",
 			"helper": "images/keyInMeatOver100.jpg"
 		},
 		{
@@ -946,7 +946,7 @@ const listOfProducts = {
 			"price": 119.09,
 			"manualPrice": true,
 			"image": "images/583wholetender11909.jpeg",
-			"UPCtype": "ScaleOver100",
+			"UPCType": "ScaleOver100",
 			"helper": "images/keyInMeatOver100.jpg"
 		},
 		{
@@ -955,7 +955,7 @@ const listOfProducts = {
 			"price": 140.39,
 			"manualPrice": true,
 			"image": "images/589bproast14039.jpeg",
-			"UPCtype": "ScaleOver100",
+			"UPCType": "ScaleOver100",
 			"helper": "images/keyInMeatOver100.jpg"
 		},
 		{
@@ -964,7 +964,7 @@ const listOfProducts = {
 			"price": 1110.77,
 			"manualPrice": true,
 			"image": "images/684cabbeef11077.jpeg",
-			"UPCtype": "ScaleOver100",
+			"UPCType": "ScaleOver100",
 			"helper": "images/keyInMeatOver100.jpg"
 		}
 	]
