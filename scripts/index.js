@@ -961,7 +961,7 @@ const listOfProducts = {
 		{
 			"PLU": 684,
 			"description": "CAB Beef",
-			"price": 1110.77,
+			"price": 110.77,
 			"manualPrice": true,
 			"image": "images/684cabbeef11077.jpeg",
 			"UPCType": "ScaleOver100",
