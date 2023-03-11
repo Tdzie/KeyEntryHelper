@@ -42,6 +42,14 @@ var startTime, endTime, timeDiff;
 
 // Tablet layout
 
+function shuffleArray(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+	  const j = Math.floor(Math.random() * (i + 1));
+	  [array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+  }
+
 function tabletCss(){
 	document.querySelector("body > header").classList.add("hideDisplay");
 	document.querySelector("body > div > aside").classList.add("hideDisplay");
@@ -604,7 +612,7 @@ function runLessons(product) {
 	
 	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade" || product.UPCType == "Berries"){
 		lessonPassValue = product.PLU;
-	}else if (product.UPCType == "ScaleOver100"|| product.UPC == "Markdown"){
+	}else if (product.UPCType == "ScaleOver100"|| product.UPCType == "Markdown"){
 		twoStepLesson = true;
 		lessonPassValue = product.price;
 		firstStepValue = product.PLU;
@@ -782,10 +790,11 @@ function selectLesson(number) {
 				currentLessonNumber = 7;
 				lessonReset()
 				listOfProducts.product.forEach(element => {
-					if ((element.UPCType == "Berries" ||element.UPCType == "Markdown" || element.UPCType == "FloralUpgrade" || element.UPCType == "ScaleOver100" || element.UPCType == "Scale" || element.UPCType == "Normal") && element.image != null) {
+					if (element.image != null) {
 						lessonArray.push(element);
 					}
 				});
+				lessonArray = shuffleArray(lessonArray);
 				break;
 		default:
 			break;
