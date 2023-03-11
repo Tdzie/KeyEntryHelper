@@ -794,13 +794,13 @@ function selectLesson(number) {
 						lessonArray.push(element);
 					}
 				});
-				lessonArray = shuffleArray(lessonArray);
+
 				break;
 		default:
 			break;
 	}
 
-	
+	lessonArray = shuffleArray(lessonArray);
 	lessonEndIndex = lessonArray.length - 1;
 	startTime = Date.now();
 	runLessons(lessonArray[0]);
@@ -1094,7 +1094,7 @@ const listOfProducts = {
 			"helper": "images/GroceryMarkdowns.jpg"
 		},
 		{
-			"PLU": 201,
+			"PLU": 150,
 			"description": "Grocery Markdown",
 			"price": 7.00,
 			"manualPrice": true,
