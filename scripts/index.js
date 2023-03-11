@@ -780,13 +780,13 @@ function selectLesson(number) {
 			});
 			break;
 
-			case 7:
+		case 7:
 				lessonThree = false;
 				lessonOne = false;
 				lessonTwo = false;
 				lessonFour = false;
 				lessonFive = false;
-				lessonSix = true;
+				lessonSix = false;
 				currentLessonNumber = 7;
 				lessonReset()
 				listOfProducts.product.forEach(element => {
