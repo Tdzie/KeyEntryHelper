@@ -647,7 +647,6 @@ function lessonCheck(value){
 			}	
 		
     }else{
-		twoStepLesson = false;
 		if (value != firstStepValue) {
 			twoStepLesson = true;
 			stepFailCounter++;
@@ -664,6 +663,8 @@ function lessonCheck(value){
 					lessonRecap(currentLessonNumber);
 				}
 			}
+		}else{
+			twoStepLesson = false;
 		}
 	}
 	
