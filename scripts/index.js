@@ -602,7 +602,7 @@ function runLessons(product) {
 	alt.innerHTML = `<img class='h100w100' onclick='showHelp("${product.helper}")' src='images/clickforhelp.jpg'>`;
 
 	
-	if(product.UPCType == "Normal" || product.UPCType == "Scale"){
+	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade"){
 		lessonPassValue = product.PLU;
 	}else if (product.UPCType == "ScaleOver100"){
 		twoStepLesson = true;
