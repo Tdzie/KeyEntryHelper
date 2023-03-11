@@ -900,7 +900,7 @@ const listOfProducts = {
 			"description": "Corned Beef",
 			"price": 26.74,
 			"manualPrice": false,
-			"image": "images/cornedBeef2674.jpg",
+			"image": "images/cornedbeef2674.jpg",
 			"UPCType": "Scale",
 			"helper": "images/keyInScaleLabel.jpg"
 		},
