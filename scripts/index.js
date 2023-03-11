@@ -725,6 +725,22 @@ function selectLesson(number) {
 				}
 			});
 			break;
+			case 4:
+				lessonThree = false;
+				lessonOne = false;
+				lessonTwo = false;
+				lessonFour = true;
+				lessonFive = false;
+				lessonSix = false;
+				currentLessonNumber = 4;
+				lessonReset()
+				listOfProducts.product.forEach(element => {
+					if (element.UPCType == "FloralUpgrade" && element.image != null) {
+						lessonArray.push(element);
+					}
+				});
+				break;
+
 		default:
 			break;
 	}
@@ -865,7 +881,7 @@ const listOfProducts = {
 			"description": "Floral Upgrade",
 			"price": 69.99,
 			"manualPrice": false,
-			"image": "images/m32floral6999.jpg",
+			"image": null,
 			"UPCType": "FloralUpgrade",
 			"helper": "images/keyEnterFloralUpgrades.jpg"
 		},
@@ -967,6 +983,51 @@ const listOfProducts = {
 			"image": "images/684cabbeef11077.jpeg",
 			"UPCType": "ScaleOver100",
 			"helper": "images/keyInMeatOver100.jpg"
+		},
+		{
+			"PLU": 35831,
+			"description": "Floral Upgrade",
+			"price": 54.99,
+			"manualPrice": false,
+			"image": "images/floral5499.jpeg",
+			"UPCType": "FloralUpgrade",
+			"helper": "images/keyEnterFloralUpgrades.jpg"
+		},
+		{
+			"PLU": 35835,
+			"description": "Floral Upgrade",
+			"price": 89.99,
+			"manualPrice": false,
+			"image": "images/floral8999.jpeg",
+			"UPCType": "FloralUpgrade",
+			"helper": "images/keyEnterFloralUpgrades.jpg"
+		},
+		{
+			"PLU": 35755,
+			"description": "Floral Upgrade",
+			"price": 29.99,
+			"manualPrice": false,
+			"image": "images/floral2999.jpeg",
+			"UPCType": "FloralUpgrade",
+			"helper": "images/keyEnterFloralUpgrades.jpg"
+		},
+		{
+			"PLU": 35211,
+			"description": "Floral Upgrade",
+			"price": 46.99,
+			"manualPrice": false,
+			"image": "images/floral4699.jpeg",
+			"UPCType": "FloralUpgrade",
+			"helper": "images/keyEnterFloralUpgrades.jpg"
+		},
+		{
+			"PLU": 35753,
+			"description": "Floral Upgrade",
+			"price": 26.99,
+			"manualPrice": false,
+			"image": "images/floral2699.jpeg",
+			"UPCType": "FloralUpgrade",
+			"helper": "images/keyEnterFloralUpgrades.jpg"
 		}
 	]
 }
