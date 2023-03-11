@@ -780,7 +780,7 @@ function selectLesson(number) {
 			});
 			break;
 
-			case 6:
+			case 7:
 				lessonThree = false;
 				lessonOne = false;
 				lessonTwo = false;
