@@ -602,9 +602,9 @@ function runLessons(product) {
 	alt.innerHTML = `<img class='h100w100' onclick='showHelp("${product.helper}")' src='images/clickforhelp.jpg'>`;
 
 	
-	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade"){
+	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade" || product.UPCType == "Berries"){
 		lessonPassValue = product.PLU;
-	}else if (product.UPCType == "ScaleOver100"){
+	}else if (product.UPCType == "ScaleOver100"|| product.UPC == "Markdown"){
 		twoStepLesson = true;
 		lessonPassValue = product.price;
 		firstStepValue = product.PLU;
@@ -725,22 +725,68 @@ function selectLesson(number) {
 				}
 			});
 			break;
-			case 4:
+		case 4:
+			lessonThree = false;
+			lessonOne = false;
+			lessonTwo = false;
+			lessonFour = true;
+			lessonFive = false;
+			lessonSix = false;
+			currentLessonNumber = 4;
+			lessonReset()
+			listOfProducts.product.forEach(element => {
+				if (element.UPCType == "FloralUpgrade" && element.image != null) {
+					lessonArray.push(element);
+				}
+			});
+			break;
+		case 5:
+			lessonThree = false;
+			lessonOne = false;
+			lessonTwo = false;
+			lessonFour = false;
+			lessonFive = true;
+			lessonSix = false;
+			currentLessonNumber = 5;
+			lessonReset()
+			listOfProducts.product.forEach(element => {
+				if (element.UPCType == "Markdown" && element.image != null) {
+					lessonArray.push(element);
+				}
+			});
+			break;
+
+		case 6:
+			lessonThree = false;
+			lessonOne = false;
+			lessonTwo = false;
+			lessonFour = false;
+			lessonFive = false;
+			lessonSix = true;
+			currentLessonNumber = 6;
+			lessonReset()
+			listOfProducts.product.forEach(element => {
+				if (element.UPCType == "Berries" && element.image != null) {
+					lessonArray.push(element);
+				}
+			});
+			break;
+
+			case 6:
 				lessonThree = false;
 				lessonOne = false;
 				lessonTwo = false;
-				lessonFour = true;
+				lessonFour = false;
 				lessonFive = false;
-				lessonSix = false;
-				currentLessonNumber = 4;
+				lessonSix = true;
+				currentLessonNumber = 7;
 				lessonReset()
 				listOfProducts.product.forEach(element => {
-					if (element.UPCType == "FloralUpgrade" && element.image != null) {
+					if ((element.UPCType == "Berries" ||element.UPCType == "Markdown" || element.UPCType == "FloralUpgrade" || element.UPCType == "ScaleOver100" || element.UPCType == "Scale" || element.UPCType == "Normal") && element.image != null) {
 						lessonArray.push(element);
 					}
 				});
 				break;
-
 		default:
 			break;
 	}
@@ -1028,6 +1074,87 @@ const listOfProducts = {
 			"image": "images/floral2699.jpeg",
 			"UPCType": "FloralUpgrade",
 			"helper": "images/keyEnterFloralUpgrades.jpg"
+		},
+		{
+			"PLU": 150,
+			"description": "Grocery Discontinued",
+			"price": 2.91,
+			"manualPrice": true,
+			"image": "images/150291.jpeg",
+			"UPCType": "Markdown",
+			"helper": "images/GroceryMarkdowns.jpg"
+		},
+		{
+			"PLU": 201,
+			"description": "Grocery Markdown",
+			"price": 7.00,
+			"manualPrice": true,
+			"image": "images/201700.jpeg",
+			"UPCType": "Markdown",
+			"helper": "images/GroceryMarkdowns.jpg"
+		},
+		{
+			"PLU": 150,
+			"description": "Grocery Discontinued",
+			"price": 5.00,
+			"manualPrice": true,
+			"image": "images/150500.jpeg",
+			"UPCType": "Markdown",
+			"helper": "images/GroceryMarkdowns.jpg"
+		},
+		{
+			"PLU": 204,
+			"description": "Grocery Markdown Tax",
+			"price": 1.80,
+			"manualPrice": true,
+			"image": "images/204180.jpeg",
+			"UPCType": "Markdown",
+			"helper": "images/GroceryMarkdowns.jpg"
+		},
+		{
+			"PLU": 201,
+			"description": "Grocery Discontinued",
+			"price": 10.00,
+			"manualPrice": true,
+			"image": "images/2011000.jpeg",
+			"UPCType": "Markdown",
+			"helper": "images/GroceryMarkdowns.jpg"
+		},
+		{
+			"PLU": 4247,
+			"description": "Strawberries",
+			"price": 3.33,
+			"manualPrice": false,
+			"image": "images/strawberry.jpeg",
+			"UPCType": "Berries",
+			"helper": "images/ProduceBerryPLUs.jpg"
+		},
+		{
+			"PLU": 4240,
+			"description": "Blueberries",
+			"price": 3.33,
+			"manualPrice": false,
+			"image": "images/blueberry.jpeg",
+			"UPCType": "Berries",
+			"helper": "images/ProduceBerryPLUs.jpg"
+		},
+		{
+			"PLU": 4239,
+			"description": "Blackberries",
+			"price": 3.33,
+			"manualPrice": false,
+			"image": "images/blackberry.jpeg",
+			"UPCType": "Berries",
+			"helper": "images/ProduceBerryPLUs.jpg"
+		},
+		{
+			"PLU": 4054,
+			"description": "Raspberries",
+			"price": 3.33,
+			"manualPrice": false,
+			"image": "images/raspberry.jpeg",
+			"UPCType": "Berries",
+			"helper": "images/ProduceBerryPLUs.jpg"
 		}
 	]
 }
