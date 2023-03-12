@@ -1165,9 +1165,9 @@ function lessonRecap(lessonNumber){
 	main.innerHTML = "";
 	main.innerHTML = `<h3>Congratulations! You have completed Lesson ${lessonNumber}!</h3>
 						<br>
-					<p>Your completion time was ${result}.</p>
+					<h5>Your completion time was ${result}.</h5>
 					<br>
-					<p>Your completion percentage was ${percent}%.</p>
+					<h5>Your completion percentage was ${percent}%.</h5>
 					<br>
 					<button id="retryLessonOne">Retry this lesson.</button>`;
 
