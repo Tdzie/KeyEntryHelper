@@ -233,12 +233,24 @@ body{
         top: 4%;
         left: 50%;
         transform: translate(-50%, 0%);
-    width: 1000px;
-    height: 700px;
+    width: 80%;
+    height: 80%;
     background-color:  black;
     z-index: 1;
     border: #0d6efd 5px outset;
     padding: 1%;
+}
+#outerDivForLessonPopup{
+    position: absolute;
+        top: 4%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 80%;
+        height: 80%;
+        background-color: black;
+        z-index: 1;
+        border: #0d6efd 5px outset;
+        padding: 1%;
 }
 
 #outerDivForHelpBox{

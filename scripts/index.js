@@ -11,7 +11,7 @@ var itemChildIndex = 1;
 // sounds
 let registerBeep = new Audio('sounds/registerBeep.mp3');
 
-
+let menu = false;
 //Lesson states
 var stepFailCounter = 0;
 var stepsPassed = 0;
@@ -1189,13 +1189,10 @@ function findDifficulty(){
 	switch (failsAllowed) {
 		case 1:
 			return "Hard";
-			break;
 		case 2:
 			return "Medium";
-			break;
 		case 3:
 			return "Easy";
-			break;
 		default:
 			break;
 	}
@@ -1234,7 +1231,10 @@ const settingsContent = `<ul>
 function setDiff(difficulty){
 	failsAllowed = difficulty;
 }
+
+
 function landingPage(title,content){
+	if (!menu){
 	let grabmain = document.querySelector("#containerWindow");
 	let outerDiv = document.createElement("div");
 	let register = document.querySelector("#containerWindow > aside");
@@ -1263,9 +1263,26 @@ function landingPage(title,content){
 				break;
 		}
 	}
+	menu = true;
+	}
+
+}
+
+function lessonPopup(content){
+	let grabmain = document.querySelector("#containerWindow");
+	let outerDiv = document.createElement("div");
+	let register = document.querySelector("#containerWindow > aside");
+
+	outerDiv.id = "outerDivForLessonPopup";
+	outerDiv.innerHTML += `${content}`;
+
+	outerDiv.addEventListener("click", closeLandingPage);
+
+	grabmain.insertBefore(outerDiv, register);
 }
 
 function closeLandingPage(){
+	menu = false;
 	let grabmain = document.querySelector("#containerWindow");
 	let grabErrorDiv = document.querySelector("#outerDivForErrorBox");
 	grabmain.removeChild(grabErrorDiv);
@@ -1280,7 +1297,8 @@ function showHelp(src){
 	outerDiv.id = "showHelpImage";
 	outerDiv.src = src;
 	outerDiv.classList.add("h100w100");
-	grabmain.appendChild(outerDiv);
+	grabmain.appendChild(outerDiv);	
+	
 }
 
 function closeHelp(){
