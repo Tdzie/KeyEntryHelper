@@ -8,12 +8,27 @@
 #leftSide{
     width: 35px;
 }
+#containerWindow{
+    padding-top: 1%;
+    display: grid;
+}
+body>nav{
+    height: 35px;
+}
+body>nav>div>h5{
+    padding: 0%;
+    margin: 0%;
+}
 
+
+#navbarNav>ul>li{
+    padding-top: 0%;
+}
     @media screen and (min-width: 1441px) {
         .containerDiv{
             display: grid;
             grid-template-areas: "aside main section";
-            grid-template-columns: 5fr 5fr;
+            grid-template-columns: 8fr 5fr;
             gap: 1rem;
             padding-top: 1.5rem;
         }
@@ -100,6 +115,22 @@
 li{
     font-size: 1.3rem;
     cursor: pointer;
+}
+#outerDivForErrorBox > ul > li{
+    color: rgb(51, 162, 26);
+    font-weight: bold;
+    z-index: 100;
+    position: relative;
+}
+#itemDescription,#FoodStampLogo,#priceOfProduct{
+    overflow: hidden;
+}
+#outerDivForErrorBox>button{
+    position: absolute;
+    top: 85%;
+    right: 5%;
+    width: 10%;
+    height: 10%;
 }
 .cButtonStyle{
     color: red;
@@ -202,11 +233,12 @@ body{
         top: 4%;
         left: 50%;
         transform: translate(-50%, 0%);
-    width: 1400px;
-    height: 850px;
+    width: 1000px;
+    height: 700px;
     background-color:  black;
     z-index: 1;
     border: #0d6efd 5px outset;
+    padding: 1%;
 }
 
 #outerDivForHelpBox{
@@ -571,6 +603,7 @@ row start / col start / row end / col end*/
     font-size: 2rem;
     padding-left: 5%;
 }
+
 /*  Total price for the register*/
 #TotalEntryForTheRegister{
     display: grid;
@@ -608,7 +641,7 @@ row start / col start / row end / col end*/
     font-size: 1.5rem;
     padding-left: 5%;
     padding-bottom: 1%;
-    overflow-y: scroll;
+    overflow:hidden;
 }
 #itemDescription{
 display: grid;

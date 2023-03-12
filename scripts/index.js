@@ -2,7 +2,8 @@
 
 const lessonOneLandingPage = ``;
 
-
+var itemCount = 0;
+var itemChildIndex = 1;
 // const for elements
 	const mainWindow = document.getElementById("mainWindow");
 	const altWindow = document.getElementById("rightPanel");
@@ -29,12 +30,7 @@ var twoStepLesson = false;
 var firstStepValue = 0;
 var onSecondStep = false;
 
-var lessonOne = true;
-var lessonTwo = false;
-var lessonThree = false;
-var lessonFour = false;
-var lessonFive = false;
-var lessonSix = false;
+var lessonActive = false;
 
 
 // timing variables
@@ -88,6 +84,7 @@ let zoomedImageActive = false;
 
 
     function normalRegister(){
+		itemCount = 0;
 		manualEntryBoxActive = false;
 		normalRegisterActive = true;
 		mainWindow.innerHTML = "";
@@ -214,21 +211,23 @@ let zoomedImageActive = false;
 		document.getElementById("numpadDiv11").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv14").addEventListener("click", numberPadButtonPress);
 		document.getElementById("numpadDiv15").addEventListener("click", enterButtonPressPLULookup);
-		document.getElementById("insideRegisterGrid3").addEventListener("dblclick", normalRegister);
+		document.getElementById("insideRegisterGrid3").addEventListener("click", normalRegister);
 
     }
-
 
 	//Number Pad Functions
 	function numberPadButtonPress(){
 		//registerBeep.load();
 		//registerBeep.play();
+		let numbers = document.querySelector("#bottomEnterItemCode").innerHTML;
+		if(numbers.length < 14){
 		if(!notOnFileScreenActive){
 			if(manualEntryBoxActive || pluItemBoxActive)
 				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML,this.innerHTML);
 			else
 				document.getElementById("bottomEnterItemCode").innerHTML += this.innerHTML;
 		}
+	}
 	}
 
 	//Handle the manual entry input
@@ -538,6 +537,7 @@ function pluItemBox(desc){
 			document.querySelector("#itemDescription").innerHTML += departmentName + "<br>";
 			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
 			document.querySelector("#priceOfProduct").innerHTML += "$" + itemNumber.innerHTML + "<br>";
+			itemCount++;
 			orderTotal += parseFloat(itemNumber.innerHTML);
 			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
 			itemfound = true;
@@ -553,6 +553,7 @@ function pluItemBox(desc){
 			document.querySelector("#itemDescription").innerHTML += departmentName + "<br>";
 			document.querySelector("#FoodStampLogo").innerHTML += "F<br>";
 			document.querySelector("#priceOfProduct").innerHTML += "$" + itemNumber.innerHTML + "<br>";
+			itemCount++;
 			orderTotal += parseFloat(itemNumber.innerHTML);
 			document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
 			itemfound = true;
@@ -575,6 +576,8 @@ function pluItemBox(desc){
 						orderTotal += item.price;
 						document.querySelector("#TotalEntryForTheRegister").innerHTML = `$${orderTotal.toFixed(2)}`;
 						document.querySelector("#bottomEnterItemCode").innerHTML = "";
+						itemCount++;
+						
 					}else{
 						pluItemBox(item.description);
 					}
@@ -583,14 +586,31 @@ function pluItemBox(desc){
 				}	
 			}
 		}
-		
+			
+		if(itemfound == true){
+			
+		}
+
+
+		if(itemCount > 15){
+			let des = document.querySelector(`#itemDescription`);
+			let fs = document.querySelector(`#FoodStampLogo`);
+			let price = document.querySelector(`#priceOfProduct`);
+
+			des.innerHTML = des.innerHTML.substring(des.innerHTML.indexOf("<br>")+4);
+			fs.innerHTML = fs.innerHTML.substring(fs.innerHTML.indexOf("<br>")+4);
+			price.innerHTML = price.innerHTML.substring(price.innerHTML.indexOf("<br>")+4);
+			itemCount--;
+		}
 	
 		if(itemfound == false){
 			notOnFileScreen();
 		}
 
+		if(lessonActive){
+			lessonCheck(itemNumber);
+		}
 		
-		lessonCheck(itemNumber);
 		
 	}
 
@@ -687,16 +707,11 @@ function lessonReset(){
 }
 //Lessons
 function selectLesson(number) {
+			lessonReset();
+			currentLessonNumber = number;
+			lessonActive = true;
 	switch (number) {
 		case 1:
-			lessonOne = true;
-			lessonTwo = false;
-			lessonThree = false;
-			lessonFour = false;
-			lessonFive = false;
-			lessonSix = false;
-
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "Normal" && element.image != null) {
 						lessonArray.push(element);
@@ -704,14 +719,6 @@ function selectLesson(number) {
 			});
 			break;
 		case 2:
-			lessonTwo = true;
-			lessonOne = false;
-			lessonThree = false;
-			lessonFour = false;
-			lessonFive = false;
-			lessonSix = false;
-			currentLessonNumber = 2;
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "Scale" && element.image != null) {
 					lessonArray.push(element);
@@ -719,14 +726,6 @@ function selectLesson(number) {
 			});
 			break;
 		case 3:
-			lessonThree = true;
-			lessonOne = false;
-			lessonTwo = false;
-			lessonFour = false;
-			lessonFive = false;
-			lessonSix = false;
-			currentLessonNumber = 3;
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "ScaleOver100" && element.image != null) {
 					lessonArray.push(element);
@@ -734,14 +733,6 @@ function selectLesson(number) {
 			});
 			break;
 		case 4:
-			lessonThree = false;
-			lessonOne = false;
-			lessonTwo = false;
-			lessonFour = true;
-			lessonFive = false;
-			lessonSix = false;
-			currentLessonNumber = 4;
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "FloralUpgrade" && element.image != null) {
 					lessonArray.push(element);
@@ -749,14 +740,6 @@ function selectLesson(number) {
 			});
 			break;
 		case 5:
-			lessonThree = false;
-			lessonOne = false;
-			lessonTwo = false;
-			lessonFour = false;
-			lessonFive = true;
-			lessonSix = false;
-			currentLessonNumber = 5;
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "Markdown" && element.image != null) {
 					lessonArray.push(element);
@@ -765,14 +748,6 @@ function selectLesson(number) {
 			break;
 
 		case 6:
-			lessonThree = false;
-			lessonOne = false;
-			lessonTwo = false;
-			lessonFour = false;
-			lessonFive = false;
-			lessonSix = true;
-			currentLessonNumber = 6;
-			lessonReset()
 			listOfProducts.product.forEach(element => {
 				if (element.UPCType == "Berries" && element.image != null) {
 					lessonArray.push(element);
@@ -781,21 +756,12 @@ function selectLesson(number) {
 			break;
 
 		case 7:
-				lessonThree = false;
-				lessonOne = false;
-				lessonTwo = false;
-				lessonFour = false;
-				lessonFive = false;
-				lessonSix = false;
-				currentLessonNumber = 7;
-				lessonReset()
-				listOfProducts.product.forEach(element => {
-					if (element.image != null) {
-						lessonArray.push(element);
-					}
-				});
-
-				break;
+			listOfProducts.product.forEach(element => {
+				if (element.image != null) {
+					lessonArray.push(element);
+				}
+			});
+			break;
 		default:
 			break;
 	}
@@ -1170,6 +1136,7 @@ const listOfProducts = {
 
 
 function lessonRecap(lessonNumber){
+	lessonActive = false;
 	endTime = Date.now();
 	const difference = endTime - startTime;
 
@@ -1212,17 +1179,49 @@ function lessonRecap(lessonNumber){
 
 
 
+const lessonTitle = `<h3>Select a lesson.</h3>`;
+const lessonContent = `<ul>
+							<li id="lessonOneLink" onclick='selectLesson(1)' value="1">Normal UPC overview</li>
+							<li id="lessonTwoLink" onclick='selectLesson(2)' value="2">Scale label overview</li>
+							<li id="lessonThreeLink" onclick='selectLesson(3)' value="3">Meat Dept. product over $99.99</li>
+							<li id="lessonFourLink" onclick='selectLesson(4)' value="4">Floral upgrade codes</li>
+       						<li id="lessonFiveLink" onclick='selectLesson(5)' value="5">Grocery Markdown</li>
+       						<li id="lessonSixLink" onclick='selectLesson(6)' value="6">Produce berries</li>
+       						<li id="lessonSevenLink" onclick='selectLesson(7)' value="7">Practice</li>
+						</ul>`;
 
+const settingsTitle = `<h3>Choose Your Settings.</h3>`;
+const settingsContent = `<ul>
+							<li>Difficulty</li>
+							<li id="settingOneLink">
+								<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+								<input type="radio" class="btn-check" name="btnradio" onclick='setDiff(3)' id="btnradio1" autocomplete="off" checked>
+								<label class="btn btn-outline-primary" for="btnradio1">Easy</label>
 
-function landingPage(title,content,image){
+								<input type="radio" class="btn-check" name="btnradio" onclick='setDiff(2)' id="btnradio2" autocomplete="off">
+								<label class="btn btn-outline-primary" for="btnradio2">Medium</label>
+
+								<input type="radio" class="btn-check" name="btnradio" onclick='setDiff(1)' id="btnradio3" autocomplete="off">
+								<label class="btn btn-outline-primary" for="btnradio3">Hard</label>
+								</div>
+							</li>
+						</ul>
+						<button type="button" onclick="closeLandingPage()" class="btn btn-success">Close</button>`;
+
+function setDiff(difficulty){
+	failsAllowed = difficulty;
+}
+function landingPage(title,content){
 	let grabmain = document.querySelector("#containerWindow");
 	let outerDiv = document.createElement("div");
 	let register = document.querySelector("#containerWindow > aside");
 	outerDiv.id = "outerDivForErrorBox";
 	outerDiv.innerHTML += `${title}`;
-	outerDiv.innerHTML += `${image}`;
 	outerDiv.innerHTML += `${content}`;
-	outerDiv.addEventListener("click", closeLandingPage);
+	if (title == "<h3>Select a lesson.</h3>"){
+		outerDiv.addEventListener("click", closeLandingPage);
+	}
+
 	grabmain.insertBefore(outerDiv,register);
 }
 
@@ -1231,6 +1230,7 @@ function closeLandingPage(){
 	let grabErrorDiv = document.querySelector("#outerDivForErrorBox");
 	grabmain.removeChild(grabErrorDiv);
 }
+
 
 function showHelp(src){
 
@@ -1273,26 +1273,29 @@ function closeHelpBox(){
 
 
 
-
+function addEventsForLessons(){
 // Event listener for the the quick links to the lessons
-/*
-document.querySelector("#lessonOneLink").addEventListener("click", startLessonFromLink);
-document.querySelector("#lessonTwoLink").addEventListener("click", startLessonFromLink);
-document.querySelector("#lessonThreeLink").addEventListener("click", startLessonFromLink);
-document.querySelector("#lessonFourLink").addEventListener("click", startLessonFromLink);
-document.querySelector("#lessonFiveLink").addEventListener("click", startLessonFromLink);
-document.querySelector("#lessonSixLink").addEventListener("click", startLessonFromLink);
 
-*/
+document.querySelector("#lessonOneLink").addEventListener("click", window.alert("Lesson One"));
+document.querySelector("#lessonTwoLink").addEventListener("click", );
+document.querySelector("#lessonThreeLink").addEventListener("click", );
+document.querySelector("#lessonFourLink").addEventListener("click", );
+document.querySelector("#lessonFiveLink").addEventListener("click", );
+document.querySelector("#lessonSixLink").addEventListener("click", );
+document.querySelector("#lessonSevenLink").addEventListener("click", );
+
+}
 
 document.querySelector("#start").addEventListener("click", () => { selectLesson(1); });
-
-
+document.querySelector("#navbarNav > ul > li:nth-child(1) > a").addEventListener("click", () => { landingPage(lessonTitle, lessonContent); addEventsForLessons;});
+document.querySelector("#navbarNav > ul > li:nth-child(2) > a").addEventListener("click", () => { landingPage(settingsTitle, settingsContent); });
 
 
 function numberPadButtonKey(key){
 		//registerBeep.load();
 		//registerBeep.play();
+	let numbers = document.querySelector("#bottomEnterItemCode").innerHTML;
+	if (numbers.length < 14) {
 		if(!notOnFileScreenActive){
 			if(manualEntryBoxActive || pluItemBoxActive)
 				document.querySelector("#priceInputInManualEntry").innerHTML = addToManualEntryPrice(document.querySelector("#priceInputInManualEntry").innerHTML, key);
@@ -1300,6 +1303,7 @@ function numberPadButtonKey(key){
 				document.getElementById("bottomEnterItemCode").innerHTML += key;
 		}
 	}
+}
 
 
 
