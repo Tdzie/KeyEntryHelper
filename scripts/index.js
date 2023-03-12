@@ -1229,19 +1229,13 @@ function landingPage(title,content){
 	if(title == "<h3>Choose Your Settings.</h3>"){
 		switch (failsAllowed) {
 			case 1:
-				document.querySelector("#btnradio1").checked = true;
-				document.querySelector("#btnradio2").checked = false;
-				document.querySelector("#btnradio3").checked = false;
+				document.querySelector("#btnradio3").checked = true;
 				break;
 			case 2:
-				document.querySelector("#btnradio1").checked = false;
 				document.querySelector("#btnradio2").checked = true;
-				document.querySelector("#btnradio3").checked = false;
 				break;
 			case 3:
-				document.querySelector("#btnradio1").checked = false;
-				document.querySelector("#btnradio2").checked = false;
-				document.querySelector("#btnradio3").checked = true;
+				document.querySelector("#btnradio1").checked = true;
 			default:
 				break;
 		}
