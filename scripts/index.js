@@ -1226,6 +1226,10 @@ function landingPage(title,content){
 	if (title == "<h3>Select a lesson.</h3>"){
 		outerDiv.addEventListener("click", closeLandingPage);
 	}
+	
+
+	grabmain.insertBefore(outerDiv,register);
+	
 	if(title == "<h3>Choose Your Settings.</h3>"){
 		switch (failsAllowed) {
 			case 1:
@@ -1240,8 +1244,6 @@ function landingPage(title,content){
 				break;
 		}
 	}
-
-	grabmain.insertBefore(outerDiv,register);
 }
 
 function closeLandingPage(){
