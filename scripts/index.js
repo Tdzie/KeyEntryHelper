@@ -1226,6 +1226,26 @@ function landingPage(title,content){
 	if (title == "<h3>Select a lesson.</h3>"){
 		outerDiv.addEventListener("click", closeLandingPage);
 	}
+	if(title == <h3>Choose Your Settings.</h3>){
+		switch (failsAllowed) {
+			case 1:
+				document.querySelector("#btnradio1").checked = true;
+				document.querySelector("#btnradio2").checked = false;
+				document.querySelector("#btnradio3").checked = false;
+				break;
+			case 2:
+				document.querySelector("#btnradio1").checked = false;
+				document.querySelector("#btnradio2").checked = true;
+				document.querySelector("#btnradio3").checked = false;
+				break;
+			case 3:
+				document.querySelector("#btnradio1").checked = false;
+				document.querySelector("#btnradio2").checked = false;
+				document.querySelector("#btnradio3").checked = true;
+			default:
+				break;
+		}
+	}
 
 	grabmain.insertBefore(outerDiv,register);
 }
