@@ -1150,7 +1150,7 @@ function lessonRecap(lessonNumber){
 	const seconds = ((difference % 60000) / 1000).toFixed(0);
 
 	// Format the result into a string
-	const result = `${minutes} minutes and ${seconds} seconds`;
+	const result = `${minutes} minute(s) and ${seconds} second(s)`;
 
 
 	// caluculate the completion percentage
