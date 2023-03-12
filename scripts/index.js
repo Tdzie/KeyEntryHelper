@@ -1157,6 +1157,8 @@ function lessonRecap(lessonNumber){
 	const passed = stepsPassed / (lessonEndIndex + 1);
 	const percent = passed * 100;
 
+	const difficulty = findDifficulty();
+
 	let header = document.querySelector("#rightHeader");
 	header.innerHTML = "";
 	header.innerHTML = `<h3>Lesson ${lessonNumber} Recap</h3>`;
@@ -1169,6 +1171,7 @@ function lessonRecap(lessonNumber){
 					<br>
 					<h5>Your completion percentage was ${percent}%.</h5>
 					<br>
+					<h5>Your difficulty was ${difficulty}.;
 					<button id="retryLessonOne">Retry this lesson.</button>`;
 
 	document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(lessonNumber);});
@@ -1181,7 +1184,20 @@ function lessonRecap(lessonNumber){
 	document.querySelector("#startNextLesson").addEventListener("click", () => {selectLesson(nextLesson);});
 }
 
-
+function findDifficulty(){
+	switch (failsAllowed) {
+		case 1:
+			return "Easy";
+			break;
+		case 2:
+			return "Medium";
+			break;
+		case 3:
+			return "Hard";
+		default:
+			break;
+	}
+}
 
 
 const lessonTitle = `<h3>Select a lesson.</h3>`;
