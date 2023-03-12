@@ -1171,7 +1171,8 @@ function lessonRecap(lessonNumber){
 					<br>
 					<h5>Your completion percentage was ${percent}%.</h5>
 					<br>
-					<h5>Your difficulty was ${difficulty}.;
+					<h5>Your difficulty was ${difficulty}.</h5>
+					<br>
 					<button id="retryLessonOne">Retry this lesson.</button>`;
 
 	document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(lessonNumber);});
@@ -1187,13 +1188,14 @@ function lessonRecap(lessonNumber){
 function findDifficulty(){
 	switch (failsAllowed) {
 		case 1:
-			return "Easy";
+			return "Hard";
 			break;
 		case 2:
 			return "Medium";
 			break;
 		case 3:
-			return "Hard";
+			return "Easy";
+			break;
 		default:
 			break;
 	}
@@ -1256,6 +1258,7 @@ function landingPage(title,content){
 				break;
 			case 3:
 				document.querySelector("#btnradio1").checked = true;
+				break;
 			default:
 				break;
 		}
