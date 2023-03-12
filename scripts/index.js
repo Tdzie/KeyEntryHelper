@@ -704,6 +704,11 @@ function lessonReset(){
 	LessonCurrentStep = 0;
 	lessonArray = [];
 	lessonEndIndex = 0;
+	lessonPassValue = 0;
+	currentLessonNumber = 1;
+	twoStepLesson = false;
+	firstStepValue = 0;
+	onSecondStep = false;
 }
 //Lessons
 function selectLesson(number) {
