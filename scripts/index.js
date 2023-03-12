@@ -1226,7 +1226,7 @@ function landingPage(title,content){
 	if (title == "<h3>Select a lesson.</h3>"){
 		outerDiv.addEventListener("click", closeLandingPage);
 	}
-	if(title == <h3>Choose Your Settings.</h3>){
+	if(title == "<h3>Choose Your Settings.</h3>"){
 		switch (failsAllowed) {
 			case 1:
 				document.querySelector("#btnradio1").checked = true;
