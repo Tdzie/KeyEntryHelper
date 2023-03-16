@@ -619,7 +619,7 @@ function runLessons(product) {
 	
 	let header = document.querySelector("#rightHeader");
 	header.innerHTML = "";
-	header.innerHTML = `Testing`;
+	header.innerHTML = `${stepsPassed + 1} / ${lessonEndIndex + 1}`;
 
 	let main = document.querySelector("#rightPanelMainContent");
 	main.innerHTML = "";
@@ -1268,12 +1268,18 @@ function landingPage(title,content){
 
 }
 
+const normalUPCLesson = `<div id="containerForGifAndImage">
+							<img src="images/normalUPCLesson.jpg" alt="Normal UPC">
+							<img src="images/normalUPCvid.gif" alt="displaying how to enter a upc on a register">
+						</div>`;
+
+
 function lessonPopup(content){
 	let grabmain = document.querySelector("#containerWindow");
 	let outerDiv = document.createElement("div");
 	let register = document.querySelector("#containerWindow > aside");
 
-	outerDiv.id = "outerDivForLessonPopup";
+	outerDiv.id = "outerDivForErrorBox";
 	outerDiv.innerHTML += `${content}`;
 
 	outerDiv.addEventListener("click", closeLandingPage);
@@ -1415,4 +1421,4 @@ window.addEventListener("keydown", function(event) {
   }
 });
 
-
+document.querySelector("body > nav > div > a > strong").addEventListener("click", () => { lessonPopup(normalUPCLesson);});

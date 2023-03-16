@@ -2,6 +2,16 @@
   .hideDisplay{
     display: none;
   }
+
+#containerForGifAndImage>img:nth-child(1){
+    height: 800px;
+    width: 98%;
+}
+#containerForGifAndImage>img:nth-child(2){
+    height: 800px;
+        width: 98%;
+}
+
 #leftSide>button{
    background-color: transparent;
 }
@@ -48,8 +58,8 @@ body>nav>div>h5{
         
       }
       .h100w100{
-          height: 200px;
-          width: 450px;
+          height: 230px;
+          width: 490px;
       }
       
 
@@ -87,6 +97,7 @@ body>nav>div>h5{
 
 #rightPanelAltContent{
     height: 200px;
+    padding-top: 0%;
 
 }
 
@@ -233,8 +244,8 @@ body{
         top: 4%;
         left: 50%;
         transform: translate(-50%, 0%);
-    width: 80%;
-    height: 80%;
+    width: 1400px;
+    height: 850px;
     background-color:  black;
     z-index: 1;
     border: #0d6efd 5px outset;
@@ -252,7 +263,10 @@ body{
         border: #0d6efd 5px outset;
         padding: 1%;
 }
-
+#containerForGifAndImage{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 #outerDivForHelpBox{
     position: absolute;
     top: 5%;
