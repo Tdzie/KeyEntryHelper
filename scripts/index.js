@@ -1139,6 +1139,47 @@ const listOfProducts = {
 	]
 }
 
+function lessonNumberToName(lessonNumber){
+	switch (lessonNumber) {
+		case 1:
+			return `Lesson 1: Normal UPC Entry`;
+		case 2:
+			return `Lesson 2: Scale label Entry`;
+		case 3:
+			return `Lesson 3: Meat labels over $99.99`;
+		case 4:
+			return `Lesson 4: Floral Labels`;
+		case 5:
+			return `Lesson 5: Grocery Markdown labels`;
+		case 6:
+			return `Lesson 6: Produce Berries`;
+		case 7:
+			return `Lesson 7: Final Review`;
+		default:
+			return `Lesson ${lessonNumber}`;
+	}
+}
+
+function lessonNumberToNextLessonImage(lessonNumber){
+	switch (lessonNumber) {
+		case 1:
+			return `images/keyEnterNormalUPC.jpg`;
+		case 2:
+			return `images/keyInScaleLabel.jpg`;
+		case 3:
+			return `images/keyInMeatOver100.jpg`;
+		case 4:
+			return `images/keyEnterFloralUpgrades.jpg`;
+		case 5:
+			return `images/GroceryMarkdowns.jpg`;
+		case 6:
+			return `images/ProduceBerryPLUs.jpg`;
+		case 7:
+			return `images/keyEnterNormalUPC.jpg`;
+	}
+}
+
+
 
 function lessonRecap(lessonNumber){
 	lessonActive = false;
@@ -1161,11 +1202,11 @@ function lessonRecap(lessonNumber){
 
 	let header = document.querySelector("#rightHeader");
 	header.innerHTML = "";
-	header.innerHTML = `<h3>Lesson ${lessonNumber} Recap</h3>`;
+	header.innerHTML = `<h3>Lesson Recap</h3>`;
 
 	let main = document.querySelector("#rightPanelMainContent");
 	main.innerHTML = "";
-	main.innerHTML = `<h3>Congratulations! You have completed Lesson ${lessonNumber}!</h3>
+	main.innerHTML = `<h4>Congratulations! You have completed Lesson ${lessonNumberToName(lessonNumber)}!</h4>
 						<br>
 					<h5>Your completion time was ${result}.</h5>
 					<br>
@@ -1173,15 +1214,17 @@ function lessonRecap(lessonNumber){
 					<br>
 					<h5>Your difficulty was ${difficulty}.</h5>
 					<br>
-					<button id="retryLessonOne">Retry this lesson.</button>`;
+					<button class="btn btn-success" style="width: 75%" id="retryLessonOne">Retry ${lessonNumberToName(lessonNumber) }</button>
+					<img src="${lessonNumberToNextLessonImage(lessonNumber)}" alt="Next Lesson" class="img-fluid" style="width: 75%; height: auto; margin-top: 10px; margin-bottom: 10px;">`;
 
 	document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(lessonNumber);});
-
+    let nextLesson = lessonNumber + 1;
 	let alt = document.querySelector("#rightPanelAltContent");
 	alt.innerHTML = "";
-	alt.innerHTML = `<button id="startNextLesson">Launch Next Lesson</button>`;
+	alt.innerHTML = `<button class="btn btn-success" style="width: 75%" id="startNextLesson">Continue to ${lessonNumberToName(nextLesson) }</button>
+	                 <img src="${lessonNumberToNextLessonImage(nextLesson)}" alt="Next Lesson" class="img-fluid" style="width: 75%; height: 90%;">`;
 	
-	let nextLesson = lessonNumber + 1;
+	
 	document.querySelector("#startNextLesson").addEventListener("click", () => {selectLesson(nextLesson);});
 }
 
@@ -1421,4 +1464,4 @@ window.addEventListener("keydown", function(event) {
   }
 });
 
-document.querySelector("body > nav > div > a > strong").addEventListener("click", () => { lessonPopup(normalUPCLesson);});
+document.querySelector("body > nav > div > a > img").addEventListener("click", () => { lessonPopup(normalUPCLesson);});

@@ -3,6 +3,13 @@
     display: none;
   }
 
+  #rightPanelAltContent>img{
+    padding-top: 10px;
+  }
+  #start{
+    width: 70%;
+  }
+
 #containerForGifAndImage>img:nth-child(1){
     height: 800px;
     width: 98%;
