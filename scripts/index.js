@@ -554,7 +554,7 @@ function shuffleArray(array) {
 // Main lesson function to run the lessons
 function runLessons(product) {
 	LESSON_TITLE_ELEMENT.innerHTML = "";
-	LESSON_TITLE_ELEMENT.innerHTML = `${stepsPassed + 1} / ${lessonEndIndex + 1}`;
+	LESSON_TITLE_ELEMENT.innerHTML = `${LessonCurrentStep + 1} / ${lessonEndIndex + 1}`;
 
 	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = "";
 	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<img height="${product.height}" width="${product.width}" onclick='showHelp(${product.image})' src='${product.image}'>`;
