@@ -557,7 +557,7 @@ function runLessons(product) {
 	LESSON_TITLE_ELEMENT.innerHTML = `${stepsPassed + 1} / ${lessonEndIndex + 1}`;
 
 	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = "";
-	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<img class='imageW50H350' onclick='${product.image}' src='${product.image}'>`;
+	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<img height="${product.height}" width="${product.width}" onclick='showHelp(${product.image})' src='${product.image}'>`;
 
 	LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
 	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<img class='h100w100' onclick='showHelp("${product.helper}")' src='images/clickforhelp.jpg'>`;

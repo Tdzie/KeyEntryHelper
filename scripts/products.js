@@ -33,6 +33,8 @@ const PRODUCTS = {
             "price": 5.99,
             "manualPrice": false,
             "image": "images/wildgoodUPC.jpg",
+            "height": "100%",
+            "width": "50%",
             "UPCType": "Normal",
             "helper": "images/keyEnterNormalUPC.jpg"
         },
@@ -42,6 +44,8 @@ const PRODUCTS = {
             "price": 1.39,
             "manualPrice": false,
             "image": "images/tridentGum.jpg",
+            "height": "100%",
+            "width": "50%",
             "UPCType": "Normal",
             "helper": "images/keyEnterNormalUPC.jpg"
         },
@@ -51,6 +55,8 @@ const PRODUCTS = {
             "price": 2.99,
             "manualPrice": false,
             "image": "images/applesauceUPC.jpg",
+            "height": "100%",
+            "width": "50%",
             "UPCType": "Normal",
             "helper": "images/keyEnterNormalUPC.jpg"
         },
@@ -69,6 +75,8 @@ const PRODUCTS = {
             "price": 6.74,
             "manualPrice": false,
             "image": "images/brokenCheeseLabel.jpeg",
+            "height": "100%",
+            "width": "54%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -78,6 +86,8 @@ const PRODUCTS = {
             "price": 140.14,
             "manualPrice": true,
             "image": "images/tender14014.jpg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "ScaleOver100",
             "helper": "images/keyInMeatOver100.jpg"
         },
@@ -132,6 +142,8 @@ const PRODUCTS = {
             "price": 2.99,
             "manualPrice": false,
             "image": "images/picsCandy.jpg",
+            "height": "100%",
+            "width": "50%",
             "UPCType": "Normal",
             "helper": "images/keyEnterNormalUPC.jpg"
         },
@@ -141,6 +153,8 @@ const PRODUCTS = {
             "price": 1.99,
             "manualPrice": false,
             "image": "images/picsChocolate.jpg",
+            "height": "100%",
+            "width": "50%",
             "UPCType": "Normal",
             "helper": "images/keyEnterNormalUPC.jpg"
         },
@@ -150,6 +164,8 @@ const PRODUCTS = {
             "price": 5.31,
             "manualPrice": false,
             "image": "images/chicken531.jpg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -159,6 +175,8 @@ const PRODUCTS = {
             "price": 26.74,
             "manualPrice": false,
             "image": "images/cornedbeef2674.jpg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -168,6 +186,8 @@ const PRODUCTS = {
             "price": 6.78,
             "manualPrice": false,
             "image": "images/delicheese678.jpg",
+            "height": "auto",
+            "width": "56%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -177,6 +197,8 @@ const PRODUCTS = {
             "price": 4.39,
             "manualPrice": false,
             "image": "images/deliham439.jpg",
+            "height": "100%",
+            "width": "59%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -186,6 +208,8 @@ const PRODUCTS = {
             "price": 3.29,
             "manualPrice": false,
             "image": "images/groundbeef329.jpg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Scale",
             "helper": "images/keyInScaleLabel.jpg"
         },
@@ -195,6 +219,8 @@ const PRODUCTS = {
             "price": 120.17,
             "manualPrice": true,
             "image": "images/598rib12017.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "ScaleOver100",
             "helper": "images/keyInMeatOver100.jpg"
         },
@@ -204,6 +230,8 @@ const PRODUCTS = {
             "price": 119.09,
             "manualPrice": true,
             "image": "images/583wholetender11909.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "ScaleOver100",
             "helper": "images/keyInMeatOver100.jpg"
         },
@@ -213,6 +241,8 @@ const PRODUCTS = {
             "price": 140.39,
             "manualPrice": true,
             "image": "images/589bproast14039.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "ScaleOver100",
             "helper": "images/keyInMeatOver100.jpg"
         },
@@ -222,6 +252,8 @@ const PRODUCTS = {
             "price": 110.77,
             "manualPrice": true,
             "image": "images/684cabbeef11077.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "ScaleOver100",
             "helper": "images/keyInMeatOver100.jpg"
         },
@@ -231,6 +263,8 @@ const PRODUCTS = {
             "price": 54.99,
             "manualPrice": false,
             "image": "images/floral5499.jpeg",
+            "height": "auto",
+            "width": "97%",
             "UPCType": "FloralUpgrade",
             "helper": "images/keyEnterFloralUpgrades.jpg"
         },
@@ -240,6 +274,8 @@ const PRODUCTS = {
             "price": 89.99,
             "manualPrice": false,
             "image": "images/floral8999.jpeg",
+            "height": "auto",
+            "width": "92%",
             "UPCType": "FloralUpgrade",
             "helper": "images/keyEnterFloralUpgrades.jpg"
         },
@@ -249,6 +285,8 @@ const PRODUCTS = {
             "price": 29.99,
             "manualPrice": false,
             "image": "images/floral2999.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "FloralUpgrade",
             "helper": "images/keyEnterFloralUpgrades.jpg"
         },
@@ -258,6 +296,8 @@ const PRODUCTS = {
             "price": 46.99,
             "manualPrice": false,
             "image": "images/floral4699.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "FloralUpgrade",
             "helper": "images/keyEnterFloralUpgrades.jpg"
         },
@@ -267,6 +307,8 @@ const PRODUCTS = {
             "price": 26.99,
             "manualPrice": false,
             "image": "images/floral2699.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "FloralUpgrade",
             "helper": "images/keyEnterFloralUpgrades.jpg"
         },
@@ -276,6 +318,8 @@ const PRODUCTS = {
             "price": 2.91,
             "manualPrice": true,
             "image": "images/150291.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Markdown",
             "helper": "images/GroceryMarkdowns.jpg"
         },
@@ -285,6 +329,8 @@ const PRODUCTS = {
             "price": 7.00,
             "manualPrice": true,
             "image": "images/201700.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Markdown",
             "helper": "images/GroceryMarkdowns.jpg"
         },
@@ -294,6 +340,8 @@ const PRODUCTS = {
             "price": 5.00,
             "manualPrice": true,
             "image": "images/150500.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Markdown",
             "helper": "images/GroceryMarkdowns.jpg"
         },
@@ -303,6 +351,8 @@ const PRODUCTS = {
             "price": 1.80,
             "manualPrice": true,
             "image": "images/204180.jpeg",
+            "height": "100%",
+            "width": "auto",
             "UPCType": "Markdown",
             "helper": "images/GroceryMarkdowns.jpg"
         },
@@ -312,6 +362,8 @@ const PRODUCTS = {
             "price": 10.00,
             "manualPrice": true,
             "image": "images/2011000.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Markdown",
             "helper": "images/GroceryMarkdowns.jpg"
         },
@@ -321,6 +373,8 @@ const PRODUCTS = {
             "price": 3.33,
             "manualPrice": false,
             "image": "images/strawberry.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Berries",
             "helper": "images/ProduceBerryPLUs.jpg"
         },
@@ -330,6 +384,8 @@ const PRODUCTS = {
             "price": 3.33,
             "manualPrice": false,
             "image": "images/blueberry.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Berries",
             "helper": "images/ProduceBerryPLUs.jpg"
         },
@@ -339,6 +395,8 @@ const PRODUCTS = {
             "price": 3.33,
             "manualPrice": false,
             "image": "images/blackberry.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Berries",
             "helper": "images/ProduceBerryPLUs.jpg"
         },
@@ -348,6 +406,8 @@ const PRODUCTS = {
             "price": 3.33,
             "manualPrice": false,
             "image": "images/raspberry.jpeg",
+            "height": "auto",
+            "width": "100%",
             "UPCType": "Berries",
             "helper": "images/ProduceBerryPLUs.jpg"
         }
