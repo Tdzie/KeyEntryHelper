@@ -71,6 +71,7 @@ body>nav>div>h5{
             grid-template-columns: 8fr 5fr;
             gap: 1rem;
             padding-top: 1.5rem;
+            max-width: 1440px;
         }
         p,span{
             font-size: 1.2rem;
