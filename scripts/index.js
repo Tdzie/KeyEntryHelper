@@ -768,31 +768,52 @@ function lessonRecap(lessonNumber){
 
 	LESSON_TITLE_ELEMENT.innerHTML = "";
 	LESSON_TITLE_ELEMENT.innerHTML = `<h3>Lesson Recap</h3>`;
-
-	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = "";
-	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<h4>Congratulations! You have completed ${lessonNumberToName(lessonNumber)}!</h4>
+	if(lessonNumber<7){
+		LESSON_MAIN_CONTENT_ELEMENT.innerHTML = "";
+		LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<h4>Congratulations! You have completed ${lessonNumberToName(lessonNumber)}!</h4>
 						<br>
 					<h5>Your completion time was ${RESULTS}.</h5>
 					<br>
 					<h5>Your completion percentage was ${PERCENT}%.</h5>
 					<br>
 					<h5>Your difficulty was ${DIFFICULTY}.</h5>
+			
 					<br>
 					<br>
 					<br>
 					<h5>If it was hard, or you want more practice on this subject:</h5>
 					<br>
 					<button class="btn btn-success" style="width: 75%" id="retryLessonOne">Retry ${lessonNumberToName(lessonNumber) }</button>`;
+	
+		document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(lessonNumber);});
 
-	document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(lessonNumber);});
-
-	LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
-	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<h5>If you understood it and want to proceed:</h5>
+		LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
+		LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<h5>If you understood it and want to proceed:</h5>
 											<br>
 											<button class="btn btn-success" style="width: 75%" id="startNextLesson">Continue to ${lessonNumberToName(NEXT_LESSON) }</button>`;
 	
+		document.querySelector("#startNextLesson").addEventListener("click", () => {selectLesson(NEXT_LESSON);});
+	}else{
+		LESSON_MAIN_CONTENT_ELEMENT.innerHTML = "";
+		LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<h4>Congratulations! You have completed ${lessonNumberToName(lessonNumber)}!</h4>
+						<br>
+					<h5>Your completion time was ${RESULTS}.</h5>
+					<br>
+					<h5>Your completion percentage was ${PERCENT}%.</h5>
+					<br>
+					<h5>Your difficulty was ${DIFFICULTY}.</h5>
+			
+					<br>
+					<br>
+					<br>
+					<h5>Click here to try again.</h5>
+					<br>
+					<button class="btn btn-success" style="width: 75%" id="retryLessonOne">Retry ${lessonNumberToName(7) }</button>`;
 	
-	document.querySelector("#startNextLesson").addEventListener("click", () => {selectLesson(NEXT_LESSON);});
+		document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(7);});
+
+	}
+	
 }
 
 // finds the current difficulty setting and returns it as a string
