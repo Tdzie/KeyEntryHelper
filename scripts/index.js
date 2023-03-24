@@ -560,7 +560,7 @@ function runLessons(product) {
 	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<img height="${product.height}" width="${product.width}" onclick='showHelp("${product.image}")' src='${product.image}'>`;
 
 	LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
-	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<img class='h100w100' onclick='showHelp("${product.helper}")' src='images/clickforhelp.jpg'>`;
+	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<img class='h100w100' onclick='Helpbox("${product.helper}")' src='images/clickforhelp.jpg'>`;
 
 	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade" || product.UPCType == "Berries"){
 		lessonPassValue = product.PLU;
@@ -811,7 +811,7 @@ function lessonRecap(lessonNumber){
 					<button class="btn btn-success" style="width: 75%" id="retryLessonOne">Retry ${lessonNumberToName(7) }</button>`;
 	
 		document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(7);});
-
+		LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
 	}
 	
 }
