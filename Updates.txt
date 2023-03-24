@@ -258,3 +258,274 @@ const lessons = {
 }
 
 
+
+function normalRegister(){
+	itemCount = 0;
+	manualEntryBoxActive = false;
+	normalRegisterActive = true;
+	MAIN_WINDOW_SELECTOR.innerHTML = "";
+	orderTotal = 0.00;
+	let registerDiv = document.createElement("div");
+	registerDiv.id = "registerDiv";
+	MAIN_WINDOW_SELECTOR.appendChild(registerDiv);
+
+	let grabOuterDiv = document.getElementById("registerDiv");
+	let insideRegisterDivs = document.createElement("div");
+	//Create the main register shell
+	for(let i = 1; i < 17; i++){
+		insideRegisterDivs = document.createElement("div");
+		insideRegisterDivs.id = `insideRegisterGrid${i}`;
+		grabOuterDiv.appendChild(insideRegisterDivs);			
+	}
+
+	// Enter item code split - InsideRegisterDiv12
+	let grabEnterItemCodeDiv = document.getElementById("insideRegisterGrid12");
+	let createTheItemCodeDivSplit = document.createElement("div");
+	createTheItemCodeDivSplit.id = "topOfEnterItemCode";
+	grabEnterItemCodeDiv.appendChild(createTheItemCodeDivSplit);
+	createTheItemCodeDivSplit = document.createElement("div");
+	createTheItemCodeDivSplit.id = "bottomEnterItemCode";
+	grabEnterItemCodeDiv.appendChild(createTheItemCodeDivSplit);
+
+	// Main div for the products and prices
+	let grabTheOuterDivForTheMainPriceBox = document.getElementById("insideRegisterGrid16");
+	let createTheOuterPriceBoxDiv = document.createElement("div");
+
+	createTheOuterPriceBoxDiv.id = "itemDescription";
+	grabTheOuterDivForTheMainPriceBox.appendChild(createTheOuterPriceBoxDiv);
+
+	createTheOuterPriceBoxDiv = document.createElement("div");
+	createTheOuterPriceBoxDiv.id = "FoodStampLogo";
+	grabTheOuterDivForTheMainPriceBox.appendChild(createTheOuterPriceBoxDiv);
+
+	createTheOuterPriceBoxDiv = document.createElement("div");
+	createTheOuterPriceBoxDiv.id = "priceOfProduct";
+	grabTheOuterDivForTheMainPriceBox.appendChild(createTheOuterPriceBoxDiv);
+
+	// AdvantEdge points (upper left of register div) insideRegisterDiv15
+	let grabOuterAdvantEdgeDiv = document.getElementById("insideRegisterGrid15");
+	let createTheAdvantEdgeSplitDivs = document.createElement("div");
+	createTheAdvantEdgeSplitDivs.id = "advantEdgeValue";
+	grabOuterAdvantEdgeDiv.appendChild(createTheAdvantEdgeSplitDivs);
+
+	createTheAdvantEdgeSplitDivs = document.createElement("div");
+	createTheAdvantEdgeSplitDivs.id = "advantEdgeTitle";
+	grabOuterAdvantEdgeDiv.appendChild(createTheAdvantEdgeSplitDivs);
+	// Bottom bar (insideRegister14) subtotal split
+	let grabTheOuterSubtotalDiv =  document.getElementById("insideRegisterGrid14");
+	let createTheSubtotalSplitDiv = document.createElement("div");
+	createTheSubtotalSplitDiv.id = "balanceDueDiv";
+	grabTheOuterSubtotalDiv.appendChild(createTheSubtotalSplitDiv);
+
+	createTheSubtotalSplitDiv = document.createElement("div");
+	createTheSubtotalSplitDiv.id = "TotalEntryForTheRegister";
+	grabTheOuterSubtotalDiv.appendChild(createTheSubtotalSplitDiv);
+	// MORE and BACK div split
+	let grabbackAndMoreDivOuterDiv = document.getElementById("insideRegisterGrid11");
+	let createInsideDiv = document.createElement("div");
+	createInsideDiv.id = "backDiv";
+	grabbackAndMoreDivOuterDiv.appendChild(createInsideDiv);
+
+	createInsideDiv = document.createElement("div");
+	createInsideDiv.id = "moreDiv";
+	grabbackAndMoreDivOuterDiv.appendChild(createInsideDiv);
+	//Create Number pad
+	let grabNumberPadDiv = document.querySelector("#insideRegisterGrid13")	
+	for(let j = 1; j < 16; j++){
+		let createNumpadDiv = document.createElement("div");
+		createNumpadDiv.id = `numpadDiv${j}`;
+		grabNumberPadDiv.appendChild(createNumpadDiv);
+	}
+	//Add text to divs
+	document.getElementById("insideRegisterGrid2").innerHTML = "Produce";
+	document.getElementById("insideRegisterGrid3").innerHTML = "Void";
+	document.getElementById("insideRegisterGrid4").innerHTML = "PLU'S For Dept";
+	document.getElementById("insideRegisterGrid5").innerHTML = "Price Inquiry";
+	document.getElementById("insideRegisterGrid6").innerHTML = "AdvantEdge";
+	document.getElementById("insideRegisterGrid7").innerHTML = "Manager Menu";
+	document.getElementById("insideRegisterGrid8").innerHTML = "Alt ID";
+	document.getElementById("insideRegisterGrid9").innerHTML = "Subtotal";
+	document.getElementById("insideRegisterGrid10").innerHTML = "Special Functions";
+	document.getElementById("topOfEnterItemCode").innerHTML = "Enter Item Code";
+	document.getElementById("advantEdgeValue").innerHTML = `$${orderTotal}`;
+	document.getElementById("advantEdgeTitle").innerHTML = "AdvantEdge Rewards";
+	document.getElementById("balanceDueDiv").innerHTML = "Balance Due";
+	document.getElementById("TotalEntryForTheRegister").innerHTML = "$0.00";
+	document.getElementById("backDiv").innerHTML = "BACK<br>&nbsp;&nbsp;<<";
+	document.getElementById("moreDiv").innerHTML = "MORE<br>&nbsp;&nbsp;>>";      
+	document.getElementById("numpadDiv1").innerHTML = "7";
+	document.getElementById("numpadDiv2").innerHTML = "8";
+	document.getElementById("numpadDiv3").innerHTML = "9";
+	document.getElementById("numpadDiv4").innerHTML = "@";
+	document.getElementById("numpadDiv5").innerHTML = "4";
+	document.getElementById("numpadDiv6").innerHTML = "5";
+	document.getElementById("numpadDiv7").innerHTML = "6";
+	document.getElementById("numpadDiv8").innerHTML = "<";
+	document.getElementById("numpadDiv9").innerHTML = "1";
+	document.getElementById("numpadDiv10").innerHTML = "2";
+	document.getElementById("numpadDiv11").innerHTML = "3";
+	document.getElementById("numpadDiv12").innerHTML = "C";
+	document.getElementById("numpadDiv13").innerHTML = ".";
+	document.getElementById("numpadDiv14").innerHTML = "0";
+	document.getElementById("numpadDiv15").innerHTML = "ENTER";
+	//Add event for more and back div
+	document.getElementById("moreDiv").addEventListener("click", MoreScreenOnNormalRegister);
+	document.getElementById("backDiv").addEventListener("click", MoreScreenOnNormalRegister);
+	document.getElementById("numpadDiv12").addEventListener("click", clear);
+
+	//Event listeners for number keys
+	document.getElementById("numpadDiv1").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv2").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv3").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv4").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv5").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv6").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv7").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv8").addEventListener("click", backbutton);		
+	document.getElementById("numpadDiv9").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv10").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv11").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv14").addEventListener("click", numberPadButtonPress);
+	document.getElementById("numpadDiv15").addEventListener("click", enterButtonPressPLULookup);
+	document.getElementById("insideRegisterGrid3").addEventListener("click", normalRegister);
+
+}
+
+
+
+/*
+	grocery.value = "1";
+	produce
+	floral
+	beer
+	telein
+	groceryTax
+	meat
+	kosherMeat
+	bottleDeposit
+	hdIn
+	generalmdse
+	seafood
+	sushi
+	charity
+	teleOut
+	hbc
+	bakery
+	kosherDeli
+	starbucks
+	hdout
+	deli
+	prepfood
+	tobacco
+	rx
+	empty
+
+	grocery.addEventListener("click",keyEntryForDepartmentsPopOut);
+	produce
+	floral
+	beer
+	telein
+	groceryTax
+	meat
+	kosherMeat
+	bottleDeposit
+	hdIn
+	generalmdse
+	seafood
+	sushi
+	charity
+	teleOut
+	hbc
+	bakery
+	kosherDeli
+	starbucks
+	hdout
+	deli
+	prepfood
+	tobacco
+	rx
+	empty
+*/
+
+
+"Grocery"
+"Produce"
+"Floral"
+"Beer/Wine"
+"Tele In"
+"Grocery <br> Taxable"
+"Meat"
+"Kosher Meat"
+"Bottle Deposit"
+"H/D In"
+"General Mdse"
+"Seafood"
+"Sushi"
+"Charity"
+"Tele Out"
+"HBC"
+"Bakery"
+"Kosher Deli"
+"Starbucks"
+"H/D Out"
+"Deli"
+"Prepaired Food"
+"Tobacco"
+"RX"
+""
+
+
+
+	let grocery = document.getElementById("departmentKeys1");
+	let produce = document.getElementById("departmentKeys2");
+	let floral = document.getElementById("departmentKeys3");
+	let beer = document.getElementById("departmentKeys4");
+	let telein = document.getElementById("departmentKeys5");
+	let groceryTax = document.getElementById("departmentKeys6");
+	let meat = document.getElementById("departmentKeys7");
+	let kosherMeat = document.getElementById("departmentKeys8");
+	let bottleDeposit = document.getElementById("departmentKeys9");
+	let hdIn = document.getElementById("departmentKeys10");
+	let generalmdse = document.getElementById("departmentKeys11");
+	let seafood = document.getElementById("departmentKeys12");
+	let sushi = document.getElementById("departmentKeys13");
+	let charity = document.getElementById("departmentKeys14");
+	let teleOut = document.getElementById("departmentKeys15");
+	let hbc = document.getElementById("departmentKeys16");
+	let bakery = document.getElementById("departmentKeys17");
+	let kosherDeli = document.getElementById("departmentKeys18");
+	let starbucks = document.getElementById("departmentKeys19");
+	let hdout = document.getElementById("departmentKeys20");
+	let deli = document.getElementById("departmentKeys21");
+	let prepfood = document.getElementById("departmentKeys22");
+	let tobacco = document.getElementById("departmentKeys23");
+	let rx = document.getElementById("departmentKeys24");
+	let empty = document.getElementById("departmentKeys25");
+
+
+	grocery.innerHTML ="Grocery";
+	produce.innerHTML ="Produce";
+	floral.innerHTML ="Floral";
+	beer.innerHTML ="Beer/Wine";
+	telein.innerHTML ="Tele In";
+	groceryTax.innerHTML ="Grocery <br> Taxable";
+	meat.innerHTML ="Meat";
+	kosherMeat.innerHTML ="Kosher Meat";
+	bottleDeposit.innerHTML ="Bottle Deposit";
+	hdIn.innerHTML ="H/D In";
+	generalmdse.innerHTML ="General Mdse";
+	seafood.innerHTML ="Seafood";
+	sushi.innerHTML ="Sushi";
+	charity.innerHTML ="Charity";
+	teleOut.innerHTML ="Tele Out";
+	hbc.innerHTML ="HBC";
+	bakery.innerHTML ="Bakery";
+	kosherDeli.innerHTML ="Kosher Deli";
+	starbucks.innerHTML ="Starbucks";
+	hdout.innerHTML ="H/D Out";
+	deli.innerHTML ="Deli";
+	prepfood.innerHTML ="Prepaired Food";
+	tobacco.innerHTML ="Tobacco";
+	rx.innerHTML ="RX";
+	empty.innerHTML ="";
+

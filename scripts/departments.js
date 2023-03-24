@@ -1,0 +1,28 @@
+
+const DEPARTMENTS = [
+    'Grocery',
+    'Produce',
+    'Floral',
+    'Beer/Wine',
+    'Tele In',
+    'Grocery <br> Taxable',
+    'Meat',
+    'Kosher Meat',
+    'Bottle Deposit',
+     'H/D In',
+     'General Mdse',
+     'Seafood',
+     'Sushi',
+     'Charity',
+     'Tele Out',
+     'HBC',
+     'Bakery',
+     'Kosher Deli',
+     'Starbucks',
+     'H/D Out',
+     'Deli',
+     'Prepaired Food',
+     'Tobacco',
+     'RX',
+     ' '
+]

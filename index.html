@@ -1,30 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({
-          'gtm.start':
-            new Date().getTime(), event: 'gtm.js'
-        }); var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-W4JFMW6');</script>
-    <!-- End Google Tag Manager -->
-   <!-- Google tag (gtag.js)--> 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJVBK29H2Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WJVBK29H2Y');
-</script>
-
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+              'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-W4JFMW6');</script>
+            <!-- End Google Tag Manager -->
+            <!-- Google tag (gtag.js)--> 
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJVBK29H2Y"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WJVBK29H2Y');
+        </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Key Entry</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand">
     <link rel="stylesheet" href="styles/index.css">
+    <script src="scripts/products.js"></script>
+    <script src="scripts/departments.js"></script>
     <script src="scripts/index.js" defer></script>
   </head>
   <body class="text-white">
@@ -32,9 +34,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4JFMW6" height="0" width="0"
         style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark" style="font-family: Quicksand;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img width="50px" height="30px" src="images/keyentrylogo.jpeg"></a>
+        <a class="navbar-brand" href="#"><img width="50px" height="30px" id="Logo" src="images/keyentrylogo.jpeg"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -42,10 +44,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Lessons</a>
+              <a class="nav-link links" id="lessonMenuButton" aria-current="page" href="#">Lessons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
+              <a class="nav-link links" id="settingsMenuButton" href="#">Settings</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"></a>
@@ -55,7 +57,7 @@
             </li>
           </ul>
         </div>
-        <h5>Developer: Timothy Dziedzic &nbsp;&nbsp;&nbsp;&nbsp; Email: Timothydziedzic@pricechopper.com</h5>
+        <p id="createdBy">Created by Timothy Dziedzic</p>
       </div>
     </nav>
 
@@ -63,29 +65,79 @@
 	<div class="containerDiv" id="containerWindow">
  
 		<main id="mainWindow">
-
+      <div id="registerDiv">
+        <div id="insideRegisterGrid1"></div>
+        <div id="insideRegisterGrid2">Produce</div>
+        <div id="insideRegisterGrid3">Void</div>
+        <div id="insideRegisterGrid4">PLU'S For Dept</div>
+        <div id="insideRegisterGrid5">Price Inquiry</div>
+        <div id="insideRegisterGrid6">AdvantEdge</div>
+        <div id="insideRegisterGrid7">Manager Menu</div>
+        <div id="insideRegisterGrid8">Alt ID</div>
+        <div id="insideRegisterGrid9">Subtotal</div>
+        <div id="insideRegisterGrid10">Special Functions</div>
+        <div id="insideRegisterGrid11">
+          <div id="backDiv">BACK<br>&nbsp;&nbsp;&lt;&lt;</div>
+          <div id="moreDiv">MORE<br>&nbsp;&nbsp;&gt;&gt;</div>
+        </div>
+        <div id="insideRegisterGrid12">
+          <div id="topOfEnterItemCode">Enter Item Code</div>
+          <div id="bottomEnterItemCode"></div>
+        </div>
+        <div id="insideRegisterGrid13">
+          <div id="numpadDiv1">7</div>
+          <div id="numpadDiv2">8</div>
+          <div id="numpadDiv3">9</div>
+          <div id="numpadDiv4">@</div>
+          <div id="numpadDiv5">4</div>
+          <div id="numpadDiv6">5</div>
+          <div id="numpadDiv7">6</div>
+          <div id="numpadDiv8">&lt;</div>
+          <div id="numpadDiv9">1</div>
+          <div id="numpadDiv10">2</div>
+          <div id="numpadDiv11">3</div>
+          <div id="numpadDiv12">C</div>
+          <div id="numpadDiv13">.</div>
+          <div id="numpadDiv14">0</div>
+          <div id="numpadDiv15">ENTER</div>
+        </div>
+        <div id="insideRegisterGrid14">
+          <div id="balanceDueDiv">Balance Due</div>
+          <div id="TotalEntryForTheRegister">$0.00</div>
+        </div>
+        <div id="insideRegisterGrid15">
+          <div id="advantEdgeValue">$0</div>
+          <div id="advantEdgeTitle">AdvantEdge Rewards</div>
+        </div>
+        <div id="insideRegisterGrid16">
+          <div id="itemDescription"></div>
+          <div id="FoodStampLogo"></div>
+          <div id="priceOfProduct"></div>
+        </div>
+      </div>
     </main>
-		<section id="rightPanel" class="bg-dark text-white">
+		<section id="rightPanel" class="bg-dark text-white" style="font-family: Quicksand;">
       <h3 id="rightHeader">
-        WELCOME TO KeyEntryHelper
+        <strong> WELCOME TO KeyEntryHelper</strong>
       </h3>
       <div id="rightPanelMainContent">
-        <h5>KeyEntryHelper was developed as a training tool for key-entering various labels found around your store. <br><br> Works best on Surface Tablets.</h5><br>
-        <h5>Click any lesson or the begin button at the bottom to start</h5>
-        <ul>
-          <li onclick='selectLesson(1)'>Normal UPC entry</li>
-          <li onclick='selectLesson(2)'>Scale labels</li>
-          <li onclick='selectLesson(3)'>Meat labels over $100</li>
-          <li onclick='selectLesson(4)'>Floral labels</li>
-          <li onclick='selectLesson(5)'>Grocery Markdown labels</li>
-          <li onclick='selectLesson(6)'>Produce berries</li>
-          <li onclick='selectLesson(7)'>Final Review</li>
-        </ul>
+        <h5>This application will teach you how to key-enter various labels/products found in your store.</h5><br>
+        <h5>Click any lesson</h5>
+        <ol>
+          <li  onclick='selectLesson(1)'><span class="links">Normal UPC entry</span></li>
+          <li onclick='selectLesson(2)'><span class="links">Scale labels</span></li>
+          <li onclick='selectLesson(3)'><span class="links">Meat labels over $100</span></li>
+          <li onclick='selectLesson(4)'><span class="links">Floral labels</span></li>
+          <li onclick='selectLesson(5)'><span class="links">Grocery Markdown labels</span></li>
+          <li onclick='selectLesson(6)'><span class="links">Produce berries</span></li>
+          <li onclick='selectLesson(7)'><span class="links">Final Review</span></li>
+        </ol>
       </div>
-       <div id="rightPanelAltContent">
-        
+       <div id="rightPanelAltContent">OR
+        <br>
+        <br>
+        <br>
        <button id="start" width="100%" class="btn btn-success" height="100%">Click here to begin from the start</button>
-       <img src="images/keyEnterNormalUPC.jpg" width="70%" height="90%" alt="Normal UPC Entry">
        </div>
     </section>
 	</div>

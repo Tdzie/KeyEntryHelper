@@ -2,7 +2,11 @@
   .hideDisplay{
     display: none;
   }
-
+button{
+    background-color: rgb(79, 126, 226) !important;
+    font-weight: bold !important;
+}
+ 
   #rightPanelAltContent>img{
     padding-top: 10px;
   }
@@ -10,6 +14,25 @@
     width: 70%;
   }
 
+.links{
+    color: rgb(79, 126, 226);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+#createdBy{
+    font-size: 0.8rem;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    color: gray;
+}
 #containerForGifAndImage>img:nth-child(1){
     height: 800px;
     width: 98%;
@@ -79,7 +102,7 @@ body>nav>div>h5{
             gap: 1rem;
             padding-top: 1.5rem;
         }
-        p,span{
+        p{
             font-size: 0.8rem;
         }
         body > div > aside{
