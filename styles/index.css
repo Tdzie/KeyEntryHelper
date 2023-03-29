@@ -16,6 +16,10 @@ button{
     color: #24180D !important;
 }
  
+button:hover, #showHelpDiv:hover{
+    background-color:rgb(140, 246, 116) !important;
+    color: #24180D !important;
+}
   #rightPanelAltContent>img{
     padding-top: 10px;
   }
@@ -45,7 +49,18 @@ button{
       font-size: 1.5em;
       margin-bottom: 10px;
   }
-
+#showHelpDiv{
+    display: grid;
+    width: 100%;
+    height: 230px;
+    background-color: #7bba2f;
+    color: #24180D;
+    font-weight: bold;
+    align-content: center;
+    justify-content: center;
+    font-size: 3.5em;
+    border-radius: 10px;
+}
 
 
 .links{
@@ -54,6 +69,9 @@ button{
     cursor: pointer;
     font-weight: bold;
     font-size: 1.5rem;
+}
+.links:hover{
+   color:  rgb(140, 246, 116);
     
 }
 #createdBy{
@@ -86,6 +104,7 @@ button{
 #containerWindow{
     padding-top: 1%;
     display: grid;
+    width: 1440px;
 }
 body>nav{
     height: 35px;
@@ -119,13 +138,14 @@ body>nav>div>h5{
             border: 5px outset gray;
             padding: 10px;
             position: relative;
-           background-color: #302011
+           background-color: #302011;
+        border-radius: 10px;
         }
         
       }
       .h100w100{
           height: 230px;
-          width: 490px;
+          width: 100%;
       }
       
 
@@ -156,7 +176,7 @@ body>nav>div>h5{
             border: 5px outset gray;
             padding: 10px;
             position: relative;
-           
+           border-radius: 10px;
         }
         
       }
@@ -253,7 +273,9 @@ li{
     border: 7px solid #7bba2f;
     border-radius: 10px;
 }
-
+#rightPanelMainContent>img:hover{
+    border: 7px solid rgb(140, 246, 116);
+}
 .disable{
     pointer-events: none;
 }
@@ -349,8 +371,12 @@ body{
     height: 60%;
     background-color:  black;
     z-index: 1;
+    border: 7px solid #7bba2f;
+    border-radius: 10px;
 }
-
+#outerDivForHelpBox:hover{
+    border: 7px solid rgb(140, 246, 116);
+}
 
 body > div{
     max-height: 700px;

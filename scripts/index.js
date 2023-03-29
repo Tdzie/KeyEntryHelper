@@ -574,7 +574,7 @@ function runLessons(product) {
 	LESSON_MAIN_CONTENT_ELEMENT.innerHTML = `<img height="${product.height}" width="${product.width}" onclick='Helpbox("${product.image}")' src='${product.image}'>`;
 
 	LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
-	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<img class='h100w100' onclick='showHelp("${product.helper}")' src='images/clickforhelp.jpg'>`;
+	LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<div id="showHelpDiv" onclick='showHelp("${product.helper}")'>Click For Help!</div>`;
 
 	if(product.UPCType == "Normal" || product.UPCType == "Scale" || product.UPCType == "FloralUpgrade" || product.UPCType == "Berries"){
 		lessonPassValue = product.PLU;
