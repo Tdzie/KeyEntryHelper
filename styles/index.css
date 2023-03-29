@@ -2,9 +2,18 @@
   .hideDisplay{
     display: none;
   }
+#RightPanelOuter{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
 button{
-    background-color: rgb(79, 126, 226) !important;
-    font-weight: bold !important;
+    background-color: #7bba2f !important;
+    font-weight: bolder !important;
+    font-size: 1.5em !important;
+    color: #24180D !important;
 }
  
   #rightPanelAltContent>img{
@@ -14,11 +23,37 @@ button{
     width: 70%;
   }
 
+  #left-section,
+  #right-section {
+      display: inline-block;
+      width: 45%;
+      vertical-align: top;
+  }
+
+  #container {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+  }
+
+  h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+  }
+
+  h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+  }
+
+
+
 .links{
-    color: rgb(79, 126, 226);
+    color: #7bba2f;
     text-decoration: underline;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.5rem;
     
 }
 #createdBy{
@@ -84,7 +119,7 @@ body>nav>div>h5{
             border: 5px outset gray;
             padding: 10px;
             position: relative;
-           
+           background-color: #302011
         }
         
       }
@@ -261,6 +296,9 @@ li{
     animation: displayFromLeftToRight 3s linear;
     overflow: hidden;
     white-space: nowrap;
+
+
+    #7bba2f
 }
 */
 .imageW50H350{
@@ -268,7 +306,8 @@ li{
     height: 530px;
 }
 body{
-    background-color: rgb(18, 18, 18);
+    background-color: #24180D;
+
 }
 #outerDivForErrorBox{
         position: absolute;

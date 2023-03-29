@@ -84,6 +84,20 @@ const NORMAL_UPC_LESSON = `<div id="containerForGifAndImage">
 						  </div>`;
 
 
+const INITIAL_LANDING_PAGE_TITLE = `<h1 style="font-family: Quicksand;">Key Entry Helper</h1>`;
+
+const INITIAL_LANDING_PAGE_CONTENT = `<div id="container">
+										<div id="left-section">
+											<h2>For trainers</h2>
+											<img src="trainer_image.jpg" alt="Trainer Image">
+										</div>
+										<div id="right-section">
+											<h2>For cashiers</h2>
+											<img src="cashier_image.jpg" alt="Cashier Image">
+										</div>
+									</div>`;
+
+
 // -----------------------END MESSAGES---------------------------------
 
 
@@ -179,7 +193,7 @@ LOGO_MENU_BUTTON.addEventListener("click", () => { lessonPopup(NORMAL_UPC_LESSON
 // -----------------------START-UP LOGIC-------------------------------------
 	window.onload = () => {
 		//normalRegister();
-		//landingPage("Informaiton Title", "images/keyEnterNormalUPC.jpg", "Helpful Information");
+		//landingPage(INITIAL_LANDING_PAGE_TITLE, INITIAL_LANDING_PAGE_CONTENT);
 
 };
 // -----------------------END START-UP LOGIC---------------------------------
@@ -841,7 +855,7 @@ function landingPage(title,content){
 		outerDiv.id = "outerDivForErrorBox";
 		outerDiv.innerHTML += `${title}`;
 		outerDiv.innerHTML += `${content}`;
-		if (title == `<h3 style="font-family: Quicksand;">Select a lesson</h3>`){
+		if (title == `<h3 style="font-family: Quicksand;">Select a lesson</h3>` || title == `<h1 style="font-family: Quicksand;">Key Entry Helper</h1>`){
 			outerDiv.addEventListener("click", closeLandingPage);
 		}
 		
