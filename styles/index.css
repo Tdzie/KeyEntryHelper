@@ -249,7 +249,10 @@ li{
     width: 350px;
     height: 90%;
 }
-
+#rightPanelMainContent > img {
+    border: 7px solid #7bba2f;
+    border-radius: 10px;
+}
 
 .disable{
     pointer-events: none;

@@ -652,8 +652,8 @@ function lessonReset(){
 	lessonEndIndex = 0;
 	lessonPassValue = 0;
 	currentLessonNumber = 1;
-	twoStepLesson = false;
 	firstStepValue = 0;
+	twoStepLesson = false;
 	onSecondStep = false;
 }
 
@@ -845,6 +845,8 @@ function findDifficulty(){
 // sets the difficulty based on the radio button selected in the settings menu
 function setDiff(difficulty){
 	failsAllowed = difficulty;
+	stepFailCounter = 0;
+
 }
 
 //function used to create the lesson and settings menus
