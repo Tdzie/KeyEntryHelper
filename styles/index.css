@@ -6,8 +6,14 @@
     display: flex;
     justify-content: space-evenly;
 }
-
-
+#outerDivForImageAndButton{
+    display: flex;
+    justify-content: space-evenly;
+}
+#buttonForHelp{
+    margin-left: 5px;
+    border-radius: 10px;
+}
 
 button{
     background-color: #7bba2f !important;
@@ -214,7 +220,7 @@ li{
     cursor: pointer;
 }
 #outerDivForErrorBox > ul > li{
-    color: rgb(51, 162, 26);
+    color: white;
     font-weight: bold;
     z-index: 100;
     position: relative;
@@ -343,7 +349,7 @@ body{
     height: 850px;
     background-color:  black;
     z-index: 1;
-    border: #0d6efd 5px outset;
+    border: rgb(51, 162, 26) 5px outset;
     padding: 1%;
 }
 #outerDivForLessonPopup{
@@ -355,12 +361,12 @@ body{
         height: 80%;
         background-color: black;
         z-index: 1;
-        border: #0d6efd 5px outset;
+        border: #7bba2f 5px outset;
         padding: 1%;
 }
 #containerForGifAndImage{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 #outerDivForHelpBox{
     position: absolute;
