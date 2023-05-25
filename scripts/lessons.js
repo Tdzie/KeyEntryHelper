@@ -305,6 +305,10 @@ function lessonRecap(lessonNumber) {
 
         document.querySelector("#retryLessonOne").addEventListener("click", () => { selectLesson(7); });
         $LESSON_ALT_CONTENT_ELEMENT.innerHTML = "";
+        $LESSON_ALT_CONTENT_ELEMENT.innerHTML = `<h5>Click here to start over:</h5>
+											<br>
+											<button class="btn btn-success" style="width: 75%" id="startNextLesson">Continue to ${lessonNumberToName(1)}</button>`;
+        document.querySelector("#startNextLesson").addEventListener("click", () => { selectLesson(1); });
     }
 
 }
